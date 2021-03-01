@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { CommonService } from '../../shared/services/common.service';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ExcelService } from 'src/app/shared/services/excel.service';
+import { ExcelService } from '../../shared/services/excel.service';
 
 
 @Injectable({

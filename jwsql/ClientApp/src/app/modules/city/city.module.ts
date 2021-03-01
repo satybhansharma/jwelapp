@@ -8,10 +8,10 @@ import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
 import { CityService } from './city.service';
 import { DataTablesModule } from 'angular-datatables';
-import { AlertModule } from 'src/app/shared/_alert';
+import { AlertModule } from '../../shared/_alert';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
-import { AppRoutingModule } from 'src/app/app-routing.module';
+import { AppRoutingModule } from '../../app-routing.module';
 import { StateModule } from '../state/state.module';
 
 

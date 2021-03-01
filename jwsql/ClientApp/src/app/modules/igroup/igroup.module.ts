@@ -16,7 +16,7 @@ import { AppRoutingModule } from '../../app-routing.module';
 import { MatDialogModule } from '@angular/material/dialog';
 import {SharedserviceService} from '../../shared/services/sharedservice.service'
 import { CategoryService} from '../category/category.service';
-import { IgroupService } from 'src/app/shared/services/igroup.service';
+import { IgroupService } from '../../shared/services/igroup.service';
 import { UnitmasterModule } from '../unitmaster/unitmaster.module';
 import { StampmasterModule } from '../stamp/stampmaster.module';
 

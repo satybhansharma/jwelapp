@@ -19,7 +19,7 @@ import {SharedserviceService} from '../../shared/services/sharedservice.service'
 import { data } from 'jquery';
 import { json } from 'ngx-custom-validators/src/app/json/validator';
 import { AccmastService } from '../accmast/accmast.service';
-import { KEY_CODE } from 'src/app/shared/services/KeyBoardCode';
+import { KEY_CODE } from '../../shared/services/KeyBoardCode';
 
 @Component({
   selector: 'app-account-group',
