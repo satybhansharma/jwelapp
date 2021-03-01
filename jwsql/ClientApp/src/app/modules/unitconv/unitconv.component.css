@@ -1,0 +1,60 @@
+::ng-deep .autocomplete-container .input-container input{
+    background-color: white;
+    border: 1px solid #ced4da!important;
+    width: 250px !important;
+    box-shadow: none !important;
+    border-radius: 2px!important;
+  }
+  ::ng-deep .autocomplete-container{
+    height: 34px!important;
+    width: 250px!important;
+    margin-top: 20px!important;
+  }
+.autocomplete-container .not-found {
+    padding:0px;
+}
+.unit-form-box a {
+  text-align: left;
+  display: block;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  font-size:14px;
+}
+  .unit-form-box a:hover{
+    background-color: #5cc6d0;
+    color: white;
+    cursor:pointer;
+    text-decoration:none;
+    
+  }
+  .unit-form-box {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 5px;
+    padding-right: 20px;
+    width: 100%;
+  }
+  .form-group label{
+    text-align: left;
+    margin-top: 28px!important;
+    font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif;
+    font-weight: 400!important;
+    font-size: 13px!important;
+  }
+  form input.form-control {
+    border-radius: 0%;
+    border: 1px solid #ced4da;
+    width: 250px;
+    font-size: 13px !important;
+    margin-top: 16px;
+    text-transform: capitalize;
+  }
+  form label {
+  text-align: left;
+  }
+  

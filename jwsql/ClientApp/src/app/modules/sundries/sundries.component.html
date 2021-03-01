@@ -1,0 +1,313 @@
+
+    <div class="row">
+        <div class="col-md-6 text-left">
+    <h1 class="heading">Bill Sundries</h1>  
+    </div>
+    <div *ngIf="isnew" class="col-md-6 text-right">
+        <div class="new-button"> 
+          <button mat-raised-button *ngIf="isnew" (click) = toggleDisplay()  class="save cancle">New+</button>
+      </div>
+      </div>
+    </div>
+    
+    
+    <!--List code starts here-->
+    <div class="row"> 
+    <div *ngIf="isdivShow" >
+      <div class="form-group">
+        <div class="col-md-12 text-right">
+        <div class="search-txt">
+        <input type="email" class="form-control" id="search-text"   [(ngModel)]="searchText" (ngModelChange)="Search()" aria-describedby="search-text"
+               placeholder="Enter text to search" 
+               autofocus>    
+      </div>
+    </div>
+    </div>
+      
+        <table class="table table-striped table-bordered table-sm row-border hover">
+          <thead >
+            <tr>
+              <th style="width: 40px;">Edit</th>
+              
+              <th style="width: 50px;">S.No</th>
+              <th>Sundry</th>
+              <th>Print Name</th>
+              <th>Def val</th>
+             
+          
+    
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let record of retData let j=index">
+              <td><mat-icon style="color: #5CC6D0 !important; cursor:pointer;" (click)="edit(record,1)">edit</mat-icon> </td>
+             
+              
+              <td style="text-align: center;">{{j+count}}</td>
+              <td>{{record.SUNDNAME}}</td>
+              <td>{{record.PNAME}}</td>
+              <td>{{record.DEFVALUE}}</td>
+              
+    
+            </tr>
+          </tbody> 
+        </table>
+        
+    
+    
+   
+    
+    <pagination [itemsPerPage]="8" [totalItems]="filterrec.length" (pageChanged)="pageChanged($event)"></pagination>
+        </div>
+        <!-- list form end -->
+       
+        <form *ngIf="isShow" #f="ngForm" [formGroup]="sundForm">
+<div class="container unit-form-box">
+    <div class="row">
+        <div class="sundry-first-form">
+        <div class="col-md-7">
+            <div class="form-group">
+                <div class="row">
+                    <label for="" class="control-label col-md-2">Name</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" formControlName="sundname" (keydown.enter)="$event.preventDefault()">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label for="" class="control-label col-md-2">Print</label>
+                    <div class="col-md-8">
+                        <input type="text" class="form-control" formControlName="pname" (keydown.enter)="$event.preventDefault()">
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label for="" class="control-label col-md-2">Type</label>
+                    <div class="col-md-8">
+                        <select name="" id="" class="form-control" (click)="AccType($event)" formControlName="sndtype" >
+                            <option value="1">GENERAL</option>
+                            <option value="2">OTH.CHARGE</option>
+                            <option value="3">RATE DIFF</option>
+                            <option value="4">AGENT</option>
+                            <option value="5">M.POINTS</option>
+                            <option value="6">ROUND OFF</option>
+                            <option value="7">COUPON</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label for="" class="control-label col-md-2">Before Tax</label>
+                    <div class="col-md-2">
+                        <select (click)="isviewadj($event)" name="" id="adjsale" class="form-control" formControlName="adjsale" (keydown.enter)="$event.preventDefault()">
+                            <option value="0">Y</option>
+                            <option value="1">N</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 adjust-in-other" *ngIf='isadj'>
+                        <ng-autocomplete [data]="aclist"  
+                                        [initialValue]="taclist"
+                                        [searchKeyword]="keyword2"                    
+                                        (selected)='selectEvent2($event)'
+                                        [itemTemplate]="itemTemplate3"
+                                        [notFoundTemplate]="notFoundTemplate3"                                     
+                                        style="background-color:cadetblue;" formControlName="adjcname" (keydown.enter)="$event.preventDefault()" >
+                                        </ng-autocomplete>
+                                        <ng-template #itemTemplate3 let-item>
+                                          <a [innerHTML]="item.name"></a>
+                                        </ng-template>
+                                        <ng-template #notFoundTemplate3 let-notFound>
+                                          <div >Not Found</div>
+                                        </ng-template>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="row">
+                    <label for="" class="control-label col-md-2">Other Account</label>
+                    <div class="col-md-2">
+                        <select (click)="isviewoth($event)" name="" id="" class="form-control" formControlName="otherac" (keydown.enter)="$event.preventDefault()">
+                            <option value="0">N</option>
+                            <option value="1">Y</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 adjust-in-other" *ngIf='isoth' >
+                        <ng-autocomplete [data]="aclist"  
+                        [initialValue]="taclist"
+                        [searchKeyword]="keyword3"                    
+                        (selected)='selectEvent3($event)'
+                        [itemTemplate]="itemTemplate4"
+                        [notFoundTemplate]="notFoundTemplate4"                                     
+                        style="background-color:cadetblue;" formControlName="othcname" (keydown.enter)="$event.preventDefault()" >
+                        </ng-autocomplete>
+                        <ng-template #itemTemplate4 let-item>
+                          <a [innerHTML]="item.name"></a>
+                        </ng-template>
+                        <ng-template #notFoundTemplate4 let-notFound>
+                          <div >Not Found</div>
+                        </ng-template>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="form-group">
+                <div class="row">
+                    <label for="" class="control-label col-md-4">Additional Settings</label>
+                    <div class="col-md-2">
+                        <select name=""(click)="isViewaddset($event)" id="addset" class="form-control" (keydown.enter)="$event.preventDefault()">
+                            <option value="0">N</option>
+                            <option value="1">Y</option>
+                        </select>
+                    </div>
+                </div>
+            </div> -->
+            <div class="sundry-form-container" >
+                <div class="form-group">
+                    <div class="row">
+                      <div class="sundry-main-form">
+                           <div class="form-group">
+                               <div class="row">
+                                <label for="" class="control-label col-md-2">Date upto</label>
+                                <div class="col-md-3">
+                                    <input type="date" class="form-control" style="text-align: right;" formControlName="edate" (keydown.enter)="$event.preventDefault()" >
+                                </div>
+                                   
+                                   <label for="" class="control-label col-md-2" style="margin-left: -20px!important;">Date w.e.f</label>
+                                   <div class="col-md-3">
+                                       <input type="date" class="form-control" style="text-align: right;" formControlName="sdate" (keydown.enter)="$event.preventDefault()">
+                                   </div>
+                               </div>
+                           </div>
+                           <div class="form-group">
+                              <div class="row">
+                                  <label for="" class="control-label col-md-2">Amount Greater</label>
+                                  <div class="col-md-3">
+                                      <style>
+                  
+                                          input::-webkit-outer-spin-button,
+                                          input::-webkit-inner-spin-button {
+                                          -webkit-appearance: none;
+                                          margin: 0;
+                                          }
+                                        input[type="number"] {
+                                        -moz-appearance: textfield;
+                                          }
+                                
+                                                  </style>
+                                      <input type="number" class="form-control" style="text-align: right;" formControlName="defamt" (keydown.enter)="$event.preventDefault()">
+                                  </div>
+                                  <label for="" class="control-label col-md-2" style="margin-left: -20px!important;">Default Value</label>
+                                  <div class="col-md-3">
+                                     <style>
+                 
+                                         input::-webkit-outer-spin-button,
+                                         input::-webkit-inner-spin-button {
+                                         -webkit-appearance: none;
+                                         margin: 0;
+                                         }
+                                       input[type="number"] {
+                                       -moz-appearance: textfield;
+                                         }
+                               
+                                                 </style>
+                                      <input type="number" class="form-control" style="text-align: right;" formControlName="defvalue" (keydown.enter)="$event.preventDefault()">
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <div class="row">
+                                  <label for="" class="control-label col-md-2">Add/Less In Bill</label>
+                                  <div class="col-md-3">
+                                      <select name="" id="" class="form-control" formControlName="addless" (keydown.enter)="$event.preventDefault()">
+                                          <option value="1">Add</option>
+                                          <option value="2">Less</option>
+                                      </select>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                    </div>
+                  
+                </div>  
+              </div>
+        </div>
+    </div>
+    <div class="col-md-5 amount-to-be">
+        <div class="form-group">
+            <div class="row">
+                <h3><u><b>Amount to be considered as</b></u></h3>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <label for="" class="control-label col-md-3">Method</label>
+                <div class="col-md-6">
+                    <select name="" id="" class="form-control" formControlName="fed" (keydown.enter)="$event.preventDefault()">
+                        <option value="1">Absolute Value</option>
+                        <option value="2">Per Qty</option>
+                        <option value="3">Percentage</option>
+                        <option value="4">Reverse %</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <label for="" class="control-label col-md-3">Round Off</label>
+                <div class="col-md-3">
+                    <select (click)="isviewround($event)" name="" id="" class="form-control" formControlName="roff" (keydown.enter)="$event.preventDefault()">
+                        <option value="0">N</option>
+                        <option value="1">Y</option>
+                    </select>
+                </div>
+                <div class="col-md-3" *ngIf='isround'>
+                    <input type="number" class="form-control" style="text-align: right;" formControlName="roffval" (keydown.enter)="$event.preventDefault()">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <label for="" class="control-label col-md-3">Calculation on</label>
+                <div class="col-md-6">
+                    <select name="" id="" class="form-control" formControlName="fedp" (keydown.enter)="$event.preventDefault()">
+                        <option value="1">Total Bill Amount</option>
+                        <option value="2">Cost of Goods</option>
+                        <option value="3">Previous Bill Sundry</option>
+                        <option value="4">Diamond Value</option>
+                        <option value="5">Labour Value</option>
+                        <option value="6">Box Wt</option>
+                        <option value="7">Net Wt</option>
+                        <option value="8">Std Lbr</option>
+                        <option value="9">Diamond+Labour</option>
+                        <option value="10">Metal+Dia.Value</option>
+                        <option value="11">Diamond+Stone+Labour</option>
+                        <option value="12">Diamond Wt</option>
+                        <option value="13">Item Pc</option>
+                        <option value="14">Diamond+Stone</option>
+                        <option value="15">Profit %</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+  </div>
+</div>
+<section class="footer-fix">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="footer-button">    
+            <button mat-raised-button type="submit" class="save" (click)=onsubmit(f) value="Save" style="margin-left:25px;">Save</button> 
+            <a mat-raised-button *ngIf="isdel" (click) = Delete()  class="save delete">Delete</a>
+            <a mat-raised-button (click) = toggleDisplay()  class="save cancle">Cancel</a>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</form>
+</div>

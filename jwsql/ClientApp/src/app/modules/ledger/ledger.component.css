@@ -1,0 +1,25 @@
+.butttons button{
+    width: 150px!important;
+    height: 25px!important;
+    text-align: left;
+}
+.table{
+    height: 430px!important;
+    overflow: auto;
+    display: block;
+}
+.table thead tr th{
+    background-color: #5b5b5b;
+    top: 0!important;
+    width: 15%!important;
+   position: -webkit-sticky!important;
+   position: sticky!important; 
+}
+.table tbody tr td{
+padding: 6px!important;
+}
+.row .head h2 b{
+    text-align: center!important;
+    justify-content: center;
+    align-content: center;
+}

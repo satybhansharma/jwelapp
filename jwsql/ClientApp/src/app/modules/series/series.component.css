@@ -1,0 +1,494 @@
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12 {
+    padding-left: 0px!important;
+    }
+  
+  .additional-sett-form a{
+      float: right;
+      margin-right: 33px;
+      margin-bottom: 15px;
+      color: white;
+      text-transform: none;
+  }
+  #exTab1 {
+     top: 45px;
+      position: absolute;
+      width: 100%;
+      height: 100vh;
+  }
+  #exTab1 .tab-content {
+    color : black;
+border: 1px solid black!important;
+    padding : 2px 22px;
+    /* padding-bottom: 55px!important; */
+  }
+  
+  .nav>li>a {
+
+    padding: 4px 8px;
+}
+.nav>li>a:hover{
+    background-color: #5cc6d0!important;
+    color: white!important;
+    cursor: pointer!important;
+}
+/* .active > a {
+      color: white;
+      background-color:none;
+} */
+.nav{
+    /* background-color: rgba(43, 43, 43, 0.822); */
+    width: 90%!important;
+}
+  #exTab2 h3 {
+    color : white;
+    background-color: #5b5b5b;
+    padding : 5px 15px;
+  }
+
+ 
+  
+  #exTab3 .nav-pills > li > a {
+    border-radius: 4px 4px 0 0 ;
+  }
+  
+  #exTab3 .tab-content {
+    color : white;
+    background-color: #5b5b5b;
+  }
+  .footer-fix {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 9999999999;
+    background-color: white;
+    padding: 30px 0;
+    -webkit-box-shadow: 0px -2px 12px 0px rgba(48, 50, 50, 0.44);
+    -moz-box-shadow: 0px -2px 12px 0px rgba(48, 50, 50, 0.44);
+    box-shadow: 0px -2px 12px 0px rgba(48, 50, 50, 0.44);
+  }
+  
+  .footer-button {
+    position: absolute;
+    bottom: -16px;
+    left: 220px;
+  }
+  .nav-pills>li.active>a{
+      color: black!important;
+      background-color: white!important;
+  }
+
+  .tab-pane{
+      padding:3px 15px;
+  }
+  .series-form legend{
+      border-bottom: none;
+      text-align: left;
+      font-size: 12px;
+      font-weight: bold;
+      margin-bottom: 12px;
+      margin-top: 4px;
+  }
+  .form-group{
+      margin-bottom: 2px;
+  }
+  .series-form input.form-control{
+      height: 30px;
+      padding: 2px 4px!important;
+  }
+  .series-form select.form-control{
+    height: 30px;
+    padding: 2px 4px!important;
+}
+  input.default-check{
+      margin-top: 7px;
+      margin-left: -80px;
+  }
+  legend.end-date{
+      margin-left: 20px;
+  }
+  .series-form legend.behave{
+      margin-left: 2px;
+  }
+  legend.vouchet-sett{
+      margin-left: 2px;
+  }
+  
+  .tab-pane .row{
+      margin-bottom: 0px!important;
+  }
+  .tab-pane .row .form-group{
+    margin-bottom: 0px!important;
+}
+.series-form-box{
+    background-color: rgba(0, 0, 0,0.4);
+    height: 100vh;
+    width: 100%;
+   position: absolute;
+    padding: 0;
+    margin: 0;
+    top:0;
+    left: 0;
+}  
+.series-Dialog{
+    position: absolute;
+    top: 100px;
+    left: 300px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    background-color:cornsilk;
+    padding:0px;
+    margin: 0px;
+}
+.series-Dialog a{
+    
+        float: right;
+        margin-right: 58px;
+        margin-bottom: 15px;
+        color: white;
+        text-transform: none;
+   
+}
+
+.series-Dialog h2{
+    text-align: center;
+    background-color: #1e1e1e;
+    color: white;
+}
+.voucher-Dialog h2{
+    text-align: center;
+    background-color: #1e1e1e;
+    color: white;
+}
+.additional-sett-form{
+    top: 160px;
+}
+.option-field ol{
+    text-align: center;
+    padding:0px 0px 0px 70px;
+}
+.option-field li{
+    padding-bottom: 6px;
+    text-align: center;
+}
+.additional-sett-form h2{
+    text-align: center;
+    background-color: #1e1e1e;
+    color: white;
+}
+
+.voucher-Dialog{
+    position: absolute;
+    top: 130px;
+    left: 350px;
+    width: 100%;
+    background-color:cornsilk;
+    padding:0px;
+    margin: 0px;
+}
+.link-item-account{
+    position: absolute;
+    top: 20px;
+    left: 50px;
+    width: 100%;
+    background-color:rgb(95, 204, 255);
+    padding-top:10px;
+    padding-bottom: 10px;
+    padding-right: 40px;
+}
+
+.voucher-form{
+    padding-right: 15px;
+}
+.tax-form{
+    padding-right: 15px;
+}
+.tax-form a{
+      float: right;
+      margin-right: 14px;
+      margin-bottom: 15px;
+      color: white;
+      text-transform: none;
+}
+.tax-form legend{
+    border-bottom: none;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    margin-left: 30px;
+    text-align: left;
+}
+.tax-Dialog h2{
+    text-align: center;
+    background-color: #1e1e1e;
+    color: white;
+}
+.tax-Dialog{
+    position: absolute;
+    top: 70px;
+    left: 150px;
+    width: 100%;
+    background-color:cornsilk;
+    padding:0px;
+    margin: 0px;
+}
+.voucher-form a{
+    float: right;
+}
+input.get-bill-check{
+    margin-top: 7px;
+    margin-left: -10px;
+}
+input.validate-check{
+    margin-top: 7px;
+    margin-left: -40px;
+}
+.voucher-form h2{
+    text-align: center;
+}
+.series-Dialog legend{
+    border-bottom: none;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    margin-left: 30px;
+    text-align: left;
+}
+.link-party-form input.form-control{
+    height: 25px;
+    padding: 3px 5px;
+}
+
+.link-party-form select.form-control{
+    height: 25px;
+    padding: 3px 5px;
+}
+.link-party-form legend{
+    border-bottom: none;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 20px;
+    text-align: left;
+}
+.voucher-form legend{
+      border-bottom: none;
+      font-size: 12px;
+      font-weight: bold;
+      margin-top: 5px;
+      margin-bottom: 15px;
+      margin-left: 25px;
+}
+.terms-condition legend{
+    border-bottom: none;
+      font-size: 12px;
+      font-weight: bold;
+      margin-top: 2px;
+      margin-bottom: 10px;
+      margin-left: 25px;
+}
+.additional-form legend{
+      border-bottom: none;
+      font-size: 12px;
+      font-weight: bold;
+      margin-top: 2px;
+      margin-bottom: 10px;
+      margin-left: 10px;
+}
+.sms-setting legend{
+      border-bottom: none;
+      font-size: 12px;
+      font-weight: bold;
+      margin-top: 6px;
+      margin-bottom: 10px;
+      margin-left: 10px;
+}
+.billing-company legend{
+      border-bottom: none;
+      font-size: 12px;
+      font-weight: bold;
+      margin-top: 6px;
+      margin-bottom: 10px;
+      margin-left: 10px;
+}
+.sale-group legend{
+    border-bottom: none;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 6px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+.bill-input input.form-control{
+    border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
+    margin-bottom: 10px;
+}
+.tax-no input{
+    margin-top: 10px;
+}
+.additional-form input.form-control{
+    height: 25px;
+    padding: 3px 5px;
+}
+.additional-form select.form-control{
+    height: 25px;
+    padding: 3px 5px;
+}
+/* .terms-condition .form-group{
+    margin-bottom: 2px;
+} */
+input.pcrs{
+    margin-top: 7px;
+    margin-left: -40px;
+}
+input.effect-check{
+    margin-top: 7px;
+    margin-left: -20px;
+}
+input.nc-check{
+    margin-top: 7px;
+    margin-left: -70px;
+}
+input.tax-lab-check{
+    margin-top: 7px;
+    margin-left: -40px;
+}
+input.reverse{
+    margin-top: 7px;
+    margin-left: -40px;
+}
+input.print-online{
+    margin-top: 7px;
+    margin-left: -2px;
+}
+.terms-condition input.form-control{
+    height: 25px;
+}
+.terms-condition{
+    margin-top: 10px;
+}
+
+/* .terms-condition h4{
+    margin-bottom: 5px;
+} */
+.terms-condition li{
+    margin-bottom: 5px;
+    display: inline-block;
+    width: 22%;
+}
+.row-1{
+    padding-left: 15px!important;
+}
+.row-2{
+    padding-left: 15px!important;
+}
+input.bill-check-box{
+    margin-top: 10px;
+}
+input.blnk-check-box{
+    line-height: 2.5;
+    margin-top: 16px;
+}
+.tax-no{
+    margin-left: 30px;
+}
+input.sale-check{
+    margin-top: 10px;
+}
+table{
+    margin-top: 20px;
+}
+table h2{
+    text-align: center;
+}
+table tr td{
+text-align: center;
+}
+table tr th{
+    text-align: center;
+}
+  
+.modification-textarea textarea{
+    margin-top: 15px;
+}
+select.voucher-setting-inpt{
+    margin-left: -39px;
+}
+.sms-setting-xlear{
+    clear: both;
+}
+@media screen and (max-width: 768px) {
+    .series-form legend.behave{
+        margin-left: 0px;
+    }
+    .clear{
+        clear: both;
+    }
+    legend.default-legend{
+        margin-left: 30px!important;
+    }
+    legend.starting-date{
+        margin-left: 30px!important;
+    }
+    legend.end-date{
+        margin-left: 30px!important;
+    }
+    select.voucher-setting-inpt{
+        margin-left: 0px;
+    }
+    input.blnk-check-box{
+        line-height: 1.8;
+        margin-top: 6px;
+    }
+    .modification-textarea textarea{
+        margin-top: 15px;
+    }
+    .billing-company legend{
+        border-bottom: none;
+        font-size: 12px;
+        font-weight: bold;
+        margin-top: 13px;
+        margin-bottom: 1px;
+        margin-left: 10px;
+  }
+  .tax-no input{
+    margin-top: 4px;
+}
+}
+@media screen and (max-width: 425px) {
+    #exTab1 .tab-content {
+        padding-bottom: 70px!important;
+      }
+      .series-form legend{
+        border-bottom: none;
+        text-align: left;
+        font-size: 12px;
+        font-weight: bold;
+        margin-bottom: 2px;
+        margin-top: 4px;
+    }
+    legend.default-legend{
+        margin-left: 0px!important;
+    }
+    legend.starting-date{
+        margin-left: 0px!important;
+    }
+    legend.end-date{
+        margin-left: 0px!important;
+    }
+    .link-party-form legend{
+        border-bottom: none;
+        font-size: 10px;
+        font-weight: 780;
+        margin-top: 5px;
+        margin-bottom: 2px!important;
+        margin-left: 3px!important;
+        text-align: left;
+    }
+}

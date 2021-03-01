@@ -1,0 +1,95 @@
+.all-types{
+  width: 13%!important;
+  float: left;
+  margin-left: 4px!important;
+  text-align: center;
+}
+.all-types select{
+  padding: 0;
+    height: 24px!important;
+    font-size: 12px!important;
+}
+.all-ac{
+  width: 13%!important;
+  float: left;
+  margin-left: 4px!important;
+  text-align: center;
+  margin-top: 5px!important;
+  margin-bottom: 2px!important;
+}
+.all-ac select{
+  padding: 0;
+  height: 24px!important;
+  font-size: 12px!important;
+}
+.footer-lab
+{
+   position: absolute;
+   bottom: -30px!important;
+   left: 0;
+   right: 0;
+   width: 100%;
+   z-index: 9999999999;
+   background-color: white;
+   padding: 14px 0;
+   -webkit-box-shadow: 0px -1px 1px 0px rgba(48, 50, 50, 0.44);
+   -moz-box-shadow: 0px -1px 1px 0px rgba(48, 50, 50, 0.44); 
+
+ }
+  .gr-wt-gold label
+  {
+      font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif!important;
+      font-size: 12px!important;
+      font-weight: 400!important;
+      padding-top: 1px!important;
+      padding-left: 0;
+      padding-right: 0;
+  }
+  .gr-wt-gold input
+  {
+    padding: 0;
+    cursor: pointer;
+      height: 25px!important;
+      margin-bottom: 1px!important;
+      text-align: right;
+      border: 1px solid #ced4da;
+      /* margin-top: 1px!important; */
+      width: 85px!important;
+      margin-left: -60px!important;
+      font-weight: bold;
+      font-size: 12px!important;
+  }
+  .footer-btn button
+  {
+      /* background-color: gray;
+      color: white; */
+      height: 21px!important;
+      width: 70px!important;
+      padding: 0;
+  }
+  .add-table table, th, td {
+    border-collapse: collapse;
+    height:20px;
+  }
+.add-table  th, td {
+    padding: 0px;
+    text-align: left;
+  }
+  .add-table td{
+    border: 1px solid #ced4da;
+    width: 70px!important;
+    font-weight: bold;
+    font-size: 11px!important;
+    height: 25px!important;
+  }
+  .add-table th{
+    border-top: none;
+    border-bottom: none;
+      width: 90px!important;
+      font-size: 12px!important;
+      font-weight: 400;
+      padding-left: 5px!important;
+    }
+    .add-table tr,td{
+        text-align: right;
+    }

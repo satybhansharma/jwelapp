@@ -1,0 +1,660 @@
+.display-label-left label{
+  text-align: left;
+  margin-left: 15px;
+  font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif;
+  font-size: 13px!important;
+  font-weight: 400!important;
+}
+.display-label-left .form-group label{
+  margin-top: 15px!important;
+  font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif;
+  font-size: 13px!important;
+  font-weight: 400!important;
+}
+.display-label-left .form-group input{
+  margin-top: 10px!important;
+  border-radius: 2px!important;
+  
+}
+.display-label-left .form-group select{
+  margin-top: 10px!important;
+  border-radius: 2px!important;
+  height: 32px!important;
+}
+.form-group .types-primary input{
+/* margin-top: 15px!important;  */
+margin-left: -30px!important;
+
+}
+.display-label-left .form-group .default-unit-list .default-unit{
+  margin-top: -20px!important;
+}
+.cnt .form-group label{
+  padding-left: 5px!important;
+  text-align: left;
+  font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif;
+  font-size: 13px!important;
+  font-weight: 400!important;
+}
+
+.cnt-ac .ac-cnt label{
+  text-align: left;
+  font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif;
+  font-size: 13px!important;
+  font-weight: 400!important;
+}
+.borderless {
+border-radius:0px !important;
+}
+::ng-deep .under-label .autocomplete-container .input-container input{
+  background-color: white;
+  border: 1px solid #ced4da!important;
+  width: 250px !important;
+  box-shadow: none !important;
+  border-radius: 2px!important;
+  height: 32px!important;
+}
+::ng-deep .under-label .autocomplete-container{
+  height: 32px!important;
+  width: 250px!important;
+  margin-bottom: 20px!important;
+  margin-top:5px !important;
+}
+::ng-deep .default-stamp-list .autocomplete-container .input-container input{
+  background-color: white;
+  border: 1px solid #ced4da!important;
+  width: 100px !important;
+  box-shadow: none !important;
+  border-radius: 2px!important;
+  height: 32px!important;
+}
+::ng-deep .default-stamp-list .autocomplete-container{
+  height: 32px!important;
+  width: 100px!important;
+  margin-left: -16px!important;
+}
+::ng-deep .default-unit-list .autocomplete-container .input-container input{
+  background-color: white;
+  border: 1px solid #ced4da!important;
+  width: 100px !important;
+  box-shadow: none !important;
+  border-radius: 2px!important;
+  height: 32px!important;
+}
+::ng-deep .default-unit-list .autocomplete-container{
+  height: 32px!important;
+  width: 100px!important;
+  
+}
+.default-unit-list label{
+  margin-top: -25px!important;
+  font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif;
+  font-size: 13px!important;
+  font-weight: 400!important;
+}
+::ng-deep .under-label .autocomplete-container .input-container input{
+  background-color: white;
+  border: 1px solid #ced4da!important;
+  width: 100% !important;
+  box-shadow: none !important;
+  border-radius: 2px!important;
+}
+::ng-deep .under-label .autocomplete-container{
+  height: 20px!important;
+  width: 100%!important;
+  
+}
+.form-group .group-type-select{
+  text-align: left;
+  margin-left: -7px!important;
+  width: 370px;
+}
+::ng-deep .cnt-ac .autocomplete-container .input-container input{
+  background-color: white;
+  border: 1px solid #ced4da!important;
+  width: 250px!important;
+  box-shadow: none !important;
+  border-radius: 2px!important;
+  height: 32px!important;
+  padding-bottom: 5px!important;
+}
+::ng-deep .cnt-ac  .autocomplete-container{
+  height: 32px!important;
+  width: 250px!important;
+  margin-bottom: 5px!important;  
+}
+.cnt-ac label{
+  margin-top: 7px!important;
+}
+@media only screen and (max-width: 768px){
+    ::ng-deep .mat-dialog-container{
+      overflow-y: auto!important;
+    }
+    ::ng-deep .mat-drawer-content{
+      overflow-y: auto!important;
+    }
+    .details-bottom{
+      margin-bottom: 50px;
+    }
+    .group-name{
+      margin-left: 0px;
+    }
+    .group-name-label{
+      width: 300px;
+    }
+    .print-name{
+  margin-left: 0px;
+    }
+    .print-name-label{
+  width: 300px;
+    }
+    .types{
+      margin-left: -125px;
+    }
+    .types-subgroup{
+      margin-left: -70px;
+    }
+    .under-text{
+      margin-left: -125px;
+    }
+    .under-text-label{
+  width: 300px;
+    }
+    .group-type{
+  margin-left: -125px;
+    }
+    .group-type-option{
+  width: 300px;
+    }
+    .default-unit{
+      margin-left: -125px;
+        }
+        .default-unit-option{
+      width: 300px;
+        }
+        .default-stamp{
+      margin-left: -125px;   
+        }
+      .default-stamp-option{
+  width: 300px;
+      }
+      .details{
+        margin-left: 30px;
+      }
+      .stock-details{
+  margin-left: -100px;
+      }
+      .table-height{
+       padding-bottom: 80px;
+       padding-left: 40px;
+       padding-right: 60px;
+      }
+      .ac-heading{
+        text-align: center;
+        padding-right: 70px;
+      }
+      .footer-button {
+        position: absolute;
+        left: 5px !important;
+        bottom: -16px;
+      }
+  
+  
+  /* 2nd container start */
+  .stock-detail-heading{
+    text-align: center;
+    margin-left: -50px;
+  }
+  .stock-reports-on{
+    margin-left: -180px;
+  }
+  .calander{
+    width: 52% !important;
+  }
+  /* 2nd container end */
+  /* 4th container start */
+  .gst-details-table{
+    text-align: center;
+  }
+  .restrict-sale-input{
+    margin-left: -16px;
+  }
+  .dont-allow-input{
+    margin-left: 41px;
+  }
+  .used-in-taging{
+  margin-left: 0px;
+  }
+  .used-in-taging-input{
+  margin-left: 200px;
+  margin-top: -22px;
+  }
+  .consume-input{
+    margin-left: -20px;
+  }
+  .update-input{
+    margin-left: -45px;
+  }
+  .update-type-input{
+    margin-left: -50px;
+  }
+  .daily-bhav{
+    float: right;
+    margin-right: -100px;
+    margin-top: -30px;
+  }
+  .use-daily-bhav{
+    margin-right: 10px;
+    width: 50%;
+    
+  }
+  .use-daily-bhav-option{
+    margin-right: 150px;
+  }
+  .discount-by{
+    
+    margin-left: -75px!important;
+  }
+  .percent-sign{
+    margin-left: 10px!important;
+  
+    float: left;
+  }
+  .trending-into{
+    margin-left: -35px!important;
+  }
+  .trading-option{
+    margin-left: 20px;
+  }
+  .sauda-into{
+  float: left;
+  width: 50% !important;
+  }
+  .sauda-into-input{
+    margin-left: 100px;
+    margin-top: -30px;
+  }
+  .usedin{
+    margin-left: -40px;
+  }
+  .trading-jobwrok{
+    margin-bottom: 20px;
+  }
+  .table-width{
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+  }
+  .calander{
+    width: 180px!important;
+  }
+  .stock-reports-on{
+    margin-left: -60px; ;
+  }
+  /* 4th container end */
+  
+  }
+  @media screen and (max-width: 425px){
+    html, body{
+      width: fit-content;
+      height: 100vh;
+      background-color: white;
+    }
+    .table-height{
+      padding-left: 0px !important;
+      padding-right: 0px !important;
+    }
+    .details-bottom{
+      margin-bottom: 50px;
+    }
+    .group-name{
+      margin-left: 0px;
+      
+    }
+    .group-name-label{
+      width: 405px;
+      margin-left: 20px;
+    }
+    .print-name{
+  margin-left: 0px;
+    }
+    .print-name-label{
+  width: 405px;
+  margin-left: 20px;
+    }
+    .types{
+      margin-left: 20px;
+    }
+    .types-primary{
+      margin-left: 50px;
+    }
+    .under-text{
+      margin-left: 15px;
+    }
+    .under-text-label{
+  width: 405px;
+  margin-left: 15px;
+    }
+    .group-type{
+  margin-left: 15px;
+    }
+    .group-type-option{
+  width: 405px;
+  margin-left: 15px;
+    }
+    .default-unit{
+      margin-left: 15px;
+        }
+        .default-unit-option{
+      width: 405px;
+      margin-left: 15px;
+        }
+        .default-stamp{
+      margin-left: 15px;   
+        }
+      .default-stamp-option{
+  width: 405px;
+  margin-left: 15px;
+      }
+      .details{
+        margin-left: 20px;
+      }
+      .stock-details{
+        
+  margin-left: 260px;
+  margin-top: -60px;
+      }
+      .gst-details-table{
+        float: left;
+        margin-left: -60px;
+      }
+      .hsn-code-details{
+        margin-left: 200px;
+        margin-top: -35px;
+        
+      }
+      .hsn-label{
+        margin-left: 280px;
+        margin-top: -32px;
+      }
+  
+  
+      /* 2nd container start */
+  .stock-detail-heading{
+    
+    margin-left: -90px;
+    float: left;
+  }
+  .stock-reports-on{
+    margin-left: 340px;
+    margin-top: -40px;
+  }
+  .calander{
+    width: 147px !important;
+    margin-top: -60px;
+    margin-left: -60px;
+    
+  }
+  /* 2nd container end */
+  /* 3rd container start */
+  .sale-ac{
+    margin-left: 200px;
+    margin-top: 10px;
+    font-weight: 600;
+      font-size: 12px;
+  }
+  .sale-ac-select{
+    margin-left: -36px;
+    margin-top: -35px;
+  }
+  .pur-ac{
+    margin-left: 200px;
+    margin-top: 10px;
+    font-weight: 600;
+      font-size: 12px;
+  }
+  .pur-ac-select{
+    margin-left: -37px;
+    margin-top: -35px;
+  }
+  .lbr-ac{
+    margin-left: 160px;
+    margin-top: 10px;
+    font-weight: 600;
+      font-size: 12px;
+  }
+  .lbr-ac-select{
+    margin-left: 0px;
+    margin-top: -35px;
+  }
+  .lbr-ac-rcpt{
+    margin-left: 165px;
+    margin-top: 10px;
+    font-weight: 600;
+      font-size: 12px;
+  }
+  .lbr-ac-rcpt-select{
+    margin-left: -5px;
+    margin-top: -35px;
+  }
+  .rent-ac{
+    margin-left: 190px;
+    margin-top: 10px;
+    font-weight: 600;
+      font-size: 12px;
+  }
+  .rent-ac-select{
+    margin-left: -30px;
+    margin-top: -35px;
+  }
+  .studed-sale-ac{
+    margin-left: 140px;
+    margin-top: 10px;
+    font-weight: 600;
+      font-size: 12px;
+  }
+  .studed-sale-ac-select{
+    margin-left: 20px;
+    margin-top: -35px;
+  }
+  .studed-pure-ac{
+    margin-left: 145px;
+    margin-top: 10px;
+    font-weight: 600;
+      font-size: 12px;
+  }
+  .studed-pure-ac-select{
+    margin-left: 15px;
+    margin-top: -35px;
+    margin-bottom: 15px;
+  }
+  /*  3rd container end */
+  /* 4th container start */
+  .allow-tag{
+    margin-left: 20px;
+    margin-top: 25px!important;
+  }
+  .allow-tag-input{
+    margin-left: -6px!important;
+    
+  }
+  .pick-rate{
+  margin-top: -10px!important;
+  }
+  .pick-rate-input{
+    margin-top: -13px;
+    margin-left: 2px;
+  }
+  .restrict-sale{
+  margin-left: 20px;
+  }
+  .restrict-sale-input{
+  margin-left: 27px;
+  }
+  .dont-allow{
+  margin-top: -13px;
+  }
+  .dont-allow-input{
+  margin-left: -17px;
+  }
+  .used-in-taging-input-new{
+    margin-top: -30px;
+  }
+  .update-itype{
+    margin-top: 40px;
+    margin-left: 10px;
+  }
+  .update-itype-input{
+    margin-left: 8px;
+  }
+  .daily-bhav{
+    margin-top: -20px;
+    
+  }
+  .daily-bhav-option{
+    margin-left: -60px;
+    margin-top: -25px;
+  }
+  .discount-by{
+    margin-left: 10px!important;
+  }
+  .discount-by-select .form-control{
+    margin-left: -100px!important;
+    width: 133px!important;
+    margin-top: -5px!important;
+  }
+  .name-new .form-control{
+    margin-top: -33px!important;
+  }
+  .trending-into{
+    margin-left: 25px!important;
+  }
+  .trading-option{
+    margin-left: -180px!important;
+  }
+  .sauda-into{
+    margin-left: 5px!important;
+  }
+  .sauda-into-input{
+    margin-top: 8px;
+    margin-left: -85px!important;
+  }
+  .usedin{
+  margin-left: 20px!important;
+  }
+  .trading-jobwrok{
+    margin-left: -185px!important;
+    /* margin-bottom: 15px; */
+  }
+  .calander{
+    margin-top: -30px!important;
+  margin-right: -30px ;
+  }
+  /* 4th container end */
+  }
+  
+  @media screen and (max-width: 375px){
+    
+    .details-bottom{
+      margin-bottom: 50px;
+    }
+    .group-name{
+      margin-left: 0px;
+      
+    }
+    .group-name-label{
+      width: 350px;
+    }
+    .print-name{
+  margin-left: 0px;
+    }
+    .print-name-label{
+  width: 350px;
+    }
+    .types{
+      margin-left: 20px;
+    }
+    .types-primary{
+      margin-left: 70px;
+    }
+    .types-subgroup{
+      margin-left: 70px;
+    }
+    .under-text{
+      margin-left: 15px;
+    }
+    .under-text-label{
+  width: 350px;
+  margin-left: 15px;
+    }
+    .group-type{
+  margin-left: 15px;
+    }
+    .group-type-option{
+  width: 350px;
+  margin-left: 15px;
+    }
+    .default-unit{
+      margin-left: 15px;
+        }
+        .default-unit-option{
+      width: 350px;
+      margin-left: 15px;
+        }
+        .default-stamp{
+      margin-left: 15px;   
+        }
+      .default-stamp-option{
+  width: 350px;
+  margin-left: 15px;
+      }
+      .details{
+        margin-left: 20px;
+      }
+      .stock-details{
+        
+  margin-left: 200px;
+  margin-top: -60px;
+      }
+      .gst-details-table{
+        margin-left: -60px;
+      }
+      .hsn-code-details{
+        margin-left: 150px;
+        margin-top: -35px;
+        
+      }
+      .hsn-label{
+        margin-left: 230px;
+        margin-top: -32px;
+      }
+  
+      /* 2nd container start */
+  .stock-detail-heading{
+    
+    margin-left: -90px;
+    float: left;
+    font-size: 13px !important;
+  }
+  .stock-reports-on{
+    margin-left: 310px;
+    margin-top: -45px;
+    font-size: 13px !important;
+  }
+  .calander{
+    width: 147px !important;
+    margin-top: -50px;
+    margin-left: -90px;
+    
+  }
+  /* 2nd container end */
+  /* 3rd container start */
+  .cnt-ac select.form-control{
+    width: 230px !important;
+  }
+  /* 3rd container end */
+
+  }
+
+.headingAlign {
+ text-align:center !important;
+}

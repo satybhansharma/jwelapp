@@ -1,0 +1,1891 @@
+
+    
+      <div class="row">
+        
+        <div class="col-md-6 text-left">
+    <h1 class="heading" style="margin-left: 8px!important;">Series</h1>  
+  </div>
+  <div  class="col-md-6 text-right">
+    <div class="new-button"> 
+      <button mat-raised-button class="save cancle">New+</button>
+  </div>
+  </div>
+</div>
+  
+
+<div class="row"> 
+    <div>
+      <!-- <div  class="col-md-12 text-right">
+      <div class="form-group">
+        <div class="search-txt">
+        <input type="email" class="form-control" id="search-text" aria-describedby="search-text"
+             placeholder="Enter text to search" 
+               autofocus>    
+      </div>
+    </div>
+  </div> -->
+      
+        <table  class="table table-striped table-bordered table-sm row-border hover" style="display: none;">
+          <thead >
+            <tr>
+              <th style="width: 40px;">Edit</th>
+              <!-- <th style="width: 40px;">Delete</th> -->
+              <th>Series Name</th>
+              <th>Print Name</th>
+              
+  
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><mat-icon style="color: #5CC6D0 !important; cursor:pointer;" edit></mat-icon> </td>
+              <!-- <td><mat-icon style="color: #5CC6D0 !important; cursor:pointer;" (click)="edit(record,2)">delete</mat-icon> </td> -->
+              
+              <td></td>
+              <td></td>
+              
+  
+            </tr>
+          </tbody>
+        </table>
+      
+      <!---<pagination [itemsPerPage]="8" [totalItems]="records.length" (pageChanged)="pageChanged($event)"></pagination>---->
+    </div>
+  
+    <form>
+     
+     
+<div id="exTab1" class="container">	
+<ul  class="nav nav-tabs" style="width: 100%important;">
+			<li class="active">
+        <a  href="#1a" data-toggle="tab" style="font-weight: bold;background-color: #E6E6FA;color: black;">Series</a>
+			</li>
+			<li><a href="#2a" data-toggle="tab" style="font-weight: bold;background-color: #E6E6FA;color: black;">Print/Link/Item/Account</a>
+			</li>
+			<li><a href="#3a" data-toggle="tab" style="font-weight: bold;background-color: #E6E6FA;color: black;">SMS Setting</a>
+			</li>
+  		<li><a href="#4a" data-toggle="tab" style="font-weight: bold;background-color: #E6E6FA;color: black;">Settings</a>
+      </li>
+      <li><a href="#5a" data-toggle="tab" style="font-weight: bold;background-color: #E6E6FA;color: black;">Additional Settings</a>
+			</li>
+		</ul>
+
+			<div class="tab-content clearfix">
+			  <div class="tab-pane active" id="1a">
+          <div class="row">
+            <div class="col-md-5 col-sm-5 col-xs-12">
+              <div class="row">
+                <div class="form-group series-form">
+                 <div class="col-md-3 col-sm-5 col-xs-6">
+                    <legend>Series Name</legend>
+                 </div>
+                 <div class="col-md-8 col-sm-7 col-xs-12">
+                   <input type="text" name="text" class="form-control">
+                </div>
+                </div>
+              </div>
+              <div class="row">
+               <div class="form-group series-form">
+                <div class="col-md-3 col-sm-5 col-xs-6">
+                   <legend>Print Name</legend>
+                </div>
+                <div class="col-md-8 col-sm-7 col-xs-12">
+                  <input type="text" name="text" class="form-control">
+               </div>
+               </div>
+             </div>
+             <div class="row">
+               <div class="form-group series-form">
+                <div class="col-md-3 col-sm-5 col-xs-6">
+                   <legend>Link Series</legend>
+                </div>
+                <div class="col-md-8 col-sm-7 col-xs-12">
+                  <input type="text" name="text" class="form-control">
+               </div>
+               </div>
+             </div>
+             <div class="row">
+               <div class="form-group series-form">
+                <div class="col-md-3 col-sm-5 col-xs-6">
+                   <legend>Link Grid Setting</legend>
+                </div>
+                <div class="col-md-8 col-sm-7 col-xs-12">
+                  <input type="text" name="text" class="form-control">
+               </div>
+               </div>
+             </div>
+             <div class="row">
+               <div class="form-group series-form">
+                <div class="col-md-3 col-sm-5 col-xs-6">
+                   <legend>Method</legend>
+                </div>
+                <div class="col-md-3 col-sm-7 col-xs-12">
+                  <select class="form-control">
+                    <option>General</option>
+                    <option>AGN. Approval</option>
+                    <option>Auto Bill</option>
+                  </select>
+               </div>
+               <div class="clear"></div>
+               <div class="col-md-3 col-sm-5 col-xs-6">
+                 <legend class="behave">Behavior</legend>
+              </div>
+              <div class="col-md-2 col-sm-7 col-xs-12">
+               <select class="form-control">
+                 <option>High</option>
+                 <option>Medium</option>
+                 
+               </select>
+             </div>
+               </div>
+             </div>
+             <div class="row">
+               <div class="form-group series-form">
+                <div class="col-md-3 col-sm-5 col-xs-6">
+                   <legend>Optional</legend>
+                </div>
+                <div class="col-md-3 col-sm-7 col-xs-12">
+                  <select class="form-control">
+                     <option>Yes</option>
+                     <option>No</option>
+                  </select>
+               </div>
+               <div class="clear"></div>
+               <div class="form-group series-form">
+                <div class="col-md-3 col-sm-5 col-xs-6">
+                   <legend class="vouchet-sett">Voucher Setting</legend>
+                </div>
+                <div class="col-md-2 col-sm-7 col-xs-12">
+                  <select class="form-control">
+                     <option>Yes</option>
+                     <option>No</option>
+                  </select>
+               </div>
+               
+               </div>
+             </div>
+   
+             
+             </div>
+   
+             <div class="row">
+               <div class="form-group series-form">
+                <div class="col-md-3 col-sm-5 col-xs-6">
+                   <legend>Tax Details</legend>
+                </div>
+                <div class="col-md-3 col-sm-7 col-xs-12">
+                  <select class="form-control">
+                     <option>Yes</option>
+                     <option>No</option>
+                  </select>
+               </div>
+               <div class="clear"></div>
+               <div class="col-md-4 col-sm-5 col-xs-6">
+                <legend>Additional Settings</legend>
+             </div>
+             <div class="col-md-2 col-sm-7 col-xs-12">
+              <select class="form-control voucher-setting-inpt">
+                <option>Yes</option>
+                <option>No</option>
+             </select>
+            </div>
+               
+             
+               </div>
+             </div>
+
+
+             
+
+
+
+
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <div class="row">
+                <div class="form-group series-form" >
+                 
+                
+                <div class="col-md-3 col-sm-6 col-xs-5">
+                  <legend class="default-legend">Default</legend>
+               </div>
+               <div class="col-md-2 col-sm-1 col-xs-1">
+                <input type="checkbox" class="default-check">
+              </div>
+               
+              
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group series-form">
+                 
+                  <div class="col-md-2 col-sm-4 col-xs-6">
+                    <legend class="starting-date">Starting Date</legend>
+                 </div>
+                 <div class="col-md-4 col-sm-6 col-xs-12">
+                  <input type="date" class="form-control">
+                </div>
+                <div class="clear"></div>
+                <div class="col-md-2 col-sm-4 col-xs-6">
+                  <legend class="end-date">End Date</legend>
+               </div>
+               <div class="col-md-4 col-sm-6 col-xs-12">
+                <input type="date" class="form-control">
+              </div>
+               
+              
+            
+                </div>
+              </div>
+
+             
+            </div>
+          </div>
+           
+				</div>
+				<div class="tab-pane" id="2a">
+          <div class="row">
+            <div class="col-md-5 col-sm-12 col-xs-12">
+               <div class="row">
+                <div class="form-group link-party-form">
+                  <div class="col-md-3 col-sm-3">
+                     <legend>Voucher No</legend>
+                  </div>
+                  <div class="col-md-3 col-sm-3">
+                    <select class="form-control">
+                       <option>Number</option>
+                       <option>Code</option>
+                       <option>N/A</option>
+                       <option>Second Copy</option>
+                    </select>
+                 </div>
+                 <div class="col-md-3 col-sm-3">
+                   <legend class="behave">Wastage In</legend>
+                </div>
+                <div class="col-md-3 col-sm-3">
+                 <select class="form-control">
+                   <option>Weight</option>
+                   <option>Percent</option>
+                   <option>With Gwt</option>
+                   <option>N/A</option>
+                </select>
+               </div>
+              
+              
+                 </div>
+               </div>
+               <div class="row">
+                <div class="form-group link-party-form">
+                  <div class="col-md-3 col-sm-3">
+                     <legend>Voucher Date</legend>
+                  </div>
+                  <div class="col-md-3 col-sm-3">
+                    <select class="form-control">
+                       <option>Normal</option>
+                       <option>Code</option>
+                       <option>N/A</option>
+                       <option>Before Years</option>
+                    </select>
+                 </div>
+                 <div class="col-md-3 col-sm-3">
+                   <legend class="behave">Particular</legend>
+                </div>
+                <div class="col-md-3 col-sm-3">
+                 <select class="form-control">
+                   <option>Tag+Item Name+Remark</option>
+                   <option>Item Name+Remark</option>
+                   <option>Tag No+Remark</option>
+                   <option>Item Name</option>
+                   <option>Tag No</option>
+                   <option>Remarks</option>
+                   <option>Tag+Item+Design</option>
+                   <option>Group Name</option>
+                </select>
+               </div>
+                 </div>
+               </div>
+
+               <div class="row">
+                <div class="form-group link-party-form">
+                  <div class="col-md-3 col-sm-3">
+                     <legend>Last Balance</legend>
+                  </div>
+                  <div class="col-md-3 col-sm-3">
+                    <select class="form-control">
+                       <option>End</option>
+                       <option>After Sale</option>
+                       <option>N/A</option>
+                       <option>Start</option>
+                       <option>Start With Details</option>
+                    </select>
+                 </div>
+                 <div class="col-md-3 col-sm-3">
+                   <legend class="behave">Old Purchase</legend>
+                </div>
+                <div class="col-md-3 col-sm-3">
+                 <select class="form-control">
+                   <option>Normal</option>
+                   <option>Without Rate</option>
+                   <option>Amount Only</option>
+                   <option>Normal With Nwt</option>
+                   <option>Fine With Rate</option>
+                   <option>Gwt-Lesswt=Nwt</option>
+                   <option>Wt+Tunch+Rate+Fine</option>
+                   <option>Wt+Fine+Rate</option>
+                </select>
+               </div>
+                 </div>
+               </div>
+
+               <div class="row">
+                <div class="form-group link-party-form">
+                  <div class="col-md-3 col-sm-3">
+                     <legend>Last Bal.</legend>
+                  </div>
+                  <div class="col-md-3 col-sm-3">
+                    <select class="form-control">
+                       <option>Date/Vou</option>
+                       <option>Date</option>
+                       <option>Vou No</option>
+                       <option>N/A</option>
+                       <option>BillWise</option>
+                       <option>Decoded</option>
+                    </select>
+                 </div>
+                 <div class="col-md-3 col-sm-3">
+                   <legend class="behave">Metal Rate</legend>
+                </div>
+                <div class="col-md-3 col-sm-3">
+                 <select class="form-control">
+                   <option>Nothing</option>
+                   <option>24Carat</option>
+                   <option>All Stamp</option>
+                   <option>Voucher Stamp</option>
+                   <option>Voucher Rate</option>
+                   <option>Voucher Stamp Rate</option>
+                </select>
+               </div>
+                 </div>
+               </div>
+
+               <div class="row">
+                <div class="form-group link-party-form">
+                  <div class="col-md-3 col-sm-3">
+                     <legend>Date Time</legend>
+                  </div>
+                  <div class="col-md-3 col-sm-3">
+                    <select class="form-control">
+                       <option>N/A</option>
+                       <option>Current</option>
+                       <option>Feeding</option>
+
+                    </select>
+                 </div>
+                 <div class="col-md-3 col-sm-3">
+                   <legend class="behave">Order By</legend>
+                </div>
+                <div class="col-md-3 col-sm-3">
+                 <select class="form-control">
+                   <option>Feeding Typewise</option>
+                   <option>Tag No</option>
+                   <option>Item Name</option>
+                   <option>Wt/Color</option>
+                   <option>Type</option>
+                   <option>Stamp</option>
+                   <option>Type+Itype</option>
+                   <option>On Screen</option>
+                   <option>Link Tag</option>
+                   <option>Design</option>
+                   <option>Type+Category</option>
+                   <option>By Feeding Order</option>
+                   <option>Stm+Tgno</option>
+                   <option>Stm/Col/Clr</option>
+                </select>
+               </div>
+                 </div>
+               </div>
+
+
+
+               <div class="row">
+                <div class="form-group link-party-form">
+                  <div class="col-md-3 col-sm-3">
+                     <legend>Voucher Type/Sr.</legend>
+                  </div>
+                  <div class="col-md-3 col-sm-3">
+                    <select class="form-control">
+                       <option>Vou Type</option>
+                       <option>Srno</option>
+                       <option>Both</option>
+                       <option>N/A</option>
+                    </select>
+                 </div>
+                 <div class="col-md-3 col-sm-3">
+                   <legend class="behave">Summary</legend>
+                </div>
+                <div class="col-md-3 col-sm-3">
+                 <select class="form-control">
+                   <option>Nothing</option>
+                   <option>Category</option>
+                   <option>Item</option>
+                   <option>Stamp</option>
+                   <option>Item/Quality</option>
+                   <option>Stamp/Quality</option>
+                   <option>Studed Item</option>
+                   <option>Size Items</option>
+                   <option>Stamp/Item</option>
+                   <option>Stamp/Dia</option>
+                   <option>Quality-Rate Merged</option>
+                   <option>Dia Quality</option>
+                   <option>Item/Dia Quality</option>
+                   <option>Item/Stud Item</option>
+                   <option>Stud Item+Stamp+Size</option>
+                   <option>Item+Stamp</option>
+                   <option>PcWt</option>
+                   <option>Itm+Stmb</option>
+                </select>
+               </div>
+                 </div>
+               </div>
+
+
+               <div class="row">
+                <div class="form-group link-party-form">
+                  <div class="col-md-3 col-sm-3">
+                     <legend>Voucher No Cap.</legend>
+                  </div>
+                  <div class="col-md-3 col-sm-3">
+                    <input type="text" class="form-control">
+                 </div>
+                 <div class="col-md-3 col-sm-3">
+                   <legend class="behave">Std.Items</legend>
+                </div>
+                <div class="col-md-3 col-sm-3">
+                 <select class="form-control">
+                   <option>Item Name/Print Name</option>
+                   <option>Item+Stamp</option>
+                   <option>Item+Remarks</option>
+                   <option>Only Stamp</option>
+                   <option>Item+Remarks+Stamp</option>
+                   <option>Tunch</option>
+                   <option>Item+Stamp+Color+clarity+Shape</option>
+                   <option>Item Remarks</option>
+                   <option>Stamp+Size</option>
+                   <option>Item+Size</option>
+                   <option>Item+Stamp+Size</option>
+                   <option>Item+Stamp+Part</option>
+                </select>
+               </div>
+                 </div>
+               </div>
+
+
+               <div class="row">
+                <div class="form-group link-party-form">
+                  <div class="col-md-3 col-sm-3">
+                     <legend>Date Cap.</legend>
+                  </div>
+                  <div class="col-md-3 col-sm-3">
+                    <input type="text" class="form-control">
+                 </div>
+                 <div class="col-md-3 col-sm-3">
+                   <legend class="behave">Row Lines</legend>
+                </div>
+                <div class="col-md-3 col-sm-3">
+                  <input type="text" class="form-control">
+               </div>
+                 </div>
+               </div>
+
+
+               <div class="row">
+                <div class="form-group link-party-form">
+                  <div class="col-md-3 col-sm-3">
+                     <legend>Labour In</legend>
+                  </div>
+                  <div class="col-md-3 col-sm-3">
+                    <select class="form-control">
+                       <option>Gm/Rs</option>
+                       <option>Amount</option>
+                       <option>N/A</option>
+                    </select>
+                 </div>
+                 <div class="col-md-3 col-sm-3">
+                   <legend class="behave">No Of Copy</legend>
+                </div>
+                <div class="col-md-3 col-sm-3">
+                  <input type="text" class="form-control">
+               </div>
+                 </div>
+               </div>
+
+
+               <div class="row">
+                <div class="form-group link-party-form">
+                  <div class="col-md-3 col-sm-3">
+                     <legend>Cust Sign.</legend>
+                  </div>
+                  <div class="col-md-3 col-sm-3">
+                    <input type="text" class="form-control">
+                 </div>
+                 <div class="col-md-3 col-sm-3">
+                   <legend class="behave">GSTR1 Details</legend>
+                </div>
+                <div class="col-md-3 col-sm-3">
+                  <input type="text" class="form-control">
+               </div>
+                 </div>
+               </div>
+
+               <div class="row">
+                <div class="form-group link-party-form">
+                  <div class="col-md-3 col-sm-3">
+                     <legend>Sac.</legend>
+                  </div>
+                  <div class="col-md-3 col-sm-3">
+                    <input type="text" class="form-control">
+                 </div>
+                 <div class="col-md-3 col-sm-3">
+                   <legend class="behave">Print Format</legend>
+                </div>
+                <div class="col-md-3 col-sm-3">
+                  <input type="text" class="form-control">
+               </div>
+                 </div>
+               </div>
+
+            </div>
+
+            <div class="col-md-7 col-sm-12 col-xs-12">
+              <div class="row">
+                <div class="form-group link-party-form">
+                  <div class="col-md-3 col-sm-3 col-xs-5 ">
+                     <legend>Print Online</legend>
+                  </div>
+                  <div class="col-md-1 col-sm-1 col-xs-1">
+                    <input type="checkbox" class="print-online">
+                 </div>
+                 <div class="col-md-3 col-sm-3 col-xs-5">
+                  <legend>Don't Print Narration</legend>
+               </div>
+               <div class="col-md-1 col-sm-1 col-xs-1">
+                 <input type="checkbox" class="print-online">
+              </div>
+
+              <div class="col-md-3 col-sm-3 col-xs-5">
+                  <legend>Print Diamond in Cent</legend>
+               </div>
+               <div class="col-md-1 col-sm-1 col-xs-1">
+                 <input type="checkbox" class="print-online">
+              </div>
+                
+                
+                 </div>
+
+
+
+                 
+                  <div class="form-group link-party-form">
+                    <div class="col-md-3 col-sm-3 col-xs-5 ">
+                       <legend>Print Rcpt Details</legend>
+                    </div>
+                    <div class="col-md-1 col-sm-1  col-xs-1">
+                      <input type="checkbox" class="print-online">
+                   </div>
+                   <div class="col-md-3 col-sm-3 col-xs-5 ">
+                    <legend>Don't Print Cash Rcvd</legend>
+                 </div>
+                 <div class="col-md-1 col-sm-1 col-xs-1">
+                   <input type="checkbox" class="print-online">
+                </div>
+  
+                <div class="col-md-3 col-sm-3 col-xs-5 ">
+                    <legend>Print Entrywise Det</legend>
+                 </div>
+                 <div class="col-md-1 col-sm-1 col-xs-1">
+                   <input type="checkbox" class="print-online">
+                </div>
+                   </div>
+                 
+
+
+                   
+                    <div class="form-group link-party-form">
+                      <div class="col-md-3 col-sm-3 col-xs-5 ">
+                         <legend>Print Purchase</legend>
+                      </div>
+                      <div class="col-md-1 col-sm-1 col-xs-1">
+                        <input type="checkbox" class="print-online">
+                     </div>
+                     <div class="col-md-3 col-sm-3 col-xs-5 ">
+                      <legend>Print Discount Bottom</legend>
+                   </div>
+                   <div class="col-md-1 col-sm-1 col-xs-1">
+                     <input type="checkbox" class="print-online">
+                  </div>
+    
+                  <div class="col-md-3 col-sm-3 col-xs-5 ">
+                      <legend>Print Total After Sundry</legend>
+                   </div>
+                   <div class="col-md-1 col-sm-1 col-xs-1">
+                     <input type="checkbox" class="print-online">
+                  </div>
+                     </div>
+
+
+                     
+                      <div class="form-group link-party-form">
+                        <div class="col-md-3 col-sm-3 col-xs-5 ">
+                           <legend>Heading Pre Print</legend>
+                        </div>
+                        <div class="col-md-1 col-sm-1 col-xs-1">
+                          <input type="checkbox" class="print-online">
+                       </div>
+                       <div class="col-md-3 col-sm-3 col-xs-5 ">
+                        <legend>Print HSN Code</legend>
+                     </div>
+                     <div class="col-md-1 col-sm-1 col-xs-1">
+                       <input type="checkbox" class="print-online">
+                    </div>
+      
+                    <div class="col-md-3 col-sm-3 col-xs-5 ">
+                        <legend>Print Bank Details</legend>
+                     </div>
+                     <div class="col-md-1 col-sm-1 col-xs-1">
+                       <input type="checkbox" class="print-online">
+                    </div>
+                       </div>
+
+
+                       
+                        <div class="form-group link-party-form">
+                          <div class="col-md-3 col-sm-3 col-xs-5 ">
+                             <legend>Don't Print Pc</legend>
+                          </div>
+                          <div class="col-md-1 col-sm-1 col-xs-1">
+                            <input type="checkbox" class="print-online">
+                         </div>
+                         <div class="col-md-3 col-sm-3 col-xs-5 ">
+                          <legend>Print Consignee Detail</legend>
+                       </div>
+                       <div class="col-md-1 col-sm-1 col-xs-1">
+                         <input type="checkbox" class="print-online">
+                      </div>
+        
+                      <div class="col-md-3 col-sm-3 col-xs-5 ">
+                          <legend>Print HSN/Sac Code</legend>
+                       </div>
+                       <div class="col-md-1 col-sm-1 col-xs-1">
+                         <input type="checkbox" class="print-online">
+                      </div>
+                         </div>
+                       
+                     
+
+                        
+                          <div class="form-group link-party-form">
+                            <div class="col-md-3 col-sm-3 col-xs-5 ">
+                               <legend>Don't Print Labour Det</legend>
+                            </div>
+                            <div class="col-md-1 col-sm-1 col-xs-1">
+                              <input type="checkbox" class="print-online">
+                           </div>
+                           <div class="col-md-3 col-sm-3 col-xs-5 ">
+                            <legend>Print On Save</legend>
+                         </div>
+                         <div class="col-md-1 col-sm-1 col-xs-1">
+                           <input type="checkbox" class="print-online">
+                        </div>
+          
+                        <div class="col-md-3 col-sm-3 col-xs-5 ">
+                            <legend>Print HSN/Sac Summary</legend>
+                         </div>
+                         <div class="col-md-1 col-sm-1 col-xs-1">
+                           <input type="checkbox" class="print-online">
+                        </div>
+                           </div>
+
+
+                           
+                            <div class="form-group link-party-form">
+                              <div class="col-md-3 col-sm-3 col-xs-5 ">
+                                 <legend>Don't Print Less Details</legend>
+                              </div>
+                              <div class="col-md-1 col-sm-1 col-xs-1">
+                                <input type="checkbox" class="print-online">
+                             </div>
+                             <div class="col-md-3 col-sm-3 col-xs-5 ">
+                              <legend>Print Tax in Incl tax Bill</legend>
+                           </div>
+                           <div class="col-md-1 col-sm-1 col-xs-1">
+                             <input type="checkbox" class="print-online">
+                          </div>
+            
+                          <div class="col-md-3 col-sm-3 col-xs-5 ">
+                              <legend>Don't Show In GSTR1</legend>
+                           </div>
+                           <div class="col-md-1 col-sm-1 col-xs-1">
+                             <input type="checkbox" class="print-online">
+                          </div>
+                             </div>
+
+
+                             
+                              <div class="form-group link-party-form">
+                                <div class="col-md-3 col-sm-3 col-xs-5 ">
+                                   <legend>Don't Print GWT Details</legend>
+                                </div>
+                                <div class="col-md-1 col-sm-1 col-xs-1">
+                                  <input type="checkbox" class="print-online">
+                               </div>
+                               <div class="col-md-3 col-sm-3 col-xs-5 ">
+                                <legend>Print Stamp</legend>
+                             </div>
+                             <div class="col-md-1 col-sm-1 col-xs-1">
+                               <input type="checkbox" class="print-online">
+                            </div>
+              
+                            <div class="col-md-3 col-sm-3 col-xs-5 ">
+                                <legend>Don't Show In GSTR1</legend>
+                             </div>
+                             <div class="col-md-1 col-sm-1 col-xs-1">
+                               <input type="checkbox" class="print-online">
+                            </div>
+                               </div>
+
+                              
+                                <div class="form-group link-party-form">
+                                  <div class="col-md-3 col-sm-3 col-xs-5 ">
+                                     <legend>Don't Print Kachi List</legend>
+                                  </div>
+                                  <div class="col-md-1 col-sm-1 col-xs-1">
+                                    <input type="checkbox" class="print-online">
+                                 </div>
+                                 <div class="col-md-3 col-sm-3 col-xs-5 ">
+                                  <legend>Print Tunch+wstg</legend>
+                               </div>
+                               <div class="col-md-1 col-sm-1 col-xs-1">
+                                 <input type="checkbox" class="print-online">
+                              </div>
+                                 </div>
+                              
+                             
+                           
+                        
+                   
+
+               </div>
+               
+
+               
+
+               
+
+              
+
+
+               
+
+              
+
+              
+
+               
+               <div class="row">
+                <div class="form-group link-party-form">
+                    <div class="col-md-3 col-sm-3">
+                      <legend>Billing Party Caption</legend>
+                    </div>
+                    <div class="col-md-3 col-sm-9">
+                      <input type="text" class="form-control">
+                    </div>
+                    <div class="clear"></div>
+                    <div class="col-md-3 col-sm-3">
+                      <legend>Billing Consignee</legend>
+                    </div>
+                    <div class="col-md-3 col-sm-9">
+                      <input type="text" class="form-control">
+                    </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group link-party-form">
+                    <div class="col-md-3 col-sm-3">
+                      <legend>Voucher Heading</legend>
+                    </div>
+                    <div class="col-md-3 col-sm-9">
+                      <input type="text" class="form-control">
+                    </div>
+                    <div class="clear"></div>
+                    <div class="col-md-3 col-sm-3">
+                      <legend>SGST Caption</legend>
+                    </div>
+                    <div class="col-md-3 col-sm-9">
+                      <input type="text" class="form-control">
+                    </div>
+                </div>
+              </div>
+
+
+            </div>
+          </div>
+
+            <div class="row">
+              <div class="col-md-12 terms-condition">
+                <h4><b>Terms and Condition</b></h4>
+              <div class="row">
+                <div class="form-group">
+                  <ol class="col-md-12">
+                    <div class="row row-1">
+<b>1.</b>&nbsp;                    <li><input type="text" class="form-control"></li>
+&nbsp;&nbsp;<b>2.</b>&nbsp;                    <li><input type="text" class="form-control"></li>
+&nbsp;&nbsp;<b>3.</b>&nbsp;                    <li><input type="text" class="form-control"></li>
+&nbsp;&nbsp;<b>4.</b>&nbsp;                    <li><input type="text" class="form-control"></li>
+</div>
+<div class="row row-2">
+<b>5.</b>&nbsp;                    <li><input type="text" class="form-control"></li>
+&nbsp;&nbsp;<b>6.</b>&nbsp;                    <li><input type="text" class="form-control"></li>
+&nbsp;&nbsp;<b>7.</b>&nbsp;                    <li><input type="text" class="form-control"></li>
+&nbsp;&nbsp;<b>8.</b>&nbsp;                    <li><input type="text" class="form-control"></li>
+</div>
+                  </ol>
+                </div>
+              </div>
+           </div>
+           <!-- <div class="col-md-6 terms-condition billing-party-inputs">
+
+           </div> -->
+            </div>
+
+
+            
+          
+				</div>
+        <div class="tab-pane" id="3a">
+         <div class="row">
+           <div class="col-md-3 col-sm-6 col-xs-12">
+             <div class="row">
+               <div class="form-group sms-setting">
+                 <div class="col-md-4 col-sm-4 col-xs-4">
+                   <legend>SMS On Add</legend>
+                 </div>
+                 <div class="col-md-6 col-sm-6 col-xs-8">
+                  <select class="form-control">
+                    <option>N/A</option>
+                    <option>Self</option>
+                    <option>Customer</option>
+                    <option>Both</option>
+                  </select>
+                </div>
+               </div>
+               <div class="sms-setting-xlear"></div>
+
+                <div class="form-group sms-setting">
+                  <div class="col-md-4 col-sm-4 col-xs-4">
+                    <legend>Bill No</legend>
+                  </div>
+                  <div class="col-md-3 col-sm-1 col-xs-1">
+                   <input type="checkbox" class="bill-check-box">
+                 </div>
+                </div>
+                <div class="sms-setting-xlear"></div>
+
+                
+                  <div class="form-group sms-setting">
+                    <div class="col-md-4 col-sm-4 col-xs-4">
+                      <legend>Bill Amount</legend>
+                    </div>
+                    <div class="col-md-3 col-sm-1 col-xs-1">
+                     <input type="checkbox" class="bill-check-box">
+                   </div>
+                  </div>
+
+                  <div class="sms-setting-xlear"></div>
+
+
+                 
+                    <div class="form-group sms-setting">
+                      <div class="col-md-4 col-sm-4">
+                        <legend>Rcpt</legend>
+                      </div>
+                      <div class="col-md-3 col-sm-1">
+                       <input type="checkbox" class="bill-check-box">
+                     </div>
+                    </div>
+                  
+                    <div class="sms-setting-xlear"></div>
+
+                    
+                      <div class="form-group sms-setting">
+                        <div class="col-md-4 col-sm-4">
+                          <legend>Balance</legend>
+                        </div>
+                        <div class="col-md-3 col-sm-1">
+                         <input type="checkbox" class="bill-check-box">
+                       </div>
+                      </div>
+                   
+                      <div class="sms-setting-xlear"></div>
+
+                   
+                      <div class="form-group sms-setting">
+                        <div class="col-md-4 col-sm-4">
+                          <legend>User</legend>
+                        </div>
+                        <div class="col-md-3 col-sm-1">
+                         <input type="checkbox" class="bill-check-box">
+                       </div>
+                      </div>
+                    
+
+                      <div class="sms-setting-xlear"></div>
+                    
+                      <div class="form-group sms-setting">
+                        <div class="col-md-4 col-sm-4">
+                          <legend>Customer</legend>
+                        </div>
+                        <div class="col-md-3 col-sm-1">
+                         <input type="checkbox" class="bill-check-box">
+                       </div>
+                      </div>
+                      <div class="sms-setting-xlear"></div>
+
+                    
+                      <div class="form-group sms-setting">
+                        <div class="col-md-4 col-sm-4">
+                          <legend>Remarks</legend>
+                        </div>
+                        <div class="col-md-3 col-sm-1">
+                         <input type="checkbox" class="bill-check-box">
+                       </div>
+                      </div>
+                   
+                      <div class="sms-setting-xlear"></div>
+             </div>
+             
+            
+            
+           
+            
+
+            
+            
+            <div class="row">
+              <div class="form-group sms-setting">
+                
+                <div class="col-md-10">
+                 <textarea class="form-control" rows="5" cols="20"></textarea>
+               </div>
+              </div>
+            </div>
+           </div>
+
+           <div class="col-md-3 col-sm-6">
+            <div class="row">
+              <div class="form-group sms-setting">
+                <div class="col-md-6 col-sm-5">
+                  <legend>SMS On Modification</legend>
+                </div>
+                <div class="col-md-6 col-sm-6">
+                 <select class="form-control">
+                   <option>N/A</option>
+                   <option>Self</option>
+                   <option>Customer</option>
+                   <option>Both</option>
+                 </select>
+               </div>
+              </div>
+            </div>
+            <div class="row">
+             <div class="form-group sms-setting">
+               <div class="col-md-3">
+                 
+               </div>
+               <div class="col-md-3">
+                <input type="checkbox" class="blnk-check-box">
+              </div>
+             </div>
+           </div>
+           <div class="row">
+             <div class="form-group sms-setting">
+               <div class="col-md-3">
+                 <legend></legend>
+               </div>
+               <div class="col-md-3">
+                <input type="checkbox" class="blnk-check-box">
+              </div>
+             </div>
+           </div>
+           <div class="row">
+             <div class="form-group sms-setting">
+               <div class="col-md-3">
+                 <legend></legend>
+               </div>
+               <div class="col-md-3">
+                <input type="checkbox" class="blnk-check-box">
+              </div>
+             </div>
+           </div>
+           <div class="row">
+             <div class="form-group sms-setting">
+               <div class="col-md-3">
+                 <legend></legend>
+               </div>
+               <div class="col-md-3">
+                <input type="checkbox" disabled class="blnk-check-box">
+              </div>
+             </div>
+           </div>
+           <div class="row">
+             <div class="form-group sms-setting">
+               <div class="col-md-3">
+                 <legend></legend>
+               </div>
+               <div class="col-md-3">
+                <input type="checkbox" class="blnk-check-box">
+              </div>
+             </div>
+           </div>
+
+           <div class="row">
+             <div class="form-group sms-setting">
+               <div class="col-md-3">
+                 <legend></legend>
+               </div>
+               <div class="col-md-3">
+                <input type="checkbox" class="blnk-check-box">
+              </div>
+             </div>
+           </div>
+           <div class="row">
+             <div class="form-group sms-setting">
+               <div class="col-md-3">
+                 <legend></legend>
+               </div>
+               <div class="col-md-3">
+                <input type="checkbox" class="blnk-check-box">
+              </div>
+             </div>
+           </div>
+
+           <div class="row">
+            <div class="form-group sms-setting modification-textarea">
+              
+              <div class="col-md-10">
+               <textarea class="form-control" rows="5" cols="20"></textarea>
+             </div>
+            </div>
+          </div>
+          </div>
+
+          <div class="clear"></div>
+
+
+          <div class="col-md-6 billing-company">
+            
+              <div class="form-group tax-no">
+                <div class="col-md-6">
+                     <div class="row">
+                       <div class="col-md-12">
+                         <legend>Tax No</legend>
+                         <input type="text" class="form-contol">
+                         <input type="text" class="form-contol">
+                         <input type="text" class="form-contol">
+                       </div>
+                     </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <legend>Telephone</legend>
+                      <input type="text" class="form-contol">
+                      <input type="text" class="form-contol">
+                      <input type="text" class="form-contol">
+                      <input type="text" class="form-contol">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              
+                <div class="bill-input">
+                  <legend>Billing Company & Address</legend>
+              <input type="text" class="form-control">
+              <input type="text" class="form-control">
+              <input type="text" class="form-control">
+                </div>
+              
+           
+          </div>
+
+         </div>
+				</div>
+          <div class="tab-pane" id="4a">
+            <div class="row sale-group">
+              <div class="col-md-6">
+                 <div class="row">
+                   <div class="form-group">
+                      <div class="col-md-3 col-sm-3">
+                        <legend>Sale Diamond</legend>
+                      </div>
+                      <div class="col-md-1 col-sm-1">
+                        <input type="checkbox" class="sale-check">
+                      </div>
+                   </div>
+                 </div>
+                 <div class="row">
+                  <div class="form-group">
+                     <div class="col-md-3 col-sm-3">
+                       <legend>Sale Stone</legend>
+                     </div>
+                     <div class="col-md-1 col-sm-1">
+                       <input type="checkbox" class="sale-check">
+                     </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="form-group">
+                     <div class="col-md-3 col-sm-3">
+                       <legend>Tag Print Every Line</legend>
+                     </div>
+                     <div class="col-md-1 col-sm-1">
+                       <input type="checkbox" class="sale-check">
+                     </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group">
+                     <div class="col-md-3 col-sm-3">
+                       <legend>Input Mask</legend>
+                     </div>
+                     <div class="col-md-6 col-sm-5">
+                       <input type="text" class="sale-check" class="form-control">
+                     </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group">
+                     <div class="col-md-3 col-sm-3">
+                       <legend>Link Site</legend>
+                     </div>
+                     <div class="col-md-6 col-sm-5">
+                       <input type="text" class="sale-check" class="form-control">
+                     </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="form-group">
+                     <div class="col-md-3 col-sm-3">
+                       <legend>Group Type</legend>
+                     </div>
+                     <div class="col-md-6 col-sm-5">
+                       <input type="text" class="sale-check" class="form-control">
+                     </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-6">
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-md-3 col-sm-3">
+                      <legend>Item</legend>
+                    </div>
+                    <div class="col-md-5 col-sm-5">
+                      <select class="form-control">
+                        <option>N/A</option>
+                        <option>Excl</option>
+                        <option>Incl.</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                  
+                
+ 
+                <table class="table table-dark">
+                  <thead>
+                    <tr>
+                      <th>Item Group</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Item Group</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-md-3">
+                      <legend>A/c Group</legend>
+                    </div>
+                    <div class="col-md-5">
+                      <select class="form-control">
+                        <option>N/A</option>
+                        <option>Excl</option>
+                        <option>Incl.</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="table-wrapper-scroll-y my-custom-scrollbar">
+                  <table class="table table-dark">
+                    <thead>
+                      <tr>
+                        <th>Account Group</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Account Group</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                
+
+              </div>
+            </div>
+        </div>
+        
+        <div class="tab-pane" id="5a">
+          <div class="row">
+            <div class="col-md-8">
+              <div class="row">
+                <div class="form-group additional-form">
+                  <div class="col-md-2 col-sm-2">
+                    <legend>Cash</legend>
+                  </div>
+                  <div class="col-md-6 col-sm-5">
+                    <select class="form-control">
+                      <option>N/A</option>
+                      <option>Cash</option>
+                      <option>Credit</option>
+                    </select>
+                  </div>
+
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="form-group additional-form">
+                  <div class="col-md-3 col-sm-3">
+                    <legend>PC Rate Jewellery</legend>
+                  </div>
+                  <div class="col-md-1 col-sm-1">
+                    <input type="checkbox" class="pcrs">
+                  </div>
+
+                  <div class="col-md-3 col-sm-3">
+                    <legend>Item/Stamp</legend>
+                  </div>
+                  <div class="col-md-1 col-sm-1">
+                    <input type="checkbox" class="pcrs">
+                  </div>
+
+                  <div class="col-md-3 col-sm-3">
+                    <legend>Use Lott</legend>
+                  </div>
+                  <div class="col-md-1 col-sm-1">
+                    <input type="checkbox" class="pcrs">
+                  </div>
+
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="form-group additional-form">
+                  <div class="col-md-3 col-sm-3">
+                    <legend>Cursor On Customer</legend>
+                  </div>
+                  <div class="col-md-1 col-sm-1">
+                    <input type="checkbox" class="pcrs">
+                  </div>
+
+                  <div class="col-md-3 col-sm-3">
+                    <legend>Stock Less</legend>
+                  </div>
+                  <div class="col-md-1 col-sm-1">
+                    <input type="checkbox" class="pcrs">
+                  </div>
+
+                  <div class="col-md-3 col-sm-3">
+                    <legend>Agn.Form-C</legend>
+                  </div>
+                  <div class="col-md-1 col-sm-1">
+                    <input type="checkbox" class="pcrs">
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group additional-form">
+                  <div class="col-md-3 col-sm-3">
+                    <legend>Round off Invoice</legend>
+                  </div>
+                  <div class="col-md-1 col-sm-1">
+                    <input type="checkbox" class="pcrs">
+                  </div>
+
+                  <div class="col-md-3 col-sm-3">
+                    <legend>Pc Less</legend>
+                  </div>
+                  <div class="col-md-1 col-sm-1">
+                    <input type="checkbox" class="pcrs">
+                  </div>
+
+                  <div class="col-md-3 col-sm-3">
+                    <legend>Res.Dia/Stn Issue</legend>
+                  </div>
+                  <div class="col-md-1 col-sm-1">
+                    <input type="checkbox" class="pcrs">
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group additional-form">
+                  <div class="col-md-3 col-sm-3">
+                    <legend>Round off ItemWise</legend>
+                  </div>
+                  <div class="col-md-1 col-sm-1">
+                    <input type="checkbox" class="pcrs">
+                  </div>
+
+                  <div class="col-md-3 col-sm-3">
+                    <legend>Dia/Stn Less</legend>
+                  </div>
+                  <div class="col-md-1 col-sm-1">
+                    <input type="checkbox" class="pcrs">
+                  </div>
+
+                  <div class="col-md-3 col-sm-3">
+                    <legend>Don't Pick Rates</legend>
+                  </div>
+                  <div class="col-md-1 col-sm-1">
+                    <input type="checkbox" class="pcrs">
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group additional-form">
+                  <div class="col-md-3 col-sm-3">
+                    <legend>Avg Tunch In Sale</legend>
+                  </div>
+                  <div class="col-md-1 col-sm-1">
+                    <input type="checkbox" class="pcrs">
+                  </div>
+
+                  <div class="col-md-3 col-sm-3">
+                    <legend>Invoice Date</legend>
+                  </div>
+                  <div class="col-md-1 col-sm-1">
+                    <input type="checkbox" class="pcrs">
+                  </div>
+
+                  <div class="col-md-3 col-sm-3">
+                    <legend>Default Rate Fix</legend>
+                  </div>
+                  <div class="col-md-1 col-sm-1">
+                    <input type="checkbox" class="pcrs">
+                  </div>
+
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="form-group additional-form">
+                  <div class="col-md-3 col-sm-3">
+                    <legend>Delivery Date</legend>
+                  </div>
+                  <div class="col-md-1 col-sm-1">
+                    <input type="checkbox" class="pcrs">
+                  </div>
+
+                  <div class="col-md-3 col-sm-3">
+                    <legend>Create File on Save</legend>
+                  </div>
+                  <div class="col-md-1 col-sm-1">
+                    <input type="checkbox" class="pcrs">
+                  </div>
+
+                  <div class="col-md-3 col-sm-3">
+                    <legend>Use</legend>
+                  </div>
+                  <div class="col-md-1 col-sm-1">
+                    <input type="checkbox" class="pcrs">
+                  </div>
+
+                </div>
+              </div>
+
+
+
+              <div class="row">
+                <div class="form-group additional-form">
+                  <div class="col-md-3 col-sm-3">
+                    <legend>Purchase Detail</legend>
+                  </div>
+                  <div class="col-md-1 col-sm-1">
+                    <input type="checkbox" class="pcrs">
+                  </div>
+
+                  <div class="col-md-3 col-sm-3">
+                    <legend>Cash Customer Name</legend>
+                  </div>
+                  <div class="col-md-1 col-sm-1">
+                    <input type="checkbox" class="pcrs">
+                  </div>
+
+                  <div class="col-md-3 col-sm-3">
+                    <legend>Sale Detail</legend>
+                  </div>
+                  <div class="col-md-1 col-sm-1">
+                    <input type="checkbox" class="pcrs">
+                  </div>
+
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="form-group additional-form">
+                  <div class="col-md-3 col-sm-3">
+                    <legend>Replace Wt With Stock</legend>
+                  </div>
+                  <div class="col-md-1 col-sm-1">
+                    <input type="checkbox" class="pcrs">
+                  </div>
+
+                  <div class="col-md-3 col-sm-3">
+                    <legend>Set as Default</legend>
+                  </div>
+                  <div class="col-md-1 col-sm-1">
+                    <input type="checkbox" class="pcrs">
+                  </div>
+
+                  
+                  
+
+                </div>
+              </div>
+
+
+                 
+                  
+                  
+                
+            </div>
+          </div>
+				</div>
+			</div>
+  </div>
+
+  <section class="series-form-box" style="display: none;">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5" style="display: none;">
+           <div class="series-Dialog">
+            <h2>Optional Fields</h2>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-11 option-field">
+                   
+                  <ol>
+                    <li><input type="text" class="form-control"></li>
+                    <li><input type="text" class="form-control"></li>
+                    <li><input type="text" class="form-control"></li>
+                    <li><input type="text" class="form-control"></li>
+                    <li><input type="text" class="form-control"></li>
+                    <li><input type="text" class="form-control"></li>
+                    <li><input type="text" class="form-control"></li>
+                  </ol>
+                </div> 
+              </div>
+
+              <div class="row">
+                <a mat-raised-button   class="Close">Close</a>
+              </div>
+            </div>
+           </div>
+        </div>
+
+        <div class="col-md-4" style="display: none;">
+          <div class="series-Dialog additional-sett-form">
+            <h2>Additional Settings</h2>
+           <div class="form-group">
+             <div class="row">
+               <div class="col-md-12 option-field">
+                  
+               </div> 
+               <div class="col-md-4">
+                 <legend>Pick Rate By</legend>
+               </div>
+               <div class="col-md-7">
+                <select class="form-control">
+                  <option>NA</option>
+                  <option>24Ct Rate</option>
+                  <option>Stamp Rate</option>
+                </select>
+              </div>
+              <div style="clear: both;"></div>
+              <div class="col-md-4">
+                <legend>Item rate</legend>
+              </div>
+              <div class="col-md-7">
+               <select class="form-control">
+                 <option>Excl Tax</option>
+                 <option>Incl Tax</option>
+                 
+               </select>
+             </div>
+             <div style="clear: both;"></div>
+
+             <div class="col-md-4">
+              <legend>Effect Account</legend>
+            </div>
+            <div class="col-md-1">
+              <input type="checkbox" class="effect-check">
+            </div>
+            <div class="col-md-4">
+              <legend>Effect Account</legend>
+            </div>
+            <div class="col-md-1">
+              <input type="checkbox" class="effect-check">
+            </div>
+
+             </div>
+             <div class="row">
+              <a mat-raised-button   class="Close">Close</a>
+             </div>
+           </div>
+          </div>
+       </div>
+
+        <div class="col-md-5" style="display: none;">
+          <div class="voucher-Dialog">
+            <h2>Voucher Settings</h2>
+           <div class="form-group">
+               <div class="voucher-form">
+                  
+                   <div class="row">
+                     <div class="col-md-3">
+                       <legend>Voucher</legend>
+                     </div>
+                     <div class="col-md-3">
+                      <select class="form-control">
+                        <option>A/C</option>
+                        <option>Auto</option>
+                        <option>Manual</option>
+                        <option>N/A</option>
+                      </select>
+                    </div>
+                    <div class="col-md-3">
+                      <legend>Renumbering</legend>
+                    </div>
+                    <div class="col-md-3">
+                     <select class="form-control">
+                       <option>Book No</option>
+                       <option>Daily</option>
+                       <option>Monthly</option>
+                       <option>Yearly</option>
+                     </select>
+                   </div>
+                   </div>
+
+                   <div class="row">
+                    <div class="col-md-3">
+                      <legend>Prefix</legend>
+                    </div>
+                    <div class="col-md-3">
+                     <select class="form-control">
+                       <option>Date</option>
+                       <option>Day/Month</option>
+                       <option>Manual</option>
+                       <option>Month</option>
+                     </select>
+                   </div>
+                   <div class="col-md-3">
+                     <legend>Menual Prefix</legend>
+                   </div>
+                   <div class="col-md-3">
+                   <input type="text" class="form-control">
+                  </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3">
+                      <legend>Starting No.</legend>
+                    </div>
+                    <div class="col-md-3">
+                      <input type="text" class="form-control">
+                   </div>
+                   <div class="col-md-3">
+                     <legend>Bill Digit</legend>
+                   </div>
+                   <div class="col-md-3">
+                   <input type="text" class="form-control">
+                  </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-3">
+                      <legend>Bill Book</legend>
+                    </div>
+                    <div class="col-md-3">
+                      <input type="text" class="form-control">
+                   </div>
+                   <div class="col-md-3">
+                     <legend>Bill Narration</legend>
+                   </div>
+                   <div class="col-md-3">
+                   <input type="text" class="form-control">
+                  </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-4">
+                      <legend>Get Bill no from Code</legend>
+                    </div>
+                    <div class="col-md-1">
+                      <input type="checkbox" class="get-bill-check">
+                   </div>
+                   <div class="col-md-3">
+                     <legend>Validate</legend>
+                   </div>
+                   <div class="col-md-1">
+                      <input type="checkbox" class="validate-check">
+                  </div>
+                  <div class="col-md-3">
+                    <a mat-raised-button   class="Close">Close</a>
+                  </div>
+                  </div>
+                
+               </div> 
+             
+           </div>
+          </div>
+       </div>
+         
+       <div class="col-md-8" style="display: none;">
+        <div class="tax-Dialog">
+          <h2>Tax Details</h2>
+         <div class="form-group">
+             <div class="tax-form">
+                
+                 <div class="row">
+                   <div class="col-md-3">
+                     <legend>Type</legend>
+                   </div>
+                   <div class="col-md-3">
+                    <select class="form-control">
+                      <option>Approval</option>
+                      <option>Central</option>
+                      <option>Challan</option>
+                      <option>Retail</option>
+                    </select>
+                  </div>
+                  <div class="col-md-3">
+                    <legend>Extra</legend>
+                  </div>
+                  <div class="col-md-3">
+                    <input type="text" class="form-control">
+                 </div>
+                 </div>
+
+                 <div class="row">
+                  <div class="col-md-3">
+                    <legend>Tax Type</legend>
+                  </div>
+                  <div class="col-md-3">
+                   <select class="form-control">
+                     <option>Exempted</option>
+                     <option>Export</option>
+                     <option>Non Taxable</option>
+                     <option>Taxable</option>
+                   </select>
+                 </div>
+                 <div class="col-md-3">
+                   <legend>A/C Name</legend>
+                 </div>
+                 <div class="col-md-3">
+                 <input type="text" class="form-control">
+                </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <legend>Tax%</legend>
+                  </div>
+                  <div class="col-md-3">
+                    <input type="text" class="form-control">
+                 </div>
+                 <div class="col-md-3">
+                   <legend>A/C Surcharge</legend>
+                 </div>
+                 <div class="col-md-3">
+                 <input type="text" class="form-control">
+                </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-3">
+                    <legend>Surchargek</legend>
+                  </div>
+                  <div class="col-md-3">
+                    <input type="text" class="form-control">
+                 </div>
+                 <div class="col-md-3">
+                   <legend>Tax Format</legend>
+                 </div>
+                 <div class="col-md-3">
+                  <select class="form-control">
+                    <option>GST</option>
+                    <option>Multi Tax</option>
+                    <option>One Tax</option>
+                    
+                  </select>
+                </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-3">
+                    <legend>Party Type</legend>
+                  </div>
+                  <div class="col-md-3">
+                   <select class="form-control">
+                     <option>N/A</option>
+                     <option>RD</option>
+                     <option>URD</option>
+                     
+                   </select>
+                 </div>
+
+                 <div class="col-md-3">
+                  <legend>Lbr%</legend>
+                </div>
+                <div class="col-md-3">
+                  <input type="text" class="form-control">
+               </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-3">
+                    <legend>Excise%</legend>
+                  </div>
+                  <div class="col-md-3">
+                    <input type="text" class="form-control">
+                 </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-3">
+                    <legend>Nc Itc</legend>
+                  </div>
+                  <div class="col-md-1">
+                    <input type="checkbox" class="nc-check">
+                 </div>
+                 <div class="col-md-3">
+                   <legend>No Roff</legend>
+                 </div>
+                 <div class="col-md-1">
+                    <input type="checkbox" class="nc-check">
+                </div>
+                <div class="col-md-3">
+                  <legend>Tax on Lab.</legend>
+                </div>
+                <div class="col-md-1">
+                   <input type="checkbox" class="tax-lab-check">
+               </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <legend>Incl in Itc4</legend>
+                  </div>
+                  <div class="col-md-1">
+                    <input type="checkbox" class="nc-check">
+                 </div>
+                 <div class="col-md-3">
+                   <legend>Way Bill From</legend>
+                 </div>
+                 <div class="col-md-1">
+                    <input type="checkbox" class="nc-check">
+                </div>
+                <div class="col-md-3">
+                  <legend>GST Reverse Charge</legend>
+                </div>
+                <div class="col-md-1">
+                   <input type="checkbox" class="reverse">
+               </div>
+                </div>
+
+                <div class="row">
+                  <a mat-raised-button   class="Close">Close</a>
+                </div>
+              
+             </div> 
+           
+         </div>
+        </div>
+     </div>
+
+
+
+    
+
+      </div>
+    </div>
+  </section>
+
+
+
+
+
+
+
+
+
+
+
+
+      
+
+
+
+
+     
+
+          
+            
+            <!-- <button class="btn btn-primary">Submit</button> -->
+            <section class="footer-fix">
+              <div class="container-fluid" >
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="footer-button">    
+                      <button mat-raised-button type="submit" class="save" value="Save" style="margin-left:25px;">Save</button> 
+                      <a mat-raised-button   class="delete">Delete</a>
+                      <a mat-raised-button   class="cancle">Cancel</a>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          
+     
+      </form>
+   
+  
+  </div>

@@ -1,0 +1,653 @@
+<div class="row">
+  <div class="col-md-6 text-left">
+    <div class="back-button col-md-2" style="margin-left: -20px!important;" *ngIf="isnew">
+      <button mat-raised-button routerLink="/accounting" class="save cancle"><i class="fa fa-arrow-left"
+          aria-hidden="true"></i>&nbsp;Back</button>
+    </div>
+    <div class="col-md-6 text-left">
+      <h1 class="heading">Account Group</h1>
+    </div>
+  </div>
+
+  <div *ngIf="isnew" class="col-md-6 text-right">
+    <div class="row">
+      <div class="col-md-6">
+        <input style="height: 30px!important;margin-left: 200px!important;" type="email" class="form-control"
+          id="search-text" aria-describedby="search-text" [(ngModel)]="searchText" placeholder="Enter text to search"
+          (ngModelChange)="Search()" autofocus>
+      </div>
+      <div class="new-button col-md-5" style="margin-left: 10px!important;float: right;">
+        <button mat-raised-button (click)=toggleDisplay() class="save cancle">New+</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div *ngIf="isdivShow">
+    <table class="table table-striped table-bordered table-sm row-border hover">
+      <thead>
+        <tr>
+          <th style="width: 3%!important;">Edit</th>
+          <!-- <th style="width: 40px;">Delete</th> -->
+          <th style="width: 10%!important;">S.No</th>
+          <th style="width: 43.5%!important;">Group Name</th>
+          <th style="width: 43.5%!important;">under</th>
+
+
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let record of retData let j=index">
+          <td>
+            <mat-icon style="text-align: center;font-size: 19px!important; color: #5CC6D0 !important; cursor:pointer;"
+              (click)="edit(record,1)">edit</mat-icon>
+          </td>
+          <!-- <td><mat-icon style="color: #5CC6D0 !important; cursor:pointer;" (click)="edit(record,2)">delete</mat-icon> </td> -->
+
+          <td style="text-align: center;">{{j+count}}</td>
+          <td>{{record.GNAME}}</td>
+          <td>{{record.under}}</td>
+
+
+        </tr>
+      </tbody>
+    </table>
+    <section class="footer-next">
+      <pagination [itemsPerPage]="15" [totalItems]="filterrec.length" (pageChanged)="pageChanged($event)"></pagination>
+    </section>
+  </div>
+  <alert></alert>
+  <form *ngIf="isShow" (ngSubmit)="onsubmit(f)" #f="ngForm" [formGroup]="acgrpForm">
+    <div class="container unit-form-box">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="form-group">
+            <div class="row">
+              <div class="ac-name">
+                <label class="control-label col-md-4 col-sm-4" for="email" style="margin-top: 3px!important;">Group
+                  Name</label>
+              </div>
+              <div class="col-md-8 col-sm-8">
+                <input type="text" class="form-control group-name-label" formControlName="gname" autocomplete="off"
+                  (keydown.enter)="$event.preventDefault()">
+              </div>
+              <div *ngIf="isFieldValid('gname')" class="col-md-9">
+                <div style="font-size: 12px; color: red; margin-left: 170px;">
+                  Please Enter Group
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+
+              <label for="" class="control-label col-md-4">Type</label>
+              <div class="col-md-4">
+                <input type="radio" id="1" name="ttype" value="primary" formControlName="ttype" (click)="isundershow(0)"
+                  [checked]="ttype===Primary" style="margin-right: 5px;">
+                <label for="primary">Primary</label>
+              </div>
+              <div class="col-md-4">
+                <input type="radio" id="2" name="ttype" formControlName="ttype" [checked]="ttype===subgroup"
+                  (click)="isundershow(1)" value="subgroup" style="margin-right: 5px;">
+                <label for="subgroup">Sub Group</label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group under-list">
+            <div *ngIf="isunder" class="row">
+              <label for="" class="control-label col-md-4" style="margin-top: 3px!important;">Under</label>
+              <div class="col-md-8">
+                <ng-autocomplete [data]="underlist" [searchKeyword]="keyword1" (selected)='selectEvent($event)'
+                  [itemTemplate]="itemTemplate2" [notFoundTemplate]="notFoundTemplate2"
+                  style="background-color:cadetblue;" formControlName="under" (keydown.enter)="$event.preventDefault()">
+                </ng-autocomplete>
+                <ng-template #itemTemplate2 let-item>
+                  <a [innerHTML]="item.uname"></a>
+                </ng-template>
+                <ng-template #notFoundTemplate2 let-notFound>
+                  <div>Not Found</div>
+                </ng-template>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <label for="" class="control-label col-md-4" style="margin-top: 7px!important;">A/C Type</label>
+              <div class="col-md-5" style="width: 200px;">
+                <select name="" id="" class="form-control" formControlName="side"
+                  (keydown.enter)="$event.preventDefault()">
+                  <option value="1">Balance Sheet</option>
+                  <option value="2">Profit And Loss</option>
+                  <option value="3">Trading</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <label for="" class="control-label col-md-4" style="margin-top: 6px!important;">Criteria</label>
+              <div class="col-md-5" style="width: 200px;">
+                <select class="form-control" (change)="isViewkitty($event)" formControlName="grtype"
+                  (keydown.enter)="$event.preventDefault()">
+                  <option value="NA">NA</option>
+                  <option value="Bank">Bank</option>
+                  <option value="Bank Occ">Bank Occ</option>
+                  <option value="Branch">Branch</option>
+                  <option value="Customer">Customer</option>
+                  <option value="Girvi">Girvi</option>
+                  <option value="Karigar-Contract">Karigar-Contract</option>
+                  <option value="Karigar-Salary">Karigar-Salary</option>
+                  <option value="Kitty">Kitty</option>
+                  <option value="Salesman">Salesman</option>
+                  <option value="Staff-Salary">Staff-Salary</option>
+                  <option value="Supplier">Supplier</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <label for="" class="control-label col-md-4" style="margin-top: 7px!important;">Bal Billwise</label>
+              <div class="col-md-4">
+                <select formControlName="bbal" class="form-control" (keydown.enter)="$event.preventDefault()">
+                  <option value="1">No</option>
+                  <option value="2">Yes</option>
+                  <option value="3">Last Bal</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <label for="" class="control-label col-md-4" style="margin-top: 7px!important;">Add. Setting</label>
+              <div class="col-md-4">
+                <select formControlName="selectSet" class="form-control" (change)="isviewadd($event)">
+                  <option value="0" selected>No</option>
+                  <option value="1">Yes</option>
+
+
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kitty form start -->
+        <div class="col-md-8">
+          <div class="kitty-form-container" *ngIf="iskitty">
+            <div class="form-group">
+              <div class="row">
+                <div class="kitty-form-heading">
+                  <h2 style="text-align: center; background-color: black; color: white;padding-bottom: 10px;">
+                    <u>Kitty</u>
+                    <div class="add-button">
+                      <button mat-button (click)=close()
+                        style="float: right;margin-top: -33px;height: 20px;margin-right: -15px;">
+                        <mat-icon>close</mat-icon>
+                      </button>
+                    </div>
+                  </h2>
+                  <div class="kitty-main-form">
+                    <div class="form-group">
+                      <div class="row">
+                        <label class="control-label col-md-3">Type</label>
+                        <div class="col-md-2" style="margin-top: -2px!important;">
+                          <select id="sel-options" class="form-control" (keydown.enter)="$event.preventDefault()"
+                            formControlName="ktype" (click)="isviewdraw($event)">
+                            <option value="1">Draw</option>
+                            <option value="2">Incentive</option>
+                            <option value="3">Jewel Club</option>
+                            <option value="4">Society</option>
+                          </select>
+                        </div>
+                        <label *ngIf='!isdraw' class="control-label col-md-3">Draw On</label>
+                        <div class="col-md-1" style="margin-top: -2px!important;">
+                          <input *ngIf='!isdraw' type="number" style="text-align: right;width: 50px;"
+                            class="form-control" (keydown.enter)="$event.preventDefault()" formControlName="kdrawday">
+                        </div>
+                        <div class="col-md-2" style="margin-top: -2px!important;">
+                          <select id="sel-options" class="form-control" formControlName="kdrawdayon" *ngIf='!isdraw'
+                            style="width: 110px;margin-left: -10px;">
+                            <option value="sunday">Sunday</option>
+                            <option value="monday">Monday</option>
+                            <option value="tuesday">Tuesday</option>
+                            <option value="wednesday">Wednesday</option>
+                            <option value="thursday">Thursday</option>
+                            <option value="friday">Friday</option>
+                            <option value="saturday">Saturday</option>
+                            <option value="month">Month</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="row">
+                        <label for="" class="control-label col-md-3">prefix</label>
+                        <div class="col-md-2" style="margin-top: -2px!important;">
+                          <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()"
+                            formControlName="kprefix">
+                        </div>
+                        <div class="col-md-3" style="margin-left: 217px!important;margin-top: -2px!important;">
+                          <input *ngIf='!isdraw' type="text" class="form-control" formControlName="kdrawtime">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="row">
+                        <label for="" class="control-label col-md-3">Start Date</label>
+                        <div class="col-md-2" style="width: 160px;margin-top: -2px!important;">
+                          <input type="date" class="form-control" (keydown.enter)="$event.preventDefault()"
+                            formControlName="ksdate">
+                        </div>
+                        <label *ngIf='!isdraw' class="control-label col-md-3" style="margin-left: -8px!important;">Draw
+                          Installment</label>
+                        <div class="col-md-3" style="margin-top: -2px!important;">
+                          <input *ngIf='!isdraw' type="number" style="text-align: right;" class="form-control"
+                            (keydown.enter)="$event.preventDefault()" formControlName="drawins">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="row">
+                        <label for="" class="control-label col-md-3">Months</label>
+                        <div class="col-md-2" style="margin-top: -2px!important;">
+                          <input type="number" style="text-align: right;" class="form-control"
+                            (keydown.enter)="$event.preventDefault()" formControlName="kmonths">
+                        </div>
+                        <label *ngIf='isdraw' for="" class="control-label col-md-3">Auto Incentive</label>
+                        <div class="col-md-3" style="margin-top: -2px!important;">
+                          <input *ngIf='isdraw' type="number" style="text-align: right;" class="form-control"
+                            (keydown.enter)="$event.preventDefault()" formControlName="kinc">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="row">
+                        <label for="" class="control-label col-md-3">Installment Amount</label>
+                        <div class="col-md-2" style="margin-top: -2px!important;">
+                          <input type="number" style="text-align: right;" class="form-control"
+                            (keydown.enter)="$event.preventDefault()" formControlName="kinstall">
+                        </div>
+                        <label *ngIf='isdraw' for="" class="control-label col-md-3">Auto Incentive Amount</label>
+                        <div class="col-md-3" style="margin-top: -2px!important;">
+                          <input *ngIf='isdraw' type="number" style="text-align: right;" class="form-control"
+                            (keydown.enter)="$event.preventDefault()" formControlName="kincamt">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="row">
+                        <label for="" class="control-label col-md-3">Grace Days</label>
+                        <div class="col-md-2" style="margin-top: -2px!important;">
+                          <input type="number" style="text-align: right;" class="form-control"
+                            (keydown.enter)="$event.preventDefault()" formControlName="kgraceday">
+                        </div>
+                        <label *ngIf='isdraw' for="" class="control-label col-md-3">Incentive To</label>
+                        <div class="col-md-3" style="margin-top: -2px!important;">
+                          <select *ngIf='isdraw' id="sel-options" class="form-control" formControlName="kincto">
+                            <option value="1">All</option>
+                            <option value="2">Filter</option>
+                          </select>
+
+
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="row">
+                        <label for="" class="control-label col-md-3">Due Before(Days)</label>
+                        <div class="col-md-2" style="margin-top: -2px!important;">
+                          <input type="number" style="text-align: right;" class="form-control"
+                            (keydown.enter)="$event.preventDefault()" formControlName="kdueday">
+                        </div>
+                        <label *ngIf='isdraw' for="" class="control-label col-md-3">Incentive On</label>
+                        <div class="col-md-3 incentive-on" style="margin-top: -2px!important;">
+                          <select id="sel-options" class="form-control" formControlName="kincon" *ngIf='isdraw'>
+                            <option value="1">+1 Month</option>
+                            <option value="2">Late days+Days</option>
+                            <option value="3">Late Instt+Month</option>
+                            <option value="4">Pymt Days+Days</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="row">
+                        <label for="" class="control-label col-md-3">Default Series</label>
+                        <div class="col-md-2" style="margin-top: -2px!important;">
+                          <input type="text" class="form-control" (keydown.enter)="$event.preventDefault()"
+                            formControlName="kseriesid">
+                        </div>
+                        <label *ngIf='isdraw' for="" class="control-label col-md-3">Incentive A/C</label>
+                        <div class="col-md-3 incentive-ac" style="margin-top: -2px!important;">
+                          <ng-autocomplete [data]="aclist" [searchKeyword]="keyword2" (selected)='selectEvent2($event)'
+                            [itemTemplate]="itemTemplate3" [notFoundTemplate]="notFoundTemplate3"
+                            style="background-color:cadetblue;" formControlName="kcname"
+                            (keydown.enter)="$event.preventDefault()" *ngIf='isdraw'>
+                          </ng-autocomplete>
+                          <ng-template #itemTemplate3 let-item>
+                            <a [innerHTML]="item.kname"></a>
+                          </ng-template>
+                          <ng-template #notFoundTemplate3 let-notFound>
+                            <div>Not Found</div>
+                          </ng-template>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="row">
+                        <label for="" class="control-label col-md-3">Rec.Lumpsum Amt.</label>
+                        <div class="col-md-2" style="margin-top: -2px!important;">
+                          <select id="sel-options" class="form-control" (keydown.enter)="$event.preventDefault()"
+                            formControlName="kittyins">
+                            <option value="0">N</option>
+                            <option value="1">Y</option>
+                          </select>
+                        </div>
+                        <label for="" class="control-label col-md-3">Referral By Limit</label>
+                        <div class="col-md-3" style="margin-top: -2px!important;">
+                          <input type="number" style="text-align: right;" class="form-control"
+                            (keydown.enter)="$event.preventDefault()" formControlName="krefby">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="row">
+                        <label for="" class="control-label col-md-3">Multiple Installment Receive</label>
+                        <div class="col-md-2" style="margin-top: -2px!important;">
+                          <select id="sel-options" class="form-control" (keydown.enter)="$event.preventDefault()"
+                            formControlName="mkitty">
+                            <option value="0">N</option>
+                            <option value="1">Y</option>
+                          </select>
+                        </div>
+                        <label for="" class="control-label col-md-3">Referral Incentive</label>
+                        <div class="col-md-3" style="margin-top: -2px!important;">
+                          <input type="number" style="text-align: right;" class="form-control"
+                            (keydown.enter)="$event.preventDefault()" formControlName="refamount">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="row">
+                        <label for="" class="control-label col-md-3">Minimum Installment</label>
+                        <div class="col-md-2" style="margin-top: -2px!important;">
+                          <input type="number" style="text-align: right;" class="form-control"
+                            (keydown.enter)="$event.preventDefault()" formControlName="kminstall">
+                        </div>
+                        <label for="" class="control-label col-md-3">Ref. Amt. Post In Last Month</label>
+                        <div class="col-md-2" style="margin-top: -2px!important;">
+                          <select id="sel-options" class="form-control" (keydown.enter)="$event.preventDefault()"
+                            formControlName="refpost">
+                            <option value="0">N</option>
+                            <option value="1">Y</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="row">
+                        <label for="" class="control-label col-md-3">Cash Receive Limit</label>
+                        <div class="col-md-2" style="margin-top: -2px!important;">
+                          <input type="number" style="text-align: right;" class="form-control"
+                            (keydown.enter)="$event.preventDefault()" formControlName="kreclimit">
+                        </div>
+                        <label for="" class="control-label col-md-3">Day</label>
+                        <div class="col-md-3" style="margin-top: -2px!important;">
+                          <input type="number" style="text-align: right;" class="form-control"
+                            (keydown.enter)="$event.preventDefault()" formControlName="rbookday">
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="row">
+                        <label for="" class="control-label col-md-3">Rate Book</label>
+                        <div class="col-md-2" style="margin-top: -2px!important;">
+                          <select id="sel-options" class="form-control" (keydown.enter)="$event.preventDefault()"
+                            formControlName="ratebook">
+                            <option value="0">No</option>
+                            <option value="1">Yes</option>
+                            <option value="2">Optional</option>
+
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Kitty form end -->
+      </div>
+    </div>
+
+
+
+    <section class="popup-form fade-in" *ngIf="isadd">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-7">
+
+            <div>
+              <div class="additional-setting-heading">
+                <h2 style="text-align: center; background-color: black; color: white;padding-bottom: 10px;">
+                  <u>Additional Setting</u>
+                  <div class="add-button">
+                    <button mat-button (click)=close() class="fade-out"
+                      style="float: right;margin-top: -38px;height: 20px;margin-right: -15px;">
+                      <mat-icon>close</mat-icon>
+                    </button>
+                  </div>
+                </h2>
+                <div class="form-group">
+                  <div class="row">
+                    <label for="" class="control-label col-md-3">Incl. in Sale</label>
+                    <div class="col-md-2">
+                      <select formControlName="sale" class="form-control" (keydown.enter)="$event.preventDefault()">
+                        <option value="Y">Y</option>
+                        <option value="N">N</option>
+                      </select>
+                    </div>
+                    <label for="" class="control-label col-md-3">Address Reqd.</label>
+                    <div class="col-md-2">
+                      <select formControlName="address" class="form-control" (keydown.enter)="$event.preventDefault()">
+                        <option value="Y">Y</option>
+                        <option value="N">N</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <label for="" class="control-label col-md-3">Incl. in Pur.</label>
+                    <div class="col-md-2">
+                      <select formControlName="purchase" class="form-control" (keydown.enter)="$event.preventDefault()">
+                        <option value="Y">Y</option>
+                        <option value="N">N</option>
+                      </select>
+                    </div>
+                    <label for="" class="control-label col-md-3">Transfer Balance</label>
+                    <div class="col-md-2">
+                      <select formControlName="trnbal" class="form-control" style="width: 86px;"
+                        (keydown.enter)="$event.preventDefault()">
+                        <option value="1">Value</option>
+                        <option value="2">Code</option>
+                        <option value="3">Fcode</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <label for="" class="control-label col-md-3">Incl. in Out.</label>
+                    <div class="col-md-2">
+                      <select formControlName="obal" class="form-control" (keydown.enter)="$event.preventDefault()">
+                        <option value="Y">Y</option>
+                        <option value="N">N</option>
+                      </select>
+                    </div>
+                    <label for="" class="control-label col-md-3">Transfer Details</label>
+                    <div class="col-md-2">
+                      <select class="form-control" formControlName="trndet" (keydown.enter)="$event.preventDefault()">
+                        <option value="Y">Y</option>
+                        <option value="N">N</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <label for="" class="control-label col-md-3">Incl. in I/R</label>
+                    <div class="col-md-2">
+                      <select formControlName="issue" class="form-control" (keydown.enter)="$event.preventDefault()">
+                        <option value="Y">Y</option>
+                        <option value="N">N</option>
+                      </select>
+                    </div>
+                    <label for="" class="control-label col-md-3">Restrict Credit Facility</label>
+                    <div class="col-md-2">
+                      <select class="form-control" formControlName="credit" (keydown.enter)="$event.preventDefault()">
+                        <option value="Y">Y</option>
+                        <option value="N">N</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+
+                    <label for="" class="control-label col-md-3">Retail Group</label>
+                    <div class="col-md-2">
+                      <select name="" id="" class="form-control" formControlName="retail"
+                        (keydown.enter)="$event.preventDefault()">
+                        <option value="Y">Y</option>
+                        <option value="N">N</option>
+                      </select>
+                    </div>
+                    <div class="input-check-box">
+                      <label for="" class="control-label col-md-3">Don't Forward 0 bal A/C</label>
+
+                      <input type="checkbox" class="col-md-2" formControlName="cf">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+
+                    <label for="" class="control-label col-md-3">Display in Ledger</label>
+                    <div class="col-md-2">
+                      <select name="" id="" class="form-control" formControlName="disled"
+                        (keydown.enter)="$event.preventDefault()">
+                        <option value="Y">Y</option>
+                        <option value="N">N</option>
+                      </select>
+                    </div>
+                    <div class="input-check-box">
+                      <label for="" class="control-label col-md-3">Balance With OTP Only</label>
+
+                      <input type="checkbox" class="col-md-2" formControlName="balotp">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+
+                    <label for="" class="control-label col-md-3">Credit %</label>
+                    <div class="col-md-2">
+                      <style>
+                        input::-webkit-outer-spin-button,
+                        input::-webkit-inner-spin-button {
+                          -webkit-appearance: none;
+                          margin: 0;
+                        }
+
+                        input[type="number"] {
+                          -moz-appearance: textfield;
+                        }
+                      </style>
+                      <input type="number" formControlName="pcredit" class="form-control" style="text-align: right;"
+                        (keydown.enter)="$event.preventDefault()">
+                    </div>
+                    <div class="input-check-box">
+                      <label for="" class="control-label col-md-3">Restrict Mobile</label>
+
+                      <input type="checkbox" class="col-md-2" formControlName="resmobile">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <label for="" class="control-label col-md-3">Send SMS</label>
+                    <div class="col-md-2">
+                      <select class="form-control" formControlName="sendsms" (keydown.enter)="$event.preventDefault()">
+                        <option value="Y">Y</option>
+                        <option value="N">N</option>
+                      </select>
+                    </div>
+                    <div class="input-check-box">
+                      <label for="" class="control-label col-md-3">Restrict Badla In Sauda</label>
+
+                      <input type="checkbox" class="col-md-2">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <label for="" class="control-label col-md-3">Use As Member Card</label>
+                    <div class="col-md-2">
+                      <select class="form-control" formControlName="mcard" (keydown.enter)="$event.preventDefault()">
+                        <option value="Y">Y</option>
+                        <option value="N">N</option>
+                      </select>
+                    </div>
+                    <div class="input-check-box">
+                      <label for="" class="control-label col-md-3">Restrict City</label>
+
+                      <input type="checkbox" class="col-md-2">
+                    </div>
+
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <label for="" class="control-label col-md-3">Point</label>
+                    <div class="col-md-2">
+                      <input type="number" formControlName="pfrom" class="form-control" style="text-align: right;"
+                        (keydown.enter)="$event.preventDefault()">
+                    </div>
+                    <label for="" class="control-label col-md-3">To</label>
+                    <div class="col-md-2">
+                      <input type="number" formControlName="pto" class="form-control" style="text-align: right;"
+                        (keydown.enter)="$event.preventDefault()">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="footer-fix">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12 text-left">
+            <div class="footer-button">
+              <button mat-raised-button type="submit" class="save" value="Save" style="margin-left:25px;">Save</button>
+              <a mat-raised-button *ngIf="isdel" (click)=Delete() class="save delete">Delete</a>
+              <a mat-raised-button (click)=toggleDisplay() class="cancle">Cancel</a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </form>
+</div>

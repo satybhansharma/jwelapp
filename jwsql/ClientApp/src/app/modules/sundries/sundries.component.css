@@ -1,0 +1,79 @@
+.unit-form-box .sundry-first-form label{
+margin-left: 10px!important;
+margin-top: 7px!important;
+font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif!important;
+font-size: 12px!important;
+font-weight: 400!important;
+}
+.unit-form-box .sundry-first-form input{
+ border: 1px solid #ced4da!important;
+  border-radius: 2px!important;
+  height: 32px!important;  
+    }
+    .unit-form-box .sundry-first-form select{
+        border: 1px solid #ced4da!important;
+        border-radius: 2px!important;
+        height: 32px!important;    
+           }
+.amount-to-be .form-group label{
+    margin-top: 7px!important;
+    font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif!important;
+font-size: 12px!important;
+font-weight: 400!important;
+}
+.amount-to-be .form-group input{
+    border: 1px solid #ced4da!important;
+    border-radius: 2px!important;
+    height: 32px!important;
+}
+.amount-to-be .form-group select{
+    border: 1px solid #ced4da!important;
+    border-radius: 2px!important;
+    height: 32px!important;
+}
+::ng-deep .adjust-in-other  .autocomplete-container .input-container input{
+    background-color: white;
+    border: 1px solid #ced4da!important;
+    width: 100% !important;
+    box-shadow: none !important;
+    border-radius: 2px!important;
+    height: 32px!important;
+  }
+  ::ng-deep .adjust-in-other .autocomplete-container{
+    height: 32px!important;
+   
+    width: 100%!important;
+    
+  }
+
+.unit-form-box .sundry-main-form label{
+    /* margin-top:-8px!important ; */
+    /* padding-left: 20px!important; */
+    font-size: 12px!important;
+    font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif!important;
+    font-weight: 400!important;
+    margin-left: 27px!important;
+}
+.unit-form-box .sundry-main-form input{
+    /* margin-top:-12px!important ; */
+    font-size: 12px!important;
+    height: 32px!important;
+    border: 1px solid #ced4da!important;
+    border-radius: 2px!important;
+    margin-left: -8px!important;
+    /* margin-left: -20px!important; */
+    /* width: 130px!important; */
+}
+.unit-form-box .sundry-main-form select{
+    /* margin-top: -12px!important; */
+    font-size: 12px!important;
+    height: 32px!important;
+    border: 1px solid #ced4da!important;
+    border-radius: 2px!important;
+    margin-left: -8px!important;
+    /* margin-left: -20px!important; */
+    /* width: 130px!important; */
+}
+tr:nth-child(even) {
+    background-color:#ecf9f2;
+} 

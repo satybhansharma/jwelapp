@@ -1,0 +1,26 @@
+
+<div class="row">
+  <h2 class="text-center" style="text-transform:uppercase !important;letter-spacing:2px;">Select <span style="font-weight:bolder;"> Accounts </span></h2>
+</div>
+
+
+<section class="popup-form">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="ag-grid">
+        <ag-grid-angular style="height: 360px;width: 100%;"
+                         class="ag-theme-balham"
+                         headerHeight="0"
+                         [rowHeight]="28"
+                         (gridSizeChanged)="onGridSizeChanged($event)"
+                         [getRowStyle]="getRowStyle"
+                         [columnDefs]="columnDefs"
+                         rowSelection='single'
+                         (cellClicked)="onCellClicked($event)"
+                         (firstDataRendered)="onFirstDataRendered($event)"
+                         [rowData]="accounts">
+        </ag-grid-angular>
+      </div>
+    </div>
+  </div>
+</section>

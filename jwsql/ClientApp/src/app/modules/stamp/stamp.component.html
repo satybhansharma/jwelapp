@@ -1,0 +1,1033 @@
+<div *ngIf="ischildshow" class="container text-center">
+  <div *ngIf="isshapeshow">
+    <app-shape [sdivs]=true (listdata)="recieveshape($event)" [sendshape]="name" (event)="recieveshape($event)">
+    </app-shape>
+  </div>
+  <div *ngIf="isclarityshow">
+    <app-clarity [sdivs]=true (listdata)="recieveclarity($event)" [sendclr]="name" (event)="recieveclarity($event)">
+    </app-clarity>
+  </div>
+  <div *ngIf="issizeshow">
+    <app-sizemaster [sdivs]=true (listdata)="recievesize($event)" [sendsize]="name" (event)="recievesize($event)">
+    </app-sizemaster>
+  </div>
+  <div *ngIf="iscolourshow">
+    <app-colour [sdivs]=true (listdata)="recievecolour($event)" [sendcolor]="name" (event)="recievecolour($event)">
+    </app-colour>
+  </div>
+  <div *ngIf="isitemshow">
+    <!-- <app-crud-item [sdivs]=true (listdata)="recieveitem($event)" [senditem]="name" (event)="recieveitem($event)"></app-crud-item> -->
+  </div>
+</div>
+<div *ngIf="!ischildshow">
+
+
+  <div class="row">
+    <div class="col-md-6 text-left">
+      <div class="back-button col-md-2" style="margin-left: 10px!important;" *ngIf="isnew">
+        <button mat-raised-button routerLink="/inventory" class="save cancle"><i class="fa fa-arrow-left"
+            aria-hidden="true"></i>&nbsp;Back</button>
+      </div>
+      <div class="col-md-6 text-left">
+        <h1 class="heading" style="margin-left: 5px!important;">Stamp Master</h1>
+      </div>
+    </div>
+
+    <div *ngIf="isnew" class="col-md-6 text-right">
+      <div class="row">
+        <div class="col-md-6" style="margin-right: -10px;">
+          <input style="height: 30px!important;margin-left: 200px!important;" type="email" class="form-control"
+            id="search-text" aria-describedby="search-text" [(ngModel)]="searchText" placeholder="Enter text to search"
+            (ngModelChange)="Search()" autofocus>
+        </div>
+        <div class="new-button col-md-5" style="margin-left: 10px!important;float: right;">
+          <button mat-raised-button (click)=toggleDisplay() class="save cancle" style="float: right;">New+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="isdivShow">
+    <table style="border:2px solid #5b5b5b;" class="table table-striped table-bordered table-sm row-border hover">
+      <thead style="background-color: #5b5b5b; color: white;">
+        <tr>
+          <th style="width: 3%!important;">Edit</th>
+          <th style="width: 10!important;">S.No</th>
+          <th style="width: 14.5%!important;">Stamp</th>
+          <th style="width: 14.5%!important;">S.Tunch</th>
+          <th style="width: 14.5%!important;">P.Tunch</th>
+          <th style="width: 14.5%!important;">Pc. Wt.</th>
+          <th style="width: 14.5%!important;">Tunch From</th>
+          <th style="width: 14.5%!important;">Tunch To</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let stamp of retData;let j=index">
+          <td>
+            <mat-icon style="text-align: center;font-size: 19px!important; color: #5CC6D0 !important; cursor:pointer;"
+              (click)="edit(stamp,1)">edit</mat-icon>
+          </td>
+          <td>{{j+count}}</td>
+          <td>{{stamp.stamp1}}</td>
+          <td>{{stamp.stunch}}</td>
+          <td>{{stamp.ptunch}}</td>
+          <td>{{stamp.pcwt}}</td>
+          <td>{{stamp.tunchf}}</td>
+          <td>{{stamp.tuncht}}</td>
+        </tr>
+      </tbody>
+    </table>
+    <section class="footer-next">
+      <pagination style="margin-top: -20px!important;margin-bottom: -30px!important;" [itemsPerPage]="15" [totalItems]="records.length" (pageChanged)="pageChanged($event)"></pagination>
+    </section>
+  </div>
+
+
+  <div class="container text-center">
+    <div class="row">
+      <form *ngIf="isShow" (ngSubmit)="onsubmit(f)" #f="ngForm" [formGroup]="stampform" class="stamp-form">
+        <div class="row">
+
+          <div class="col-md-4 col-sm-4 col-xs-4 form-group">
+            <label class="control-label stamp-labe" style="margin-top: 10px;font-family: Inter,Source Sans Pro,Helvetica,Arial,sans-serif;
+                      font-size: 13px!important;
+                      font-weight: 400!important;" for="email">Stamp</label>
+          </div>
+          <div class="col-md-4 col-sm-4 col-xs-6">
+            <input type="text" style="height: 32px!important;border-radius: 2px!important;" class="form-control"
+              formControlName="stamp" (keydown.enter)="$event.preventDefault()" autocomplete="off" />
+            <div *ngIf="isFieldValid('stamp')">
+              <div style="font-size: 12px; color: red;">
+                Please Enter Stamp
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="col-md-4 col-sm-4 col-xs-3">
+          <label class="control-label link-to" style="margin-top: 10px; margin-left: -8px; " for="email">Link To</label>
+        </div>
+        <div class="col-md-1 col-sm-1 col-xs-3 radio-btn" *ngFor="let day of days let j=index">
+          <ul style="margin-top: 6px!important;">
+            <input type="radio" [checked]="j===tdiast" value={{j}} (click)="isViewgoldView(j+1)">
+            {{day}}
+          </ul>
+        </div>
+
+
+        <div class="stamp-component">
+
+          <div class="col-md-4 col-sm-4 col-xs-4 link-to-item">
+            <label class="control-label" style="margin-top: 15px!important; margin-left: 16px;" for="email">Link To
+              Item</label>
+          </div>
+          <div class="col-md-4 col-sm-4 col-xs-6 link-to-item-auto"
+            style="margin-left: -5px;text-align: left; margin-top: 9px!important;">
+            <ng-autocomplete [data]="Itemlist" [searchKeyword]="keyword1" (selected)='selectEvent($event)'
+              [itemTemplate]="itemTemplate1" [notFoundTemplate]="notFoundTemplate1" style="background-color:cadetblue;"
+              formControlName="idesc" (keydown.enter)="$event.preventDefault()">
+            </ng-autocomplete>
+            <ng-template #itemTemplate1 let-item>
+              <div class="item">
+                <span [innerHTML]="item.name"></span>
+              </div>
+            </ng-template>
+            <ng-template #notFoundTemplate1 let-notFound>
+              <div [innerHTML]="">Not Found
+                <!-- <a (click)="childDisplay(1)" class="AddnewInList">+ Add New Item</a> -->
+              </div>
+            </ng-template>
+          </div>
+
+
+
+          <div class="container">
+            <div class="row">
+
+              <div class="col-md-8 col-sm-10 col-xs-12">
+                <!--1container-->
+                <div [hidden]="isgoldDivHide" class="sale-rs-Form">
+                  <fieldset>
+                    <div class="row">
+                      <div class="col-md-3 col-sm-3 col-xs-12">
+                        <legend>Sale Rate</legend>
+                      </div>
+                      <div class="col-md-3 col-sm-3" style="margin-top: -6px!important;">
+                        <style>
+                          input::-webkit-outer-spin-button,
+                          input::-webkit-inner-spin-button {
+                            -webkit-appearance: none;
+                            margin: 0;
+                          }
+
+                          input[type="number"] {
+                            -moz-appearance: textfield;
+                          }
+                        </style>
+                        <input type="number" class="form-control" (keydown.enter)="$event.preventDefault()"
+                          style="text-align: right;" formControlName="srate" placeholder="0.00" />
+                      </div>
+
+                      <div class="col-md-3 col-sm-3">
+                        <legend class="color">Clarity</legend>
+                      </div>
+                      <div class="col-md-3 col-sm-3" style="text-align: left;margin-top: -6px!important;">
+                        <ng-autocomplete [data]="Claritylist" [initialValue]="tclarity" [searchKeyword]="keyword2"
+                          (selected)='selectEvent2($event)' [itemTemplate]="itemTemplate2"
+                          [notFoundTemplate]="notFoundTemplate2" style="background-color:cadetblue;"
+                          (keydown.enter)="$event.preventDefault()" (keyup)="sendclr($event)">
+                        </ng-autocomplete>
+                        <ng-template #itemTemplate2 let-item>
+                          <a [innerHTML]="item.name"></a>
+
+                        </ng-template>
+                        <ng-template #notFoundTemplate2 let-notFound>
+                          <div [innerHTML]=""><a (click)="childDisplay(2)" class="AddnewInList">+ Add New Item</a></div>
+                        </ng-template>
+                        <ng-template></ng-template>
+
+                      </div>
+
+                    </div>
+                  </fieldset>
+
+                  <fieldset>
+                    <div class="row">
+                      <div class="col-md-3 col-sm-3">
+                        <legend>Pur. Rate</legend>
+                      </div>
+                      <div class="col-md-3 col-sm-3" style="margin-top: -6px!important;">
+                        <input type="number" class="form-control" style="text-align: right;"
+                          (keydown.enter)="$event.preventDefault()" formControlName="prate" placeholder="0.00" />
+                      </div>
+
+                      <div class="col-md-3 col-sm-3">
+                        <legend class="color">Colour</legend>
+                      </div>
+                      <div class="col-md-3 col-sm-3" style="text-align: left;margin-top: -6px!important;">
+                        <ng-autocomplete [data]="colourmaster" [initialValue]="tcolour" [searchKeyword]="keyword3"
+                          (selected)='selectEvent3($event)' [itemTemplate]="itemTemplate3"
+                          [notFoundTemplate]="notFoundTemplate3" style="background-color:cadetblue;"
+                          (keydown.enter)="$event.preventDefault()" (keyup)="sendcolor($event)">
+                        </ng-autocomplete>
+                        <ng-template #itemTemplate3 let-item>
+                          <a [innerHTML]="item.name"></a>
+
+                        </ng-template>
+                        <ng-template #notFoundTemplate3 let-notFound>
+                          <div [innerHTML]=""><a (click)="childDisplay(3)" class="AddnewInList">+ Add New Item</a></div>
+                        </ng-template>
+                        <ng-template></ng-template>
+
+                      </div>
+
+                    </div>
+                  </fieldset>
+
+                  <fieldset>
+                    <div class="row">
+                      <div class="col-md-3 col-sm-3">
+                        <legend>Stk. Rate</legend>
+                      </div>
+                      <div class="col-md-3 col-sm-3" style="margin-top: -6px!important;">
+                        <input type="number" class="form-control" style="text-align: right;" formControlName="stkrate"
+                          placeholder="0.00" />
+                      </div>
+                      <div class="col-md-3 col-sm-3">
+                        <legend class="color">Shape</legend>
+                      </div>
+
+
+                      <div class="col-md-3 col-sm-3" style="text-align: left;margin-top: -6px!important;">
+                        <ng-autocomplete [data]="Shapelist" [initialValue]="tshape" [searchKeyword]="keyword4"
+                          (selected)='selectEvent4($event)' [itemTemplate]="itemTemplate4"
+                          [notFoundTemplate]="notFoundTemplate4" style="background-color:cadetblue;"
+                          (keydown.enter)="$event.preventDefault()" (keyup)="sendshape($event)">
+                        </ng-autocomplete>
+                        <ng-template #itemTemplate4 let-item>
+                          <a [innerHTML]="item.name"></a>
+
+                        </ng-template>
+                        <ng-template #notFoundTemplate4 let-notFound>
+                          <div [innerHTML]=""><a (click)="childDisplay(4)" class="AddnewInList">+ Add New Item</a></div>
+                        </ng-template>
+                        <ng-template></ng-template>
+
+                      </div>
+
+                    </div>
+                  </fieldset>
+
+                  <fieldset>
+                    <div class="row">
+                      <div class="col-md-3 col-sm-3">
+                        <legend>Pc Wt</legend>
+                      </div>
+                      <div class="col-md-3 col-sm-3" style="margin-top: -6px!important;">
+                        <input type="number" class="form-control" style="text-align: right;" formControlName="pcwt"
+                          placeholder="0.000" (keydown.enter)="$event.preventDefault()" />
+                      </div>
+                      <div class="col-md-3 col-sm-3">
+                        <legend class="color">Size</legend>
+                      </div>
+
+                      <div class="col-md-3 col-sm-3" style="text-align: left;margin-top: -6px!important;">
+                        <ng-autocomplete [data]="sizemaster" [initialValue]="tsize" [searchKeyword]="keyword5"
+                          (selected)='selectEvent5($event)' [itemTemplate]="itemTemplate5"
+                          [notFoundTemplate]="notFoundTemplate5" style="background-color:cadetblue;"
+                          (keyup)="sendsize($event)" (keydown.enter)="$event.preventDefault()">
+                        </ng-autocomplete>
+                        <ng-template #itemTemplate5 let-item>
+                          <a [innerHTML]="item.name"></a>
+
+                        </ng-template>
+                        <ng-template #notFoundTemplate5 let-notFound>
+                          <div [innerHTML]=""><a (click)="childDisplay(5)" class="AddnewInList">+ Add New Item</a></div>
+                        </ng-template>
+                        <ng-template></ng-template>
+
+                      </div>
+
+                      <div style="clear: both;"></div>
+
+                      <div class="col-md-3 col-sm-3 col-xs-6">
+                        <legend class="assortment-lott">Assortment Lott</legend>
+                      </div>
+                      <div class="col-md-1 col-sm-1 col-xs-1">
+                        <input style="margin-left: -150px!important;" class="form-check-input assortment-lott-box"
+                          [checked]="assort" formControlName="assort" type="checkbox"
+                          (keydown.enter)="$event.preventDefault()">
+                      </div>
+
+
+
+                    </div>
+                  </fieldset>
+                </div>
+
+
+                <!--2container-->
+                <div [hidden]="isDiamondDivHide" class="sale-rs-Form sale-tunch-rs-form">
+                  <div class="col-md-8">
+                    <fieldset>
+                      <div class="row">
+                        <div class="col-md-3 col-sm-3">
+                          <legend>Sale Tunch</legend>
+                        </div>
+                        <div class="col-md-3 col-sm-3" style="margin-top: -6px!important;">
+                          <input type="number" class="form-control" style="text-align: right;" formControlName="stunch"
+                            placeholder="0.000" (keydown.enter)="$event.preventDefault()" />
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                          <legend class="divide">Divide</legend>
+                        </div>
+                        <div class="col-md-3 col-sm-3" style="margin-top: -6px!important;">
+                          <input type="number" class="form-control" style="text-align: right;" formControlName="divide"
+                            placeholder="0.000" (keydown.enter)="$event.preventDefault()" />
+                        </div>
+
+                      </div>
+                    </fieldset>
+
+
+                    <fieldset>
+                      <div class="row">
+                        <div class="col-md-3 col-sm-3">
+                          <legend>Pur. Tunch</legend>
+                        </div>
+                        <div class="col-md-3 col-sm-3" style="margin-top: -6px!important;">
+                          <input type="number" class="form-control" style="text-align: right;" formControlName="ptunch"
+                            name="ptunch" placeholder="ptunch" (keydown.enter)="$event.preventDefault()" />
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                          <legend class="divide">Stk. Tunch</legend>
+                        </div>
+                        <div class="col-md-3 col-sm-3" style="margin-top: -6px!important;">
+                          <input type="number" class="form-control" style="text-align: right;"
+                            formControlName="stktunch" name="stktunch" placeholder="stktunch"
+                            (keydown.enter)="$event.preventDefault()" />
+                        </div>
+                      </div>
+                    </fieldset>
+
+                    <fieldset>
+                      <div class="row">
+                        <div class="col-md-3 col-sm-3">
+                          <legend>Tunch From</legend>
+                        </div>
+                        <div class="col-md-3 col-sm-3" style="margin-top: -6px!important;">
+                          <input type="number" class="form-control" style="text-align: right;" formControlName="tunchf"
+                            name="tunchf" placeholder="tunchf" (keydown.enter)="$event.preventDefault()" />
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                          <legend class="divide">Tunch To</legend>
+                        </div>
+                        <div class="col-md-3 col-sm-3" style="margin-top: -6px!important;">
+                          <input type="number" class="form-control" style="text-align: right;" formControlName="tuncht"
+                            name="tuncht" placeholder="tuncht" (keydown.enter)="$event.preventDefault()" />
+                        </div>
+
+                      </div>
+                    </fieldset>
+
+                    <fieldset>
+                      <div class="row">
+                        <div class="col-md-3 col-sm-3">
+                          <legend>Old Less%</legend>
+                        </div>
+                        <div class="col-md-3 col-sm-3" style="margin-top: -6px!important;">
+                          <input type="number" class="form-control" style="text-align: right;" formControlName="oldless"
+                            name="oldless" placeholder="oldless" (keydown.enter)="$event.preventDefault()" />
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                          <legend class="divide">Old Tunch</legend>
+                        </div>
+                        <div class="col-md-3 col-sm-3" style="margin-top: -6px!important;">
+                          <input type="number" class="form-control" style="text-align: right;"
+                            formControlName="oldtunch" name="oldtunch" placeholder="oldtunch"
+                            (keydown.enter)="$event.preventDefault()" />
+                        </div>
+
+                        <div class="col-md-4 col-sm-4">
+                          <legend>Pc Wt</legend>
+                        </div>
+                        <div class="col-md-3 col-sm-3" style="margin-top: -6px!important;">
+                          <input type="number" class="form-control pcwwt" style="text-align: right;"
+                            formControlName="pcwt" name="pcwt" placeholder="pcwt"
+                            (keydown.enter)="$event.preventDefault()" />
+                        </div>
+
+                      </div>
+                    </fieldset>
+                  </div>
+
+                  <div class="col-md-4 display-bhav">
+                    <fieldset>
+                      <div class="row">
+                        <div class="col-md-7 col-sm-3">
+                          <legend>Display in Bhav</legend>
+                        </div>
+                        <div class="col-md-5 col-sm-3" style="margin-top: -6px!important;">
+                          <select (click)="AddStock()" class="form-control display-bhav-option"
+                            formControlName="dispbhav" (keydown.enter)="$event.preventDefault()">
+                            <option value="N">N</option>
+                            <option value="Y">Y</option>
+                          </select>
+                        </div>
+                        <div class="col-md-7 col-sm-3">
+                          <legend>Rate Tunch</legend>
+                        </div>
+                        <div class="col-md-5 col-sm-3" style="margin-top: -6px!important;">
+                          <input type="number" class="form-control" style="text-align: right;"
+                            formControlName="bhavtunch" name="bhavtunch" placeholder="bhavtunch"
+                            (keydown.enter)="$event.preventDefault()" />
+                        </div>
+
+                        <div style="clear: both;"></div>
+
+                        <div class="col-md-7 col-sm-3">
+                          <legend>Pur. Tunch</legend>
+                        </div>
+                        <div class="col-md-5 col-sm-3" style="margin-top: -6px!important;">
+                          <input type="number" class="form-control" style="text-align: right;"
+                            formControlName="pbhavtunch" name="pbhavtunch" placeholder="pbhavtunch"
+                            (keydown.enter)="$event.preventDefault()" />
+                        </div>
+
+                        <div class="col-md-7 col-sm-3">
+                          <legend>Bhav Roff.</legend>
+                        </div>
+                        <div class="col-md-5 col-sm-3" style="margin-top: -6px!important;">
+                          <input type="number" class="form-control" style="text-align: right;"
+                            formControlName="bhavroff" name="bhavroff" placeholder="bhavroff"
+                            (keydown.enter)="$event.preventDefault()" />
+                        </div>
+
+                      </div>
+                    </fieldset>
+                  </div>
+
+                  <div style="clear:both"></div>
+
+                </div>
+
+
+              </div>
+
+
+            </div>
+          </div>
+        </div>
+        <section class="footer-fix">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="footer-button">
+                  <button mat-raised-button type="submit" class="save" click="onsubmit()" value="Save"
+                    style="margin-left: 25px;">Save</button>
+                  <a mat-raised-button *ngIf="isdel" type="button" (click)="Delete()" [hidden]="IsDeleteBttnHide"
+                    class="delete">Delete</a>
+                  <a class="cancle" mat-raised-button (click)="toggleDisplay()">Cancel</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="col-md-12">
+                
+          <div [hidden]="isDiamondDivHide" class="container" style="background-color:#e6e6e6;border-width: 1px !important;border-color: black !important;width: 500px !important; margin-left: -9px !important;margin-top: 0px; ">
+            <div class="row">
+              <label class="control-label col-sm-4" for="email" style="margin-left: -10px;margin-top: 5px;">Sale Rate</label>
+
+              <div class="col-sm-2">
+                <input type="text" class="form-control" style="margin-left: -63px;width: 100px !important;text-align: right; margin-top: 5px;" />
+              </div>
+              <div class="col-sm-4">
+                <label class="control-label col-sm-4" for="email" style="margin-left: -10px;margin-top: 5px;">Colour</label>
+              </div>
+              <div class="col-sm-2">
+                <ng-autocomplete [data]="colourmaster"
+              [searchKeyword]="keyword5"      
+              [initialValue]="initialclrValue"              
+              (selected)='selectEvent5($event)'
+              [itemTemplate]="itemTemplate3"
+              [notFoundTemplate]="notFoundTemplate3"                                     
+              style="background-color:cadetblue;" formControlName="colourid">
+              </ng-autocomplete>
+              <ng-template #itemTemplate3 let-item>
+                <a [innerHTML]="item.name"></a>
+              </ng-template>
+              <ng-template #notFoundTemplate3 let-notFound>                      
+                <div [innerHTML]=""><a mat-raised-button (click)="childDisplay('colourmaster')"  class="AddnewInList">+ Add New</a></div>
+              </ng-template>
+
+              </div>
+
+            </div>
+            <div class="row">
+              <label class="control-label col-sm-4" for="email" style="margin-left: -10px;margin-top: 9px !important;">Pur.Rate</label>
+              <div class="col-sm-2">
+                <input type="text" class="form-control" style="margin-left: -63px;width: 100px !important;text-align: right;margin-top: 10px !important;" name="prate"/>
+              </div>
+              <div class="col-sm-4">
+                <label class="control-label col-sm-4" for="email" style="margin-left: -10px;margin-top: 9px !important;">Clarity</label>
+              </div>
+              <div class="col-sm-2">
+                <ng-autocomplete [data]="Claritylist"
+              [searchKeyword]="keyword3"      
+              [initialValue]="initialclarityValue"              
+              (selected)='selectEvent3($event)'
+              [itemTemplate]="itemTemplate2"
+              [notFoundTemplate]="notFoundTemplate2"                                     
+              style="background-color:cadetblue;" formControlName="clarityid">
+              </ng-autocomplete>
+              <ng-template #itemTemplate2 let-item>
+                <a [innerHTML]="item.name"></a>
+              </ng-template>
+              <ng-template #notFoundTemplate2 let-notFound>                      
+                <div [innerHTML]=""><a mat-raised-button (click)="childDisplay('clarity')"  class="AddnewInList">+ Add New</a></div>
+              </ng-template>
+
+              </div>
+
+            </div>
+            <div class="row">
+              <label class="control-label col-sm-4" for="email" style="margin-left: -10px;margin-top: 9px !important;">Stk.Rate</label>
+
+              <div class="col-sm-2">
+                <input type="text" class="form-control" style="margin-left: -63px;width: 100px !important;text-align: right;margin-top: 10px !important;" />
+
+              </div>
+              <div class="col-sm-4">
+                <label class="control-label col-sm-4" for="email" style="margin-left: -10px;margin-top: 9px !important;">Shape</label>
+              </div>
+              <div class="col-sm-4">
+               
+
+                <ng-autocomplete [data]="Shapelist"
+              [searchKeyword]="keyword2"      
+              [initialValue]="initialSahpeValue"              
+              (selected)='selectEvent2($event)'
+              [itemTemplate]="itemTemplate3"
+              [notFoundTemplate]="notFoundTemplate3"                                     
+              style="background-color:cadetblue;" formControlName="shapeid">
+              </ng-autocomplete>
+              <ng-template #itemTemplate3 let-item>
+                <a [innerHTML]="item.name"></a>
+              </ng-template>
+              <ng-template #notFoundTemplate3 let-notFound>                      
+                <div [innerHTML]=""><a mat-raised-button (click)="childDisplay('shape')"  class="AddnewInList">+ Add New</a></div>
+              </ng-template>
+
+              </div>
+
+
+            </div>
+            <div class="row">
+              <label class="control-label col-sm-4" for="email" style="margin-left: -10px;margin-top: 9px !important;">Pc.Wt</label>
+
+              <div class="col-sm-2">
+                <input type="text" class="form-control" style="margin-left: -63px;width: 100px !important;text-align: right;margin-top: 10px !important;" />
+
+              </div>
+              <div class="col-sm-4">
+                <label class="control-label col-sm-4" for="email" style="margin-left: -10px;margin-top: 9px !important;">Size</label>
+              </div>
+              <div class="col-sm-2">
+                <ng-autocomplete [data]="sizemaster"
+              [searchKeyword]="keyword4"      
+              [initialValue]="initialSizeValue"              
+              (selected)='selectEvent4($event)'
+              [itemTemplate]="itemTemplate4"
+              [notFoundTemplate]="notFoundTemplate4"                                     
+              style="background-color:cadetblue;" formControlName="sizeid">
+              </ng-autocomplete>
+              <ng-template #itemTemplate4 let-item>
+                <a [innerHTML]="item.name"></a>
+              </ng-template>
+              <ng-template #notFoundTemplate4 let-notFound>                      
+                <div [innerHTML]=""><a mat-raised-button (click)="childDisplay('size')"  class="AddnewInList">+ Add New</a></div>
+              </ng-template>
+              </div>
+
+            </div>
+            <div class="row">
+              <label class="control-label col-sm-4" for="email" style="margin-left: -10px;margin-top: 9px !important;">Assortment Lott</label>
+              &nbsp;  <input type="checkbox" style="margin-top: 19px; margin-left: -38px;" >
+
+            </div>
+
+
+
+
+          </div>
+          
+           <div [hidden]="isgoldDivHide" class="container" style="background-color:#e6e6e6;border-width: 1px !important;border-color: black !important;width: 800px !important; margin-left: -9px !important;margin-top: 20px;">
+            <div class="row">
+              <label class="control-label col-sm-2" for="email" style="margin-left: -10px;margin-top: 5px;">Sale Tunch</label>
+
+              <div class="col-sm-2">
+                <input type="text"  class="form-control" style="margin-left: -31px;width: 100px !important;text-align: right; margin-top: 5px;" />
+              </div>
+              <label class="control-label col-sm-3" for="email" style="margin-left: 3px;margin-top: 5px;">Display In Bhav</label>
+
+              <div class="col-sm-2">
+                <input type="text"  class="form-control" style="margin-left: -70px;width: 100px !important;text-align: right; margin-top: 5px;" />
+              </div>
+              <label class="control-label col-sm-2" for="email" style="margin-left: -58px;margin-top: 5px;">Pc.Wt</label>
+
+              <div class="col-sm-1">
+                <input type="text" class="form-control" style="margin-left: -50px;width: 100px !important;text-align: right; margin-top: 5px;" />
+              </div>
+            </div>
+            <div class="row">
+
+              <label class="control-label col-sm-2" for="email" style="margin-left: -10px;margin-top: 5px;">Pur.Tunch</label>
+
+              <div class="col-sm-2">
+                <input type="text" class="form-control" style="margin-left: -31px;width: 100px !important;text-align: right; margin-top: 5px;"  />
+              </div>
+              <label class="control-label col-sm-3" for="email" style="margin-left: 3px;margin-top: 5px;">Rate Tunch</label>
+
+              <div class="col-sm-2">
+                <input type="text" class="form-control" style="margin-left: -70px;width: 100px !important;text-align: right; margin-top: 5px;"  />
+              </div>
+              <label class="control-label col-sm-2" for="email" style="margin-left: -58px;margin-top: 5px;">Old Less%</label>
+
+              <div class="col-sm-1">
+                <input type="text" class="form-control" style="margin-left: -50px;width: 100px !important;text-align: right; margin-top: 5px;" />
+              </div>
+
+            </div>
+            <div class="row">
+
+
+
+            </div>
+
+            <div class="row">
+              <label class="control-label col-sm-2" for="email" style="margin-left: -10px;margin-top: 5px;">Stk.Tunch</label>
+
+              <div class="col-sm-2">
+                <input type="text" class="form-control" style="margin-left: -31px;width: 100px !important;text-align: right; margin-top: 5px;" />
+              </div>
+              <label class="control-label col-sm-3" for="email" style="margin-left: 3px;margin-top: 5px;">Pur Tunch</label>
+
+              <div class="col-sm-2">
+                <input type="text" class="form-control" style="margin-left: -70px;width: 100px !important;text-align: right; margin-top: 5px;" />
+              </div>
+              <label class="control-label col-sm-2" for="email" style="margin-left: -58px;margin-top: 5px;">Old Tunch</label>
+
+              <div class="col-sm-1">
+                <input type="text" class="form-control" style="margin-left: -50px;width: 100px !important;text-align: right; margin-top: 5px;" />
+              </div>
+            </div>
+            <div class="row">
+
+              <label class="control-label col-sm-2" for="email" style="margin-left: -10px;margin-top: 5px;">Divide</label>
+
+              <div class="col-sm-2">
+                <input type="text" class="form-control" style="margin-left: -31px;width: 100px !important;text-align: right; margin-top: 5px;" />
+              </div>
+              <label class="control-label col-sm-2" for="email" style="margin-left: 3px;margin-top: 5px;">Bhav Roff</label>
+
+              <div class="col-sm-2">
+                <input type="text" class="form-control" style="margin-left: -3px;width: 100px !important;text-align: right; margin-top: 5px;" />
+              </div>
+
+            </div>
+            <div class="row">
+
+              <label class="control-label col-sm-2" for="email" style="margin-left: -10px;margin-top: 5px;">Tunch From</label>
+
+              <div class="col-sm-2">
+                <input type="text" class="form-control" style="margin-left: -31px;width: 100px !important;text-align: right; margin-top: 5px;" />
+              </div>
+              <label class="control-label col-sm-2" for="email" style="margin-left: 3px;margin-top: 5px;">Tunch To</label>
+
+              <div class="col-sm-2">
+                <input type="text" class="form-control" style="margin-left: -3px;width: 100px !important;text-align: right; margin-top: 5px;" />
+              </div>
+
+            </div>
+
+          </div>
+
+
+        </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div *ngIf="!ischildshow" class="unit-conversion">
+  <div class="col-md-3">
+    <h1 class="text-secondary">{{title}}</h1>
+  </div>
+ 
+  <div class="col-md-4 text-right">
+    <button [hidden]="IsNewBttnHide" class="btn btn-primary newFormbttn" mat-raised-button
+            matTooltip="Add New Stamp"
+            matTooltipPosition="right" (click)="newForm()">
+      New +
+    </button>
+    
+  </div>
+  <form *ngIf="isHidden" (ngSubmit)="f.form.valid && onsubmit(f)" #f="ngForm">
+  
+    <div class="container-fluid">
+      
+      
+
+      
+      <div class="button-toolbar align-items-center">
+        <form class="decimal-place form-horizontal" [formGroup]="form">
+          <div class="container">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="form-group">
+                  <label class="control-label col-sm-3" for="email">Stamp</label>
+                  <div class="col-sm-4">
+
+                    <input type="text" class="form-control" [(ngModel)]="Stamp.stamp1"/>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="control-label col-sm-8" for="email">Link To</label>
+                  <div style="display: inline;" *ngFor="let day of days let j=index">
+                    <ul style="display: inline;">
+                    <input type="radio" name="linkto" value={{j}} (click)="isViewgoldView(j+1)">                    
+                    <i>{{day}}</i>
+                  </ul>
+                </div>                 
+
+
+                </div>
+
+                <div class="form-group">
+                  <label class="control-label col-sm-3" for="email">Link To Item</label>
+
+
+                  <div class="col-sm-4 auto-input">
+                    <ng-autocomplete [data]="Itemlist"
+                    [searchKeyword]="keyword1"                    
+                    (selected)='selectEvent2($event)'
+                    [itemTemplate]="itemTemplate"
+                    [notFoundTemplate]="notFoundTemplate"                                     
+                    style="background-color:cadetblue;" formControlName="ino">
+                    </ng-autocomplete>
+                    <ng-template #itemTemplate let-item>
+                      <a [innerHTML]="item.name"></a>
+                    </ng-template>
+                    <ng-template #notFoundTemplate let-notFound>
+                      <div [innerHTML]=""><a routerLink="/item" class="AddnewInList">+ Add New Item</a></div>
+                    </ng-template>
+
+
+                  </div>
+
+                </div>
+
+                
+              </div>
+              <div class="col-md-12">
+                
+                <div class="container" style="background-color:#e6e6e6;border-width: 1px !important;border-color: black !important;width: 500px !important; margin-left: -9px !important;margin-top: 0px; ">
+                  <div class="row">
+                    <label class="control-label col-sm-4" for="email" style="margin-left: -10px;margin-top: 5px;">Sale Rate</label>
+
+                    <div class="col-sm-2">
+                      <input type="text" class="form-control" style="margin-left: -63px;width: 100px !important;text-align: right; margin-top: 5px;" />
+                    </div>
+                    <div class="col-sm-4">
+                      <label class="control-label col-sm-4" for="email" style="margin-left: -10px;margin-top: 5px;">Colour</label>
+                    </div>
+                    <div class="col-sm-2">
+                      <input type="text" class="form-control" style="margin-left: -63px;width: 100px !important;margin-top: 5px;" />
+
+                    </div>
+
+                  </div>
+                  <div class="row">
+                    <label class="control-label col-sm-4" for="email" style="margin-left: -10px;margin-top: 9px !important;">Pur.Rate</label>
+                    <div class="col-sm-2">
+                      <input type="text" class="form-control" style="margin-left: -63px;width: 100px !important;text-align: right;margin-top: 10px !important;" name="prate"/>
+                    </div>
+                    <div class="col-sm-4">
+                      <label class="control-label col-sm-4" for="email" style="margin-left: -10px;margin-top: 9px !important;">Clarity</label>
+                    </div>
+                    <div class="col-sm-2">
+                      <input type="text" class="form-control" style="margin-left: -63px;width: 100px !important;margin-top: 10px;"/>
+
+                    </div>
+
+                  </div>
+                  <div class="row">
+                    <label class="control-label col-sm-4" for="email" style="margin-left: -10px;margin-top: 9px !important;">Stk.Rate</label>
+
+                    <div class="col-sm-2">
+                      <input type="text" class="form-control" style="margin-left: -63px;width: 100px !important;text-align: right;margin-top: 10px !important;" />
+
+                    </div>
+                    <div class="col-sm-4">
+                      <label class="control-label col-sm-4" for="email" style="margin-left: -10px;margin-top: 9px !important;">Shape</label>
+                    </div>
+                    <div class="col-sm-4">
+                     
+
+                      <ng-autocomplete [data]="Shapelist"
+                    [searchKeyword]="keyword2"                    
+                    (selected)='selectEvent3($event)'
+                    [itemTemplate]="itemTemplate2"
+                    [notFoundTemplate]="notFoundTemplate2"                                     
+                    style="background-color:cadetblue;" formControlName="shapeid">
+                    </ng-autocomplete>
+                    <ng-template #itemTemplate2 let-item>
+                      <a [innerHTML]="item.name"></a>
+                    </ng-template>
+                    <ng-template #notFoundTemplate2 let-notFound>                      
+                      <div [innerHTML]=""><a (click)="childDisplay()"  class="AddnewInList">+ Add New</a></div>
+                    </ng-template>
+
+                    </div>
+
+
+                  </div>
+                  <div class="row">
+                    <label class="control-label col-sm-4" for="email" style="margin-left: -10px;margin-top: 9px !important;">Pc.Wt</label>
+
+                    <div class="col-sm-2">
+                      <input type="text" class="form-control" style="margin-left: -63px;width: 100px !important;text-align: right;margin-top: 10px !important;" />
+
+                    </div>
+                    <div class="col-sm-4">
+                      <label class="control-label col-sm-4" for="email" style="margin-left: -10px;margin-top: 9px !important;">Size</label>
+                    </div>
+                    <div class="col-sm-2">
+                      <input type="text" class="form-control" style="margin-left: -63px;width: 100px !important;margin-top: 10px;" />
+
+                    </div>
+
+                  </div>
+                  <div class="row">
+                    <label class="control-label col-sm-4" for="email" style="margin-left: -10px;margin-top: 9px !important;">Assortment Lott</label>
+                    &nbsp;  <input type="checkbox" style="margin-top: 19px; margin-left: -38px;" >
+
+                  </div>
+
+
+
+
+                </div>
+                
+                 <div [hidden]="isDiamondDivHide" class="container" style="background-color:#e6e6e6;border-width: 1px !important;border-color: black !important;width: 800px !important; margin-left: -9px !important;margin-top: 20px;">
+                  <div class="row">
+                    <label class="control-label col-sm-2" for="email" style="margin-left: -10px;margin-top: 5px;">Sale Tunch</label>
+
+                    <div class="col-sm-2">
+                      <input type="text"  class="form-control" style="margin-left: -31px;width: 100px !important;text-align: right; margin-top: 5px;" />
+                    </div>
+                    <label class="control-label col-sm-3" for="email" style="margin-left: 3px;margin-top: 5px;">Display In Bhav</label>
+
+                    <div class="col-sm-2">
+                      <input type="text"  class="form-control" style="margin-left: -70px;width: 100px !important;text-align: right; margin-top: 5px;" />
+                    </div>
+                    <label class="control-label col-sm-2" for="email" style="margin-left: -58px;margin-top: 5px;">Pc.Wt</label>
+
+                    <div class="col-sm-1">
+                      <input type="text" class="form-control" style="margin-left: -50px;width: 100px !important;text-align: right; margin-top: 5px;" />
+                    </div>
+                  </div>
+                  <div class="row">
+
+                    <label class="control-label col-sm-2" for="email" style="margin-left: -10px;margin-top: 5px;">Pur.Tunch</label>
+
+                    <div class="col-sm-2">
+                      <input type="text" class="form-control" style="margin-left: -31px;width: 100px !important;text-align: right; margin-top: 5px;"  />
+                    </div>
+                    <label class="control-label col-sm-3" for="email" style="margin-left: 3px;margin-top: 5px;">Rate Tunch</label>
+
+                    <div class="col-sm-2">
+                      <input type="text" class="form-control" style="margin-left: -70px;width: 100px !important;text-align: right; margin-top: 5px;"  />
+                    </div>
+                    <label class="control-label col-sm-2" for="email" style="margin-left: -58px;margin-top: 5px;">Old Less%</label>
+
+                    <div class="col-sm-1">
+                      <input type="text" class="form-control" style="margin-left: -50px;width: 100px !important;text-align: right; margin-top: 5px;" />
+                    </div>
+
+                  </div>
+                  <div class="row">
+
+
+
+                  </div>
+
+                  <div class="row">
+                    <label class="control-label col-sm-2" for="email" style="margin-left: -10px;margin-top: 5px;">Stk.Tunch</label>
+
+                    <div class="col-sm-2">
+                      <input type="text" class="form-control" style="margin-left: -31px;width: 100px !important;text-align: right; margin-top: 5px;" />
+                    </div>
+                    <label class="control-label col-sm-3" for="email" style="margin-left: 3px;margin-top: 5px;">Pur Tunch</label>
+
+                    <div class="col-sm-2">
+                      <input type="text" class="form-control" style="margin-left: -70px;width: 100px !important;text-align: right; margin-top: 5px;" />
+                    </div>
+                    <label class="control-label col-sm-2" for="email" style="margin-left: -58px;margin-top: 5px;">Old Tunch</label>
+
+                    <div class="col-sm-1">
+                      <input type="text" class="form-control" style="margin-left: -50px;width: 100px !important;text-align: right; margin-top: 5px;" />
+                    </div>
+                  </div>
+                  <div class="row">
+
+                    <label class="control-label col-sm-2" for="email" style="margin-left: -10px;margin-top: 5px;">Divide</label>
+
+                    <div class="col-sm-2">
+                      <input type="text" class="form-control" style="margin-left: -31px;width: 100px !important;text-align: right; margin-top: 5px;" />
+                    </div>
+                    <label class="control-label col-sm-2" for="email" style="margin-left: 3px;margin-top: 5px;">Bhav Roff</label>
+
+                    <div class="col-sm-2">
+                      <input type="text" class="form-control" style="margin-left: -3px;width: 100px !important;text-align: right; margin-top: 5px;" />
+                    </div>
+
+                  </div>
+                  <div class="row">
+
+                    <label class="control-label col-sm-2" for="email" style="margin-left: -10px;margin-top: 5px;">Tunch From</label>
+
+                    <div class="col-sm-2">
+                      <input type="text" class="form-control" style="margin-left: -31px;width: 100px !important;text-align: right; margin-top: 5px;" />
+                    </div>
+                    <label class="control-label col-sm-2" for="email" style="margin-left: 3px;margin-top: 5px;">Tunch To</label>
+
+                    <div class="col-sm-2">
+                      <input type="text" class="form-control" style="margin-left: -3px;width: 100px !important;text-align: right; margin-top: 5px;" />
+                    </div>
+
+                  </div>
+
+                </div>
+
+
+              </div>
+
+
+            </div>
+          </div>
+
+
+
+          
+        </form>
+
+      </div>
+
+    </div>
+  
+</form>
+  <div [hidden]="isTableHidden">
+    <table style="border:2px solid #6c6d70;"  class="table table-striped table-bordered table-sm row-border hover" datatable [dtOptions]="dtOptions">
+      <thead>
+        <tr>
+          <th></th>
+          <th>S.No</th>
+          <th>Stamp</th>
+          <th>S.Tunch</th>
+          <th>P.Tunch</th>
+          <th>Pc. Wt.</th>
+          <th>Tunch From</th>
+          <th>Tunch To</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let stamp of retData;let j=index">
+          <td>
+            <mat-icon style="color: #5CC6D0 !important; cursor:pointer;">edit</mat-icon>
+          </td>
+          <td>{{j+1}}</td>
+          <td>{{stamp.stamp1}}</td>
+          <td>{{stamp.stunch}}</td>
+          <td>{{stamp.ptunch}}</td>
+          <td>{{stamp.pcwt}}</td>
+          <td>{{stamp.tunchf}}</td>
+          <td>{{stamp.tuncht}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+</div> -->

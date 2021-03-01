@@ -1,0 +1,85 @@
+.filter label{
+    padding-top: 3px!important;
+    font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif;
+    font-weight: 400!important;
+    font-size: 13px!important;
+}
+.filter select{
+    height: 28px!important;
+    border-radius: 2px!important;
+    border: 1px solid #ced4da!important;
+}
+.tags label{
+    padding-top: 3px!important;
+    font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif;
+    font-weight: 400!important;
+    font-size: 13px!important;
+}
+.tags input{
+    height: 28px!important;
+    border-radius: 2px!important;
+    border: 1px solid #ced4da!important;
+}
+
+.total input{
+height: 28px!important;
+border: 1px solid #ced4da;
+display: inline;
+width: 16.66%!important;
+margin-top: 5px!important;
+/* margin-top: -15px!important; */
+}
+.total label{
+/* margin-top: -13px!important; */
+    font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif;
+    font-weight: 550!important;
+    font-size: 13px!important;
+    margin-top: 7px!important;
+}
+.table th{
+  position: sticky;
+  top: 0;
+  background-color: #5b5b5b;
+}
+.total-another input{
+    height: 28px!important;
+    border: 1px solid #ced4da;
+width: 100px!important;
+margin-top: 10px!important;
+    /* margin-top: -15px!important; */
+    }
+    .total-another label{
+    /* margin-top: -13px!important; */
+        font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif;
+        font-weight: 550!important;
+        font-size: 13px!important;
+        margin-top: 7px!important;
+    }
+    table {
+      margin-top: 10px!important;
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 2px solid #5b5b5b;
+  }
+  .footer-lab
+  {
+     position: absolute;
+     bottom: -30px!important;
+     left: 0;
+     right: 0;
+     width: 100%;
+     z-index: 9999999999;
+     background-color: white;
+     padding: 25px 0;
+     -webkit-box-shadow: 0px -1px 1px 0px rgba(48, 50, 50, 0.44);
+     -moz-box-shadow: 0px -1px 1px 0px rgba(48, 50, 50, 0.44); 
+ 
+   }
+   .footer-btn button
+   {
+       /* background-color: gray;
+       color: white; */
+       width: 80px!important;
+   }
+   

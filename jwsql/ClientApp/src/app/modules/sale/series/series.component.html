@@ -1,0 +1,31 @@
+<div class="row" *ngIf="isListLoad">
+  <h2 class="text-center" style="text-transform:uppercase !important;letter-spacing:2px;">Select <span style="font-weight:bolder;"> {{formType}} </span>Series</h2>
+  <table class="table table-bordered bordered-stripped">
+     
+    <thead style="overflow-y: scroll !important;padding:0!important;">
+      
+      <tr>
+        <th><input [(ngModel)]="searchText" type="text" class="form-control" placeholder="Search.." /></th>
+      </tr> 
+ <tr *ngFor="let item of seriesList|grdFilter:{series:searchText}">
+        <th>
+          <button style="color:black !important;background-color:transparent !important;font-weight:bolder !important;letter-spacing:2px;color:white !important;"
+                  (keydown.enter)="Selected_Series(item)"
+                  (click)="Selected_Series(item)"
+                  class="btn btn-block">
+                   {{item.series}}
+                  </button>
+   
+        </th>
+        
+      </tr> 
+    </thead>
+  </table>
+</div>
+
+<div class="row" *ngIf="!isListLoad">
+  <h2 class="text-center" style="text-transform:uppercase;letter-spacing:2px;font-weight:bolder;color:#3a3d46;">Please Wait.....</h2>
+  <mat-progress-bar mode="query"></mat-progress-bar>
+  <mat-spinner></mat-spinner>
+
+</div>

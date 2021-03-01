@@ -1,0 +1,35 @@
+<mat-toolbar style="min-height: 35px!important;">
+<mat-toolbar-row>
+    <img src="http://www.mmsoftwares.com/images/mmi-logo-crd.png" alt="MMI Logo" style="width:50px!important;margin-top:-10px;" width="100">
+    <div fxFlex fxLayout="row" fxLayoutAlign="flex-end">
+        <ul fxLayout="row" fxLayoutGap="20px">
+            <li>
+                <button mat-icon-button>
+                    <mat-icon href="#" data-toggle="tooltip" title="Settings">settings</mat-icon>
+                </button>
+            </li>
+            <li>
+                <button mat-icon-button>
+                    <mat-icon href="#" data-toggle="tooltip" title="Help">help_outline</mat-icon>
+                </button>
+            </li>
+            <li>
+               
+                    <button mat-button [matMenuTriggerFor]="menu">
+                        <mat-icon>person_outline</mat-icon>
+                    </button>
+                    <mat-menu #menu="matMenu">
+                     <button mat-menu-item>
+                         <mat-icon>
+                             exit_to_app
+                         </mat-icon>
+                         Sign out
+                     </button>
+                   
+                    </mat-menu>
+                
+            </li>
+        </ul>
+    </div>
+</mat-toolbar-row>
+</mat-toolbar>

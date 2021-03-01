@@ -1,0 +1,21 @@
+.footer-lab
+{
+   position: absolute;
+   bottom: -20px!important;
+   left: 0;
+   right: 0;
+   width: 100%;
+   z-index: 9999999999;
+   background-color: white;
+   padding: 25px 0;
+   -webkit-box-shadow: 0px -1px 1px 0px rgba(48, 50, 50, 0.44);
+   -moz-box-shadow: 0px -1px 1px 0px rgba(48, 50, 50, 0.44); 
+ }
+ .footer-btn button
+ {
+     margin-top: -10px;
+     /* background-color: gray;
+     color: white; */
+     width: 80px!important;
+     padding: 0;
+ }

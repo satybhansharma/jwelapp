@@ -1,0 +1,132 @@
+<div *ngIf="ischildshow" class="container text-center">
+  <!-- <app-category></app-category> -->
+  <!-- <app-crud-unit></app-crud-unit> -->
+  <app-crud-item [sdivs]=true (listdata)="recieveitem($event)" [senditem]='name' (event)="recieveitem($event)">
+  </app-crud-item>
+</div>
+<div *ngIf="!ischildshow">
+
+
+  <div class="row">
+    <div class="col-md-6 text-left">
+      <div class="back-button col-md-2" style="margin-left: -20px!important;" *ngIf="isnew">
+        <button mat-raised-button routerLink="/inventory" class="save cancle"><i class="fa fa-arrow-left"
+            aria-hidden="true"></i>&nbsp;Back</button>
+      </div>
+      <div class="col-md-6 text-left">
+        <h1 class="heading">Clarity</h1>
+      </div>
+    </div>
+    <div *ngIf="isnew" class="col-md-6 text-right">
+      <div class="row">
+      <div class="col-md-6">
+        <input style="height: 30px!important;margin-left: 200px!important;" type="email" class="form-control"
+          id="search-text" aria-describedby="search-text" [(ngModel)]="searchText" placeholder="Enter text to search"
+          (ngModelChange)="Search()" autofocus>
+      </div>
+      <div class="new-button col-md-5" style="margin-left: 10px!important;float: right;">
+        <button mat-raised-button (click)=toggleDisplay() class="save cancle">New+</button>
+      </div>
+    </div>
+  </div>
+  </div>
+
+  <div class="row">
+    <div *ngIf="isdivShow">
+      <table class="table table-striped table-bordered table-sm row-border hover">
+        <thead>
+          <tr>
+            <th style="width: 3%!important;">Edit</th>
+            <!-- <th style="width: 40px;">Delete</th> -->
+            <th style="width: 10%!important;">S.No</th>
+            <th style="width: 43.5%!important;">Clarity</th>
+            <th style="width: 43.5%!important;">Remarks</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let record of retData let j=index">
+            <td>
+              <mat-icon style="color: #5CC6D0 !important; cursor:pointer;text-align: center;font-size: 19px!important;"
+                (click)="edit(record,1)">edit</mat-icon>
+            </td>
+            <!-- <td><mat-icon style="color: #5CC6D0 !important; cursor:pointer;" (click)="edit(record,2)">delete</mat-icon> </td> -->
+
+            <td>{{j+count}}</td>
+            <td>{{record.clarity1}}</td>
+            <td>{{record.remarks}}</td>
+
+          </tr>
+        </tbody>
+      </table>
+      <section class="footer-next">
+        <pagination [itemsPerPage]="15" [totalItems]="filterrec.length" (pageChanged)="pageChanged($event)"></pagination>
+      </section>
+    </div>
+    <alert></alert>
+    <form *ngIf="isShow" (ngSubmit)="onsubmit(f)" #f="ngForm" [formGroup]="clarityForm">
+      <div class="container unit-form-box">
+        <div class="row">
+          <div class="form-group">
+            <label class="control-label col-md-5">Clarity</label>
+            <div class="col-md-7">
+              <input type="text" class="form-control" formControlName="clarity" name="name" autocomplete="off"
+                (keydown.enter)="$event.preventDefault()">
+
+            </div>
+            <div *ngIf="isFieldValid('clarity')">
+              <div style="font-size: 12px; color: red;margin-left: 110px;">
+                Please Enter Clarity
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-md-5">Remarks</label>
+            <div class="col-md-7">
+              <input type="text" class="form-control" formControlName="remarks" name="remarks" autocomplete="off"
+                (keydown.enter)="$event.preventDefault()">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-md-5" for="email">Item</label>
+            <div class="col-md-7 sizeAuto-Complete">
+              <ng-autocomplete [data]="ItemList2" [initialValue]="titem" [searchKeyword]="keyword2"
+                (selected)='selectEvent2($event)' [itemTemplate]="itemTemplate" [notFoundTemplate]="notFoundTemplate2"
+                style="background-color:cadetblue;" (keydown.enter)="$event.preventDefault()"
+                (keyup)="senditem($event)">
+              </ng-autocomplete>
+              <ng-template #itemTemplate let-item>
+                <a [innerHTML]="item.name"></a>
+                <a [innerHTML]="item.name" *ngIf="item.id==-1">Add New</a>
+              </ng-template>
+              <ng-template #notFoundTemplate2 let-notFound>
+                <div [innerHTML]="">Not Found</div>
+              </ng-template>
+              <ng-template></ng-template>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- <button class="btn btn-primary">Submit</button> -->
+      <section class="footer-fix">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="footer-button">
+                <button mat-raised-button type="submit" class="save" value="Save" click="onsubmit()"
+                  style="margin-left:25px;">Save</button>
+                <a mat-raised-button *ngIf="isdel" (click)="Delete()" class="delete">Delete</a>
+                <a mat-raised-button (click)=toggleDisplay() class="cancle">Cancel</a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+    </form>
+
+  </div>
+</div>

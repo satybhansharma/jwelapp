@@ -1,0 +1,74 @@
+.header label{
+font-size: 12px!important;
+font-weight: 400!important;
+padding-top: 3px!important;
+padding-left: 0!important;
+}
+.header input{
+    height: 28px!important;
+    width: 170px!important;
+    margin-left: -60px!important;
+}
+.header .voucher input{
+    width: 80px!important;
+    margin-left: -30px!important;
+}
+.header .check input{
+    height: 12px!important;
+    margin-left: -20px!important;
+}
+.header .check-label {
+    padding-top: 0px!important;
+}
+.table{
+    height: 300px!important;
+    overflow: auto;
+    width: 100%!important;
+    margin-left: -5px!important;
+}
+.table thead tr th{
+    background-color: #5b5b5b;
+    top: 0!important;
+
+   position: -webkit-sticky!important;
+   position: sticky!important; 
+}
+.butttons button{
+    font-size: 13px!important;
+    font-weight: 400!important;
+    padding-top: 6px!important;
+margin-bottom: 10px!important;
+width: 100px!important;    
+}
+.footer label{
+font-size: 12px!important;
+font-weight: 400!important;    
+}
+.footer input{
+    height: 28px!important;
+}
+.footer-new {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 9999999999;
+    background-color: white;
+    padding: 10px 0;
+    -webkit-box-shadow: 0px -2px 12px 0px rgba(48, 50, 50, 0.44);
+    -moz-box-shadow: 0px -2px 12px 0px rgba(48, 50, 50, 0.44);
+     box-shadow: 0px -2px 12px 0px rgba(48, 50, 50, 0.44);
+  }
+  .footer-new .footer-btn{
+      margin-left: 360px!important  ;
+  }
+  .footer-new .footer-btn button{
+      width: 70px!important;
+      margin-left: 10px!important;
+  }
+  .total-bal input{
+      display: inline-block;
+      width: 50%!important;
+
+  }

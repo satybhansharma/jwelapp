@@ -1,0 +1,47 @@
+.from label{
+    padding-top: 3px!important;
+}
+.from input{
+    height: 28px!important;
+    font-size: 13px!important;
+}
+.from select{
+    height: 28px!important;
+    font-size: 13px!important;
+}
+table {
+    margin-top: 10px!important;
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 1710px;
+  border: 1px solid #ddd;
+}
+.total-label input{
+    display: inline;
+    width: 10%!important;
+    cursor: pointer;
+    background-color: white;
+    font-weight: 550;
+    text-align: right;
+    height: 28px!important;
+}
+.footer-lab
+{
+   position: absolute;
+   bottom: -30px!important;
+   left: 0;
+   right: 0;
+   width: 100%;
+   z-index: 9999999999;
+   background-color: white;
+   padding: 25px 0;
+   -webkit-box-shadow: 0px -1px 1px 0px rgba(48, 50, 50, 0.44);
+   -moz-box-shadow: 0px -1px 1px 0px rgba(48, 50, 50, 0.44); 
+
+ }
+ .footer-btn button
+ {
+     /* background-color: gray;
+     color: white; */
+     width: 80px!important;
+ }

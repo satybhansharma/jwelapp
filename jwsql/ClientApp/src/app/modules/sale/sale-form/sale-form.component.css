@@ -1,0 +1,389 @@
+.search-button button
+{
+    width: 60px!important;
+    font-size: 11px!important;
+    font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif!important;
+    font-weight: 400!important;
+    margin-left: 10px!important;
+    margin-bottom: 0px!important;
+    padding: 0;
+    height: 22px!important;
+}
+.search-button button:hover{
+    border-color: blue;
+    background-color: blue;
+    color: white;
+    box-shadow: 2px 2px 0 0 #C0C0C0;
+}
+.search-button .account button
+{
+    font-size: 11px!important;
+    font-weight: 400!important;
+    width: 60px!important;
+    /* margin-left: 10px!important; */
+    font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif!important;
+    margin-bottom: 2px!important;
+    padding: 0;
+}
+.search-button .account button:hover{
+    border-color: blue;
+    background-color: blue;
+    color: white;
+    box-shadow: 2px 2px 0 0 #C0C0C0;
+}
+.search-button .account input
+{
+    width: 250px!important;
+    height: 22px!important;
+    font-size: 12px!important;
+    margin-left: 5px!important;
+    border-radius: 2px!important;
+    border: 1px solid #ced4da!important;
+}
+.sales-man button
+{
+    font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif!important;
+    font-weight: 400!important;
+    height: 22px!important;
+    width: 50px!important;
+    margin-bottom: 0px!important;
+    padding: 0;
+    font-size: 11px!important;
+}
+.sales-man button:hover{
+    border-color: blue;
+    background-color: blue;
+    color: white;
+    box-shadow: 2px 2px 0 0 #C0C0C0;
+}
+.sales-man label
+{
+    font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif!important;
+    font-weight: 400!important;
+    font-size: 11px!important;
+}
+.sales-man input
+{
+    font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif!important;
+    border-radius: 2px!important;
+    border: 1px solid #ced4da!important;
+    height: 22px!important;
+    margin-bottom: 5px!important; 
+    font-size: 12px!important;
+}
+.sales-man .goodsdlv input
+{
+    height: 13px!important;
+}
+
+    .dia-value label{
+        padding-left: 5px!important;
+        font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif;
+        font-weight: 400!important;
+        font-size: 11px!important;
+
+    }
+    .dia-value .form-group .control-label{
+        padding-left: 15px!important;
+        padding-top: 4px!important;
+    }
+    .dia-value .row .control-label{
+        padding-left: 15px!important;
+        padding-top: 4px!important;
+    }
+
+    .dia-value input{
+        border-radius: 2px!important;
+        height: 25px!important;
+        width: 55px;
+        border: 1px solid #ced4da;   
+    }
+    .dia-value .labour input{
+        margin-top: -13px!important;
+    }
+    .dia-value .labour label{
+        margin-top: -15px!important;
+    }
+    .total-sale input{
+width: 60px!important;
+border-radius: 0!important;
+    }
+    
+    .new-table tbody tr th{
+        padding:4px!important;
+      }
+     .new-table tr, th, td{
+        border-collapse: collapse!important;
+     }
+     .new-table tr, th, td{
+        padding: 5px;text-align: left;
+     }
+.adjust-button button{
+    width: 100px!important;
+    margin-left: 2px!important;
+    margin-top: 2px!important;
+    font-weight: bold;
+    font-size: 11px!important;
+}
+.receipt button{
+    width: 100px!important;
+    margin-top: 2px!important;
+    font-weight: bold;
+    font-size: 11px!important;
+}
+.receipt-button button{
+    width: 80px!important;
+    margin-top: 1px!important;
+    font-size: 11px!important;
+    font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif!important;
+    font-weight: 400!important;
+    margin-left: 10px!important;
+    margin-bottom: 0px!important;
+    padding: 0;
+    height: 22px!important;
+    margin-left: 130px!important;
+}
+.receipt-button button:hover{
+    border-color: blue;
+    background-color: blue;
+    color: white;
+    box-shadow: 2px 2px 0 0 #C0C0C0;
+}
+.footer-button button{
+    margin-left: 5px!important;
+    font-family: Proxima Nova,Source Sans Pro,Helvetica,Arial,sans-serif;
+    font-weight: 550;
+    width: 70px!important;
+    margin-bottom: 10px!important;
+    padding: 0px 9px;
+    height: 22px!important;
+    color: white;
+    font-size: 14px!important;
+}
+.receipt-form{
+    border: 1px solid black;
+    margin-left: 10px!important;
+}
+.receipt-form select{
+    height: 28px!important;
+}
+.receipt-form label{
+    font-size: 12px!important;
+    font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif!important;
+    font-weight: 400!important;
+    /* margin-bottom: 5px!important; */
+    padding-top: 3px!important;
+}
+.receipt-form input{
+    height: 28px!important;
+    margin-bottom: 5px!important;
+    font-size: 12px!important;
+}
+.receipt-form .footer-btn .row button{
+    margin-left: 10px!important;
+    margin-bottom: 5px!important;
+    margin-top: 5px!important;
+}
+.receipt-form .footer-btn .row .save1{
+color: white;
+background-color: #5cc6d0;
+}
+.receipt-form .footer-btn .row .cancel1{
+color: white;
+background-color: #f2a657;
+}
+.purchase-form{
+    border: 1px solid black;
+    margin-left: 10px!important;
+}
+.purchase-form label{
+    font-size: 12px!important;
+    font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif!important;
+    font-weight: 400!important;
+    /* margin-bottom: 5px!important; */
+    padding-top: 3px!important;
+}
+.purchase-form input{
+    height: 28px!important;
+    margin-bottom: 5px!important;
+    font-size: 12px!important;
+}
+.purchase-form .naam input{
+height: 12px!important;
+}
+.purchase-form .naam label{
+    margin-left: 2px!important;
+    }
+    .purchase-form .footer-btn .row button{
+        margin-left: 10px!important;
+        margin-bottom: 5px!important;
+        margin-top: 5px!important;
+    }
+    .purchase-form .footer-btn .row .save1{
+    color: white;
+    background-color: #5cc6d0;
+    }
+    .purchase-form .footer-btn .row .cancel1{
+    color: white;
+    background-color: #f2a657;
+    }
+.main-table table{
+    height: 220px;
+    overflow: auto;
+    display: block;
+}
+.main-table thead tr th{
+    width: 6.25%!important;
+}
+.main-table tbody tr td{
+    width: 6.25%!important;
+    text-align: center!important;
+}
+.last-bal input{
+    padding-left: 25px!important;
+    border: 1px solid #ced4da!important;
+    width: 33.33%!important;
+    padding:0px 0px 0px 75px;
+    border-radius: 0%;
+    height: 28px!important;
+    
+}
+.bill-bal-button button{
+width: 80px!important;
+font-size: 11px;
+font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif!important;
+font-weight: 400;
+float: right;
+}
+.bill-bal-input input{
+   display: inline;
+   width: 33.33%!important;
+   margin-bottom: 5px!important;
+   font-size: 12px!important;
+}
+.main-table table thead tr th{
+    position: sticky!important;
+    font-size: 11px!important;
+    font-weight: 400!important;
+    font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif!important;
+}
+.main-table table tbody tr td{
+    font-size: 11px!important;
+    font-weight: 400!important;
+    font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif!important;
+}
+@media screen and (min-width: 1400px){
+
+.main-table table{
+    height: 320px!important;
+    overflow: auto;
+    display: block;
+}
+}
+
+
+.tsale{
+    font-size: 11px;
+    font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif!important;
+    font-weight: 350;
+    padding-top: 0px!important;
+}
+.tsale-input input{
+    margin-top: -1px!important;
+    height: 22px!important;
+    display: inline;
+    width: 20%!important;
+    font-size: 12px!important;
+}
+
+
+.footer-sale {
+ position: absolute;
+     bottom: -20px!important;
+     left: 0;
+     right: 0;
+     width: 100%;
+     z-index: 9999999999;
+     background-color: white;
+     padding: 20px 0;
+     margin-bottom: 10px!important;
+     -webkit-box-shadow: 0px -1px 1px 0px rgba(48, 50, 50, 0.44);
+     -moz-box-shadow: 0px -1px 1px 0px rgba(48, 50, 50, 0.44); 
+  }
+
+
+
+
+  
+  .footer-lab
+  {
+     position: absolute;
+     bottom: -20px!important;
+     left: 0;
+     right: 0;
+     width: 100%;
+     z-index: 9999999999;
+     background-color: white;
+     padding: 25px 0;
+     -webkit-box-shadow: 0px -1px 1px 0px rgba(48, 50, 50, 0.44);
+     -moz-box-shadow: 0px -1px 1px 0px rgba(48, 50, 50, 0.44); 
+ 
+   }
+
+
+   
+  .footer-lab button.save1 {
+    
+    padding: 3px 9px;
+    text-align: left;
+    margin-top: -20px!important;
+    background-color: #5CC6D0;
+    border: 1px solid #5CC6D0;
+    color: white;
+    font-family: Proxima Nova,Source Sans Pro,Helvetica,Arial,sans-serif;
+    font-weight: 530;
+    font-size: 16px !important;
+    outline: none !important;
+  }
+
+  .footer-lab button.cancel1 {
+      padding: 5px 9px;
+      margin-left: 20px;
+      margin-top: -20px!important;
+      background-color: #f2a657;
+      border: 1px solid #f2a657;
+      color: white;
+      font-weight: 530;
+      font-size: 16px!important;
+      font-family: Proxima Nova,Source Sans Pro,Helvetica,Arial,sans-serif;
+      text-decoration: none;
+      cursor: pointer !important;
+      outline: none !important;
+  }
+  .add-table{
+    height: 107px!important;
+    overflow-y: scroll;
+  }
+  .add-table::-webkit-scrollbar
+   {
+        width: 0 !important;
+   }
+ .add-table table {
+    border: 1px solid black;
+    border-collapse: collapse;
+    height:20px;
+  }
+.add-table  th, td {
+    border:1px dotted black;
+    padding: 0px;
+    text-align: left;
+  }
+  .add-table th{
+      width: 100px!important;
+      font-size: 11px!important;
+      font-weight: 400;
+      padding-left: 5px!important;
+    }
+    .add-table tr,td{
+        text-align: right;
+    }

@@ -1,0 +1,13 @@
+<mat-nav-list class="fontStyle" style="width: 50px!important; background-color: #3a3d46;height: 100%!important;border-color: #eee!important;">
+  <a (click)="isviewside()" style="color:white; letter-spacing: 1px;margin-bottom: 10px;height: 30px!important;" mat-list-item routerLinkActive="list-item-active" routerLink="/" color="red"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp; </a>
+  <a style="color:white; letter-spacing: 1px;height: 30px!important;" mat-list-item routerLinkActive="list-item-active" routerLink="/inventory" color="red"><i class="fa fa-cubes" aria-hidden="true"></i>&nbsp; </a>
+  <a style="color:white; letter-spacing: 1px;margin-bottom: 15px;height: 30px!important;" mat-list-item routerLinkActive="list-item-active" routerLink="/accounting" color="red"><i class="fa fa-calculator" aria-hidden="true"></i>&nbsp; </a>
+  <a style="color:white; letter-spacing: 1px;height: 30px!important;margin-bottom: 15px;" mat-list-item routerLinkActive="list-item-active" routerLink="/sale-form" color="red"><i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp; </a>
+  <a style="color:white; letter-spacing: 1px;height: 30px!important;margin-bottom: 15px;"   mat-list-item routerLinkActive="list-item-active" routerLink="/voucher" color="red" ><i class="fa fa-bookmark" aria-hidden="true"></i>&nbsp;</a>
+  <a style="color:white; letter-spacing: 1px;height: 30px!important;"   mat-list-item routerLinkActive="list-item-active" routerLink="/ledger-button" color="red" ><i class="fa fa-list-ul" aria-hidden="true"></i>&nbsp;</a>
+<section class="footer-fix" (click)="isviewside()">
+  <button mat-icon-button>
+    <mat-icon id="right"  style="font-weight: 400;font-size: 30px;color: white!important;">keyboard_arrow_right</mat-icon>
+  </button>
+</section>
+</mat-nav-list>

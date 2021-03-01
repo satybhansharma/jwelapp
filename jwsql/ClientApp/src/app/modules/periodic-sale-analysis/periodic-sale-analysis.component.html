@@ -1,0 +1,52 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <h2 style="text-align: center;"><u>Periodic Sale Analyis</u></h2>
+            </div>
+        </div>
+        <div class="row">
+            <label for="" class="control-label col-md-1" style="padding-top: 2px!important;">Filter</label>
+            <div class="col-md-3">
+                <select name="" id="" class="form-control" style="height: 28px!important;margin-left: -20px!important;">
+                    <option value=""></option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-12" style="margin-top: 30px!important;">
+        <div class="row">
+            <div class="ag-grid">
+                <ag-grid-angular style="height: 450px;width: 100%;margin-top: 60px!important;"
+                style="height: 403px;width: 100%;margin-top: 5px!important;"
+                class="ag-theme-balham"
+                [gridOptions]="gridOptions"
+                (gridSizeChanged)="onGridSizeChanged($event)"
+                (gridReady)="onGridReady($event)"
+                [rowHeight]="30"
+                headerHeight="40"
+               [rowData]="precords"
+                [columnDefs]="columnDefs">            
+                </ag-grid-angular>
+            </div>
+        </div>
+    </div>
+        <section class="footer-lab">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="footer-select">
+                        <div class="col-md-8 text-right footer-btn"
+                            style="margin-top: -10px;font-weight: bold;float: left;">
+                            <button mat-raised-button class="col-md-2">Close</button>
+                            <button mat-raised-button class="col-md-2" style="margin-left: 10px;">Refresh</button>
+                            <button mat-raised-button class="col-md-2" style="margin-left: 10px;">Export</button>
+                            <button mat-raised-button class="col-md-2" style="margin-left: 10px;">Print</button>
+                        </div>
+                        <div class="col-md-4"></div>
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+</div>

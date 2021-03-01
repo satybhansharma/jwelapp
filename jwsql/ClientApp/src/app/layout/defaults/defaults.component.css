@@ -1,0 +1,25 @@
+:host{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 0px;
+    background-color: red !important;
+}
+mat-drawer{
+    width: fit-content;
+    margin-left:0px !important;
+    display: flex;
+}
+mat-drawer-container{
+    height: 100vh;
+}
+mat-drawer-content{
+    padding: 10px;
+}
+.mat-drawer-inner-container
+{
+    background-color: red !important;
+}
+.mat-drawer{
+    overflow-y: hidden!important;
+}

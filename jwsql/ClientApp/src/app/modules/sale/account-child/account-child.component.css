@@ -1,0 +1,19 @@
+virtual-scroll {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+my-custom-component {
+  display: block;
+  width: 100%;
+  height: 30px;
+}
+.ag-icon-filter {
+  display: none;
+}
+.ag-theme-balham{
+  --ag-header-background-color: #5b5b5b;
+  --ag-header-foreground-color:black;  
+  
+}

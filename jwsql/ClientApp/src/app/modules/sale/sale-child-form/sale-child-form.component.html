@@ -1,0 +1,405 @@
+  <form (ngSubmit)="submitForm()" [formGroup]="form" (keydown.enter)="$event.preventDefault()"  >
+    <div class="col-md-12">
+      <!-- <mat-card-title>Add New Item</mat-card-title> -->
+<h1 style="margin-left: -30px!important;margin-top: -20px!important;">Add New Item</h1>
+      <div class="add-new-form">
+        <div class="row">
+          <label for="" class="control-label col-md-1" style="padding-left: 5px!important;padding-right: 0px!important;">Type</label>
+          <div class="col-md-5 type-ng">
+
+
+            
+
+            <ng-autocomplete [data]="typeList"
+                             initialValue="Sale"
+                             [searchKeyword]="keyword"
+                             (selected)="selectType($event)"
+                             [itemTemplate]="itemTemplate"
+                             [debounceTime]="600"
+                             [minQueryLength]="2"
+                             (inputFocused)="onFocused($event)"
+                             formControlName="transactionType">
+
+            </ng-autocomplete>
+
+            <ng-template #itemTemplate let-item>
+              <a [innerHTML]="item.name"></a>
+            </ng-template>
+
+            <ng-template></ng-template>
+
+
+          </div>
+
+
+        </div>
+        <!--transaction_Type-->
+        <div [ngSwitch]="true">
+          <!-- s sr p form start -->
+          <div class="s-sr-p" *ngSwitchCase="transaction_Type==='S'||transaction_Type==='P'||transaction_Type==='SR'">
+
+            <div class="row">
+              <label for="" class="control-label col-md-1" style="padding-left: 5px!important;padding-right: 0px!important;">Item</label>
+              <div class="col-md-8 item-ng">
+                <ng-autocomplete [data]="itemList"
+                                 [searchKeyword]="keyword"
+                                 (selected)='selectItem($event)'
+                                 [itemTemplate]="itemTemplate2"
+                                 [notFoundTemplate]="notFoundTemplate2"
+                                 style="background-color:cadetblue;"
+                                 formControlName="sItem">
+                </ng-autocomplete>
+                <ng-template #itemTemplate2 let-item>
+                  <a [innerHTML]="item.name"></a>
+                </ng-template>
+                <ng-template #notFoundTemplate2 let-notFound>
+                  <div [innerHTML]=""><a class="AddnewInList">+ Add New Unit</a></div>
+                </ng-template>
+                <ng-template></ng-template>
+
+              </div>
+              <label for="" class="control-label col-md-1" style="padding-left: 5px!important;padding-right: 0px!important;">Stamp</label>
+              <div class="col-md-2 stamp-ng">
+                <ng-autocomplete [data]="stampList"
+                                 [searchKeyword]="keyword"
+                                 (selected)='selectStamp($event)'
+                                 [itemTemplate]="itemTemplate3"
+                                 [notFoundTemplate]="notFoundTemplate3"
+                                 style="background-color:cadetblue;"
+                                 formControlName="sStamp">
+                </ng-autocomplete>
+                <ng-template #itemTemplate3 let-item>
+                  <a [innerHTML]="item.name"></a>
+                </ng-template>
+                <ng-template #notFoundTemplate3 let-notFound>
+                  <div [innerHTML]=""><a class="AddnewInList">+ Add New Unit</a></div>
+                </ng-template>
+                <ng-template></ng-template>
+              </div>
+            </div>
+            <div class="row rec-pay">
+              <label for="" class="control-label col-md-1" style="padding-left: 5px!important;padding-right: 0px!important;">Remark</label>
+              <div class="col-md-11">
+                <input (click)="$event.target.select()" type="text" class="form-control" formControlName="sRemark">
+              </div>
+
+            </div>
+            <div class="row rec-pay">
+              <label for=""  class="control-label col-md-1" style="padding-left: 5px!important;padding-right: 0px!important;">Pc</label>
+              <div class="col-md-2">
+
+                <input  (click)="$event.target.select()"  type="number" class="form-control" style="text-align: right;" placeholder="0" formControlName="sPc">
+                
+              </div>
+              <label for="" class="control-label col-md-1" style="padding-left: 5px!important;padding-right: 0px!important;">Gross Wt</label>
+              <div class="col-md-2">
+                <input (click)="$event.target.select()" type="number" class="form-control" style="text-align: right;" placeholder="0" formControlName="sGwt">
+              </div>
+              <label for="" class="control-label col-md-1" style="padding-left: 5px!important;padding-right: 0px!important;">Less Wt</label>
+              <div class="col-md-2">
+                <input (click)="$event.target.select()" type="number" class="form-control"  style="text-align: right;" placeholder="0" formControlName="sLwt">
+              </div>
+              <label for="" class="control-label col-md-1" style="padding-left: 5px!important;padding-right: 0px!important;">Net Wt</label>
+              <div class="col-md-2">
+                <input (click)="$event.target.select()" type="number" class="form-control" readonly formControlName="sNwt"  style="text-align: right;">
+              </div>
+            </div>
+            <div class="row">
+
+            </div>
+            <div class="row rec-pay">
+              <label for="" class="control-label col-md-1" style="padding-left: 5px!important;padding-right: 0px!important;">Tunch</label>
+              <div class="col-md-2">
+                <input (click)="$event.target.select()" type="number" class="form-control"  style="text-align: right;" placeholder="0" formControlName="sTunch">
+              </div>
+              <label for="" class="control-label col-md-1" style="padding-left: 5px!important;padding-right: 0px!important;">Wastage</label>
+              <div class="col-md-2">
+                <input (click)="$event.target.select()" type="number" class="form-control"  style="text-align: right;" placeholder="0" formControlName="sWstg">
+              </div>
+              <label for="" class="control-label col-md-1" style="padding-left: 5px!important;padding-right: 0px!important;">Lbr</label>
+              <div class="col-md-2">
+                <input (click)="$event.target.select()" type="number"  class="form-control" formControlName="sLbr" style="text-align: right;">
+              </div>
+              <label for="" class="control-label col-md-1" style="padding-left: 5px!important;padding-right: 0px!important;">On</label>
+              <div class="col-md-2">
+                <select name="" id="" class="form-control"  formControlName="sOn">
+                  <option value="0">Gr.Wt</option>
+                  <option value="1">N.Wt</option>
+                  <option value="2">Pc</option>
+                </select>
+              </div>
+              
+
+            </div>
+<div class="row rec-pay">
+  <label for="" class="control-label col-md-1" style="padding-left: 4px!important;padding-right: 0px!important;">Metal Rate</label>
+              <div class="col-md-2">
+                <input (click)="$event.target.select()" type="number" class="form-control"  placeholder="0" formControlName="sMrate" style="text-align: right;">
+              </div>
+</div>
+            <div class="row rec-pay">
+              <label for="" class="control-label col-md-1" style="padding-left: 5px!important;padding-right: 0px!important;">Fine</label>
+              <div class="col-md-3">
+                <input (click)="$event.target.select()" type="number" readonly class="form-control" formControlName="sFine" style="text-align: right;">
+              </div>
+              <label for="" class="control-label col-md-1" style="padding-left: 5px!important;padding-right: 0px!important;">Amount</label>
+              <div class="col-md-3">
+                <input (click)="$event.target.select()" type="number"  class="form-control" formControlName="sAmount" style="text-align: right;">
+              </div>
+            </div>
+          </div>
+          <!-- s sr p form end -->
+          <!-- mr mp start -->
+          <div class="s-sr-p" *ngSwitchCase="transaction_Type==='MR'||transaction_Type==='MP'">
+           
+            <div class="row rec-pay">
+              <label for="" class="control-label col-md-1" style="padding-left: 5px!important;padding-right: 0px!important;">Item</label>
+              <div class="col-md-5 item-ng">
+
+                <ng-autocomplete [data]="itemList"
+                                 [searchKeyword]="keyword"
+                                 (selected)='selectItem($event)'
+                                 [itemTemplate]="itemTemplate2"
+                                 [notFoundTemplate]="notFoundTemplate2"
+                                 style="background-color:cadetblue;"
+                                 formControlName="mrItem">
+                </ng-autocomplete>
+                <ng-template #itemTemplate2 let-item>
+                  <a [innerHTML]="item.name"></a>
+                </ng-template>
+                <ng-template #notFoundTemplate2 let-notFound>
+                  <div [innerHTML]=""><a class="AddnewInList">+ Add New Unit</a></div>
+                </ng-template>
+                <ng-template></ng-template>
+
+              </div>
+              <label for="" class="control-label col-md-1" style="padding-left: 5px!important;padding-right: 0px!important;">Remark</label>
+              <div class="col-md-5">
+                <input type="text" class="form-control" formControlName="mrRemark">
+              </div>
+            </div>
+            <div class="row rec-pay">
+              <label for="" class="control-label col-md-1" style="padding-left: 5px!important;padding-right: 0px!important;">Gross Wt</label>
+              <div class="col-md-3" >
+                <input type="number" class="form-control" style="text-align: right;" placeholder="0" formControlName="mrGwt">
+              </div>
+              <label for="" class="control-label col-md-1" style="padding-left: 5px!important;padding-right: 0px!important;">Tunch</label>
+              <div class="col-md-3">
+                <input type="number" class="form-control" style="text-align: right;" placeholder="0" formControlName="mrTunch">
+              </div>
+              <label for="" class="control-label col-md-1" style="padding-left: 5px!important;padding-right: 0px!important;">Mrate</label>
+              <div class="col-md-3">
+                <input type="number" class="form-control" style="text-align: right;" placeholder="0" formControlName="mrMrate">
+              </div>
+            </div>
+            <div class="row rec-pay">
+              <label for="" class="control-label col-md-1" style="padding-left: 5px!important;padding-right: 0px!important;">Fine</label>
+              <div class="col-md-3">
+                <input type="number" class="form-control" formControlName="mrFine" style="text-align: right;">
+              </div>
+              <label for="" class="control-label col-md-1" style="padding-left: 5px!important;padding-right: 0px!important;">Amount</label>
+              <div class="col-md-3">
+                <input type="number" class="form-control" formControlName="mrAmount" style="text-align: right;">
+              </div>
+            </div>
+          </div>
+          <!-- mr mp end-->
+          <!-- rec pay start -->
+          <div class="s-sr-p" *ngSwitchCase="transaction_Type==='REC'||transaction_Type==='PAY'">
+
+            <div class="row">
+              <div class="col-md-1"></div>
+              <div class="col-md-2">
+                <input (click)="$event.target.select()" type="radio" value="Cash" (click)="GetPaymentModeValue($event)" name="amount_Mode">
+                <label for="" class="control-label" style="margin-left: 3px!important;">Cash</label>
+              </div>
+              <div class="col-md-2">
+                <input (click)="$event.target.select()" type="radio" value="Card" (click)="GetPaymentModeValue($event)" name="amount_Mode">
+                <label for="" class="control-label" style="margin-left: 3px!important;">Card</label>
+              </div>
+              <div class="col-md-2">
+                <input (click)="$event.target.select()" type="radio" value="Cheque" (click)="GetPaymentModeValue($event)" name="amount_Mode">
+                <label for="" class="control-label" style="margin-left: 3px!important;">Cheque</label>
+              </div>
+              <div class="col-md-2">
+                <input (click)="$event.target.select()" type="radio" value="Other" (click)="GetPaymentModeValue($event)" name="amount_Mode">
+                <label for="" class="control-label" style="margin-left: 3px!important;">Other</label>
+              </div>
+            </div>
+            <div class="row rec-pay">
+              <label for="" class="control-label col-md-1" style="padding-left: 5px!important;padding-right: 0px!important;">A/C Name</label>
+              <div class="col-md-5 item-ng">
+                <ng-autocomplete [data]="accMastList"
+                                 [searchKeyword]="keyword"
+                                 (selected)='selectItem($event)'
+                                 [itemTemplate]="itemTemplate2"
+                                 [notFoundTemplate]="notFoundTemplate2"
+                                 style="background-color:cadetblue;"
+                                 formControlName="recAccName">
+                </ng-autocomplete>
+                <ng-template #itemTemplate2 let-item>
+                  <a [innerHTML]="item.name"></a>
+                </ng-template>
+                <ng-template #notFoundTemplate2 let-notFound>
+                  <div [innerHTML]=""><a class="AddnewInList">+ Add New Account</a></div>
+                </ng-template>
+                <ng-template></ng-template>
+               
+              </div>
+              <label for="" class="control-label col-md-1" style="padding-left: 5px!important;padding-right: 0px!important;">Remark</label>
+              <div class="col-md-5">
+                <input (click)="$event.target.select()" type="text" class="form-control" formControlName="recRemark">
+              </div>
+            </div>
+            <div class="row rec-pay">
+              <label for="" class="control-label col-md-1" style="padding-left: 0px!important;padding-right: 0px!important;">Amount</label>
+              <div class="col-md-3">
+                <input (click)="$event.target.select()" style="text-align: right;" type="number" class="form-control" formControlName="recAmount">
+              </div>
+            </div>
+          </div>
+          <!-- rec pay end -->
+          <!-- gpb gsb spb ssb start -->
+          <div class="rec-pay" *ngSwitchCase="transaction_Type==='GPB'||transaction_Type==='GSB'||transaction_Type==='SPB'||transaction_Type==='SSB'">
+
+            <div class="row">
+              <label for="" class="control-label col-md-1" style="padding-left: 0px!important;padding-right: 0px!important;">Remark</label>
+              <div class="col-md-10">
+                <input (click)="$event.target.select()" type="text" class="form-control" formControlName="gpbRemark">
+              </div>
+            </div>
+            <div class="row">
+              <label for="" class="control-label col-md-1" style="padding-left: 0px!important;padding-right: 0px!important;">Weight</label>
+              <div class="col-md-3">
+                <input  (click)="$event.target.select()" style="text-align: right;" type="number" class="form-control" formControlName="gbpWeight">
+              </div>
+              <label for="" class="control-label col-md-1" style="padding-left: 0px!important;padding-right: 0px!important;">Tunch</label>
+              <div class="col-md-3">
+                <input (click)="$event.target.select()" style="text-align: right;" type="number" class="form-control" formControlName="gbpTunch">
+              </div>
+            </div>
+            <div class="row">
+              <label for="" class="control-label col-md-1" style="padding-left: 0px!important;padding-right: 0px!important;">Rate</label>
+              <div class="col-md-3">
+                <input (click)="$event.target.select()" style="text-align: right;" type="number" class="form-control" formControlName="gbpRate">
+              </div>
+              <label for="" class="control-label col-md-1" style="padding-left: 0px!important;padding-right: 0px!important;">R.Tunch</label>
+              <div class="col-md-3">
+                <input (click)="$event.target.select()" style="text-align: right;" type="number" class="form-control" formControlName="gpbRTunch">
+              </div>
+            </div>
+            <div class="row">
+              <label for="" class="control-label col-md-1" style="padding-left: 0px!important;padding-right: 0px!important;">Fine</label>
+              <div class="col-md-3">
+                <input (click)="$event.target.select()" style="text-align: right;" type="number" class="form-control" formControlName="gpbFine">
+              </div>
+              <label for="" class="control-label col-md-1" style="padding-left: 0px!important;padding-right: 0px!important;">Amount</label>
+              <div class="col-md-3">
+                <input (click)="$event.target.select()" style="text-align: right;" type="number" class="form-control" formControlName="gpbAmount">
+              </div>
+            </div>
+            <div class="row">
+
+            </div>
+          </div>
+          <!-- gpb gsb spb ssb end -->
+          <!-- trn start -->
+          <div class="s-sr-p" *ngSwitchCase="transaction_Type==='TRN'">
+
+            <div class="row">
+              <div class="col-md-2"></div>
+              <div class="col-md-4" >
+                <input type="radio" (click)="TransactionType($event)" value="Naam" name="trnType">
+                <label for=""  class="control-label" style="margin-left: 3px!important;">Naam</label>
+              </div>
+              <div class="col-md-4">
+                <input type="radio" (click)="TransactionType($event)" value="Jama" name="trnType">
+                <label for=""   class="control-label" style="margin-left: 3px!important;">Jama</label>
+              </div>
+            </div>
+            <div class="row">
+              <label for="" class="control-label col-md-1" style="padding-left: 5px!important;padding-right: 0px!important;">A/C Name</label>
+              <div class="col-md-5 item-ng">
+                <ng-autocomplete [data]="accMastList"
+                                 [searchKeyword]="keyword"
+                                 (selected)='selectAccountInTransaction($event)'
+                                 [itemTemplate]="itemTemplate2"
+                                 [notFoundTemplate]="notFoundTemplate2"
+                                 style="background-color:cadetblue;"
+                                 formControlName="trnAccName">
+                </ng-autocomplete>
+                <ng-template #itemTemplate2 let-item>
+                  <a [innerHTML]="item.name"></a>
+                </ng-template>
+                <ng-template #notFoundTemplate2 let-notFound>
+                  <div [innerHTML]=""><a class="AddnewInList">+ Add New Unit</a></div>
+                </ng-template>
+                <ng-template></ng-template>
+              </div>
+              <label for="" class="control-label col-md-1" style="padding-left: 5px!important;padding-right: 0px!important;">Remark</label>
+              <div class="col-md-5">
+                <input type="text" class="form-control" formControlName="trnRemark">
+              </div>
+            </div>
+            <div class="row rec-pay">
+              <label for="" class="control-label col-md-1" style="padding-left: 5px!important;padding-right: 0px!important;">Gold</label>
+              <div class="col-md-5">
+                <input style="text-align: right;" type="number" class="form-control" formControlName="trnGold">
+              </div>
+              <label for="" class="control-label col-md-1" style="padding-left: 5px!important;padding-right: 0px!important;">Silver</label>
+              <div class="col-md-5">
+                <input style="text-align: right;" type="number" class="form-control" formControlName="trnSilver">
+              </div>
+            </div>
+            <div class="row rec-pay">
+              <label for="" class="control-label col-md-1" style="padding-left: 5px!important;padding-right: 0px!important;">Amount</label>
+              <div class="col-md-3">
+                <input style="text-align: right;" type="number" class="form-control" formControlName="trnAmount">
+              </div>
+            </div>
+          </div>
+          <!-- trn end -->
+        </div>
+      </div>
+    </div>
+    <div class="row">
+       <section>
+      <div class="col-sm-3 col-md-3 col-lg-3">
+        <button mat-raised-button class="save">Save</button>
+        <a (click)="closeDialog();$event.preventDefault()" mat-raised-button class="cancle">Cancel</a>
+      </div>
+    </section>
+    </div>
+  </form>
+  
+
+
+
+<!--<mat-card>
+<mat-card-header>
+  <div mat-card-avatar class="example-header-image"></div>
+  <mat-card-title>Shiba Inu</mat-card-title>
+  <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+</mat-card-header>
+<img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+<mat-card-content>
+  <p>
+    The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.
+    A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally
+    bred for hunting.
+  </p>
+</mat-card-content>
+<mat-card-actions>
+  <button mat-button>LIKE</button>
+  <button mat-button>SHARE</button>
+</mat-card-actions>
+</mat-card>-->
+
+
+
+
+
+
+
+<!-- <button (click)="closeDialog()">Close</button> -->
+

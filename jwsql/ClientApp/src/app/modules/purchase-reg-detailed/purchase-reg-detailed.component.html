@@ -1,0 +1,341 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <div class="row">
+                    <label for="" class="control-label col-md-1" style="padding-top: 1px!important;">From</label>
+                    <div class="col-md-2">
+                        <input type="date" formControlName="fdate" (change)="onchange1($event.target.value)" class="form-control"
+                            style="height: 24px!important;margin-left: -60px!important;width: 140px;font-size: 12px;">
+                    </div>
+                    <label for="" class="control-label col-md-1" 
+                        style="margin-left: -120px!important;padding-top: 1px!important;">To</label>
+                    <div class="col-md-2">
+                        <input type="date" formControlName="tdate" (change)="onchange($event.target.value)" class="form-control"
+                            style="height: 24px!important;margin-left: -80px!important;width: 140px;font-size: 12px;">
+                    </div>
+                    <div class="col-md-1" style="margin-left: -100px;">
+                        <div class="row">
+                            <button type="button" class="col-md-4" style="width: 24px!important;padding: 0;"><i
+                                    class="fa fa-arrow-left" aria-hidden="true"></i></button>
+                            <button type="button" class="col-md-4"
+                                style="width: 24px!important;margin-left: 6px!important;padding: 0;"><i
+                                    class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <h3><b><u>Purchase Reg Detailed</u></b></h3>
+                    </div>
+
+                    <!-- <div class="col-md-1">
+                        <mat-icon data-toggle="tooltip" title="Filters"
+                            style="cursor: pointer; font-size: 17px!important;float: right;margin-right: -210px!important;"
+                            (click)="fltshow()">
+                            settings</mat-icon>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+        <!--  *ngIf="isfltshow" -->
+        <div>
+            <div class=" col-md-8">
+                <div class="row" style="margin-top: -32px!important;">
+                    <div class="all-types">
+                        <select name="" id="sel-options" class="form-control">
+                            <option value="">All Types</option>
+                        </select>
+                    </div>
+                    <div class="all-types">
+                        <select name="" id="sel-options" class="form-control">
+                            <option value="">All A/C Group</option>
+                        </select>
+                    </div>
+                    <div class="all-types">
+                        <select name="" id="sel-options" class="form-control">
+                            <option value="">All Item Group</option>
+                        </select>
+                    </div>
+                    <div class="all-types">
+                        <select name="" id="sel-options" class="form-control">
+                            <option value="">All Gcode</option>
+                        </select>
+                    </div>
+                    <div class="all-types">
+                        <select name="" id="sel-options" class="form-control">
+                            <option value="">All Stamp</option>
+                        </select>
+                    </div>
+                    <div class="all-types">
+                        <select name="" id="sel-options" class="form-control">
+                            <option value="">All Branches</option>
+                        </select>
+                    </div>
+                    <div class="all-types">
+                        <select name="" id="sel-options" class="form-control">
+                            <option value="">All Login</option>
+                        </select>
+                    </div>
+
+                </div>
+
+            </div>
+            <!--  *ngIf="isfltshow" -->
+            <div class=" col-md-8" style="margin-top: -12px!important;">
+                <div class="row">
+                    <div class="all-ac">
+                        <select name="" id="sel-options" class="form-control">
+                            <option value="">All A/C's</option>
+                        </select>
+                    </div>
+                    <div class="all-ac">
+                        <select name="" id="sel-options" class="form-control">
+                            <option value="">All Items</option>
+                        </select>
+                    </div>
+                    <div class="all-ac">
+                        <select name="" id="sel-options" class="form-control">
+                            <option value="">All Item Type</option>
+                        </select>
+                    </div>
+                    <div class="all-ac">
+                        <select name="" id="sel-options" class="form-control">
+                            <option value="">All Category</option>
+                        </select>
+                    </div>
+                    <div class="all-ac">
+                        <select name="" id="sel-options" class="form-control">
+                            <option value="">All Series</option>
+                        </select>
+                    </div>
+                    <div class="all-ac">
+                        <select name="" id="sel-options" class="form-control">
+                            <option value="">All Quality</option>
+                        </select>
+                    </div>
+                    <div class="all-ac">
+                        <select name="" id="sel-options" class="form-control">
+                            <option value="">All Voucher</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="ag-grid">
+                    <ag-grid-angular style="height: 415px;width: 100%;margin-top: 2px!important;"
+                        class="ag-theme-balham" [gridOptions]="gridOptions" [rowData]="records" [rowHeight]="25"
+                        headerHeight="25" [columnDefs]="columnDefs"></ag-grid-angular>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="gr-wt-gold">
+            <div class="col-md-2">
+                <div>
+                    <div class="row">
+                        <label for="" class="control-label col-md-6" style="font-size: 11px;">Gr.Wt Gold</label>
+                        <div class="col-md-6">
+                            <input type="number" readonly value="{{p_goldgwt}}" name="gwt">
+                        </div>
+                        <label for="" class="control-label col-md-6" style="font-size: 11px;">Nt.Wt Gold</label>
+                        <div class="col-md-6">
+                            <input type="number" readonly value="{{p_goldwt}}" name="wt">
+                        </div>
+                        <label for="" class="control-label col-md-6" style="font-size: 11px;">Dia Wt</label>
+                        <div class="col-md-6">
+                            <input type="number" readonly value="{{p_diawt}}" name="diawt">
+                        </div>
+                        <label for="" class="control-label col-md-6" style="font-size: 11px;">Stn Wt</label>
+                        <div class="col-md-6">
+                            <input type="number" readonly value="{{p_stnwt}}" name="stnwt">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2" style="margin-left: -55px!important;">
+                <div>
+                    <div class="row">
+                        <label for="" class="control-label col-md-6" style="font-size: 11px;">Gr.Wt Sil.</label>
+                        <div class="col-md-6">
+                            <input type="number" readonly value="{{p_silgwt}}" name="gwt">
+                        </div>
+                        <label for="" class="control-label col-md-6" style="font-size: 11px;">Nt.Wt Sil.</label>
+                        <div class="col-md-6">
+                            <input type="number" readonly value="{{p_silwt}}" name="wt">
+                        </div>
+                        <label for="" class="control-label col-md-6" style="font-size: 11px;">Dia Pc</label>
+                        <div class="col-md-6">
+                            <input type="number" readonly value="{{p_diapc}}" name="pc">
+                        </div>
+                        <label for="" class="control-label col-md-6" style="font-size: 11px;">Stn Pc</label>
+                        <div class="col-md-6">
+                            <input type="number" readonly value="{{p_stnpc}}" name="pc">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2" style="margin-left: -55px!important;">
+                <div>
+                    <div class="row">
+                        <label for="" class="control-label col-md-6" style="font-size: 11px;">Metal Amt.</label>
+                        <div class="col-md-6">
+                            <input type="number" readonly value="{{p_mamt}}" name="mamt">
+                        </div>
+                        <label for="" class="control-label col-md-6" style="font-size: 11px;">Labour Amt</label>
+                        <div class="col-md-6">
+                            <input type="number" readonly value="{{p_lamt}}" name="lbr">
+                        </div>
+                        <label for="" class="control-label col-md-6" style="font-size: 11px;">Dia Amt</label>
+                        <div class="col-md-6">
+                            <input type="number" readonly value="{{p_damt}}" name="damt">
+                        </div>
+                        <label for="" class="control-label col-md-6" style="font-size: 11px;">Stn Amt</label>
+                        <div class="col-md-6">
+                            <input type="number" readonly value="{{p_samt}}" name="samt">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2" style="margin-left: -55px!important;">
+                <div>
+                    <div class="row">
+                        <label for="" class="control-label col-md-6" style="font-size: 11px;">Pc</label>
+                        <div class="col-md-6">
+                            <input type="number" readonly value="{{p_pc}}" name="pc">
+                        </div>
+                        <label for="" class="control-label col-md-6" style="font-size: 11px;">Total Amt</label>
+                        <div class="col-md-6">
+                            <input type="number" readonly value="{{p_tvalue}}" name="total">
+                        </div>
+                        <label for="" class="control-label col-md-6" style="font-size: 11px;">Gold Fine</label>
+                        <div class="col-md-6">
+                            <input type="number" readonly value="{{p_fine1}}" name="fine1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2" style="margin-left: -55px!important;">
+                <div>
+                    <div class="row">
+                        <label for="" class="control-label col-md-6" style="font-size: 11px;">Tags</label>
+                        <div class="col-md-6">
+                            <input type="number" readonly value="{{p_tgpc}}" name="samount">
+                        </div>
+                        <label for="" class="control-label col-md-6" style="font-size: 11px;">Other Wt.</label>
+                        <div class="col-md-6">
+                            <input type="number" readonly value="{{p_othgwt}}" name="samount">
+                        </div>
+                        <label for="" class="control-label col-md-6" style="font-size: 11px;">Others</label>
+                        <div class="col-md-6">
+                            <input type="number" readonly value="{{p_others}}" name="samount">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-1">
+                <div>
+                    <div class="row">
+                        <label for="" class="control-label col-md-6"
+                            style="font-size: 11px;margin-left: -50px!important;">Discount</label>
+                        <div class="col-md-6" style="margin-left: 50px!important;">
+                            <input type="number" readonly value="{{p_dis}}" name="samount">
+                        </div>
+                        <label for="" class="control-label col-md-6"
+                            style="font-size: 11px;margin-left: -50px!important;">Gr.Wt</label>
+                        <div class="col-md-6" style="margin-left: 50px!important;">
+                            <input type="number" readonly value="{{p_gwt}}" name="samount">
+                        </div>
+                        <label for="" class="control-label col-md-6" style="font-size: 11px;margin-left: -50px!important;">S.Fine</label>
+                        <div class="col-md-6" style="margin-left: 50px!important;">
+                            <input type="number" readonly value="{{p_fine2}}" name="fine2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> -->
+        <div class="add-table">
+            <table style="width: 100%;">
+                <tr>
+                    <th>Gr.Wt Gold</th>
+                    <td>{{p_goldgwt}}</td>
+                    <th>Nt.Wt Gold</th>
+                    <td>{{p_goldwt}}</td>
+                    <th>Dia Wt</th>
+                    <td>{{p_diawt}}</td>
+                    <th>Stn Wt</th>
+                    <td>{{p_stnwt}}</td>
+                    <th>Gr.Wt Sil.</th>
+                    <td>{{p_silgwt}}</td>
+                    <th>Nt.Wt Sil.</th>
+                    <td>{{p_silwt}}</td>
+                    <th>Dia Pc</th>
+                    <td>{{p_diapc}}</td>
+                    <th>Stn Pc</th>
+                    <td>{{p_stnpc}}</td>
+                </tr>
+                <tr>
+                    <th>Metal Amt</th>
+                    <td>{{p_mamt}}</td>
+                    <th>Labour Amt</th>
+                    <td>{{p_lamt}}</td>
+                    <th>Dia Amt</th>
+                    <td>{{p_damt}}</td>
+                    <th>Stn Amt</th>
+                    <td>{{p_samt}}</td>
+                    <th>Pc</th>
+                    <td>{{p_pc}}</td>
+                    <th>Total Amt</th>
+                    <td>{{p_tvalue}}</td>
+                    <th>Gold Fine</th>
+                    <td>{{p_fine1}}</td>
+                    <th>Tags</th>
+                    <td>{{p_tgpc}}</td>
+                </tr>
+                <tr>
+                    <th>Other Wt</th>
+                    <td>{{p_othgwt}}</td>
+                    <th>Others</th>
+                    <td>{{p_others}}</td>
+                    <th>Discount</th>
+                    <td>{{p_dis}}</td>
+                    <th>Gr. Wt</th>
+                    <td>{{p_gwt}}</td>
+                    <th>Silver Fine</th>
+                    <td>{{p_fine2}}</td>
+                </tr>
+
+
+            </table>
+        </div>
+        <section class="footer-lab">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="footer-select">
+                        <div class="col-md-8 text-right footer-btn"
+                            style="margin-top: -10px;font-weight: bold;float: left;">
+                            <button mat-raised-button class="col-md-2">Close</button>
+                            <button mat-raised-button class="col-md-2" style="margin-left: 10px;">Refresh</button>
+                            <button mat-raised-button class="col-md-2" style="margin-left: 10px;">Export</button>
+                            <button mat-raised-button class="col-md-2" style="margin-left: 10px;">Print</button>
+                        </div>
+                        <div class="col-md-4">
+                            <label for="" class="control-label col-md-3"
+                                style="margin-top: -6px;padding-bottom: 10px;">Summary</label>
+                            <div class="col-md-9">
+                                <select name="" id="sel-options" class="form-control"
+                                    style="margin-top: -10px;height: 22px!important;">
+                                    <option value=""></option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+</div>
+
+<!--  -->

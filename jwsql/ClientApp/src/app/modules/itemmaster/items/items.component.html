@@ -1,0 +1,1008 @@
+<div *ngIf="ischildshow"  class="container text-center">
+  <div *ngIf="isgrpshow">
+    <app-igroup [sdivs]=true [sendigroup]="comboval" (listdata)="recievegrp($event)" (event)="recievegrp($event)"></app-igroup>
+  </div>
+  <div *ngIf="isunitshow">
+    <app-unitmaster [sdivs]=true [sendunit]="comboval" (listdata)="recieveunit($event)" (event)="recieveunit($event)"></app-unitmaster>
+  </div>
+  <div *ngIf="isgcodeshow">
+    <app-gcode [sdivs]=true [sendgcode]="comboval" (listdata)="recievegcode($event)" (event)="recievegcode($event)"></app-gcode>
+  </div>
+  <div *ngIf="iscategoryshow">
+    <app-category [sdivs]=true [sendcat]="comboval" (listdata)="recievecat($event)" (event)="recievecat($event)"></app-category>
+  </div>
+  <div *ngIf="isstampshow">
+    <app-stamp [sdivs]=true [sendstmp]="comboval" (listdata)="recievestamp($event)" (event)="recievestamp($event)"></app-stamp>
+  </div>
+</div>
+<div *ngIf="!ischildshow">
+
+  <div class="row">
+    <div class="col-md-6 text-left">
+      <div class="back-button col-md-2" style="margin-left: -20px!important;" *ngIf="isnew">
+        <button mat-raised-button routerLink="/inventory" class="save cancle"><i class="fa fa-arrow-left"
+            aria-hidden="true"></i>&nbsp;Back</button>
+      </div>
+      <div class="col-md-6 text-left">
+        <h1 class="heading">Item Master</h1>
+      </div>
+  </div> 
+
+    <div *ngIf="isnew" class="col-md-6 text-right">
+      <div class="row">
+      <div class="col-md-6">
+        <input style="height: 30px!important;margin-left: 200px!important;" type="text" class="form-control" id="search-text" aria-describedby="search-text"
+               [(ngModel)]="searchText" placeholder="Enter text to search" (ngModelChange)="Search()"
+               autofocus>
+      </div>
+      <div class="new-button col-md-5" style="margin-left: 10px!important;float: right;">
+        <button mat-raised-button (click)=toggleDisplay() class="save cancle">New+</button>
+      </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="listDisplay">
+    <div class="row">
+
+      <table style="border:2px solid #5b5b5b;" class="table table-striped table-bordered table-sm row-border hover">
+        <thead style="background-color: #5b5b5b; color: white;">
+          <tr>
+            <th style="width: 3%!important;">Edit</th>
+            <th style="width: 10%!important;">S.No</th>
+            <th style="width: 17.4%!important;">Item</th>
+            <th style="width: 17.4%!important;">Print Name</th>
+            <th style="width: 17.4%!important;">Short Name</th>
+            <th style="width: 17.4%!important;">Item Group</th>
+            <th style="width: 17.4%!important;">Unit</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let record of retData|item:searchText;let j=index;">
+            <td style="width: 40px;">
+
+              <mat-icon style="text-align: center;font-size: 19px!important; color: #5CC6D0 !important; cursor:pointer;" (click)="EditData(record)">edit</mat-icon>
+            </td>
+            <td>{{j+count}}</td>
+            <td>{{record.idesc|uppercase}}</td>
+            <td>{{record.pname|uppercase}}</td>
+            <td>{{record.shortname|uppercase}}</td>
+            <td>{{record.groupName|uppercase}}</td>
+            <td>{{record.unitName|uppercase}}</td>
+
+          </tr>
+        </tbody>
+      </table>
+      <div>
+        <section class="footer-next">
+        <pagination [itemsPerPage]="15" [totalItems]="records.length" (pageChanged)="pageChanged($event)"></pagination>
+      </section>
+      </div>
+
+    </div>
+  </div>
+  <!--<section class="unit-conversion">-->
+
+
+
+
+  <alert></alert>
+  <form class="decimal-place form-horizontal" *ngIf="isFormDisplay" [formGroup]="form" (ngSubmit)="submitForm()">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6 col-sm-6">
+          <fieldset class="form-group Ite_master_form">
+            <div class="row">
+              <div class="col-md-3 col-sm-5 col-xs-10">
+                <legend style="margin-top: 2px!important;">Item Name</legend>
+              </div>
+              <div class="col-md-9 col-sm-12 col-xs-6" style="margin-top: -4px!important;">
+                <input type="text" name="input-type" class="form-control" formControlName="idesc" autocomplete="off" />
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="form-group Ite_master_form">
+            <div class="row">
+              <div class="col-md-3 col-sm-5 col-xs-10">
+                <legend style="margin-top: 1px!important;">Print Name</legend>
+              </div>
+              <div class="col-md-9 col-sm-12 col-xs-6" style="margin-top: -4px!important;">
+                <input type="text" name="input-type" class="form-control" formControlName="pname" autocomplete="off" />
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="form-group short-name">
+            <div class="row">
+              <div class="col-md-3 col-sm-10 col-xs-12" style="margin-top: 1px!important;">
+                <legend>Short Name</legend>
+              </div>
+              <div class="col-md-4 col-sm-6 col-xs-3" style="margin-top: -4px!important;">
+                <input type="text" name="input-type" class="form-control short-name-input" formControlName="shortname" autocomplete="off" />
+              </div>
+              <div class="col-md-5 col-sm-6 col-xs-3" style="margin-top: -4px!important;">
+                <input type="text" name="input-type" class="form-control short-name-input2" formControlName="hpname" autocomplete="off" />
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-group item-group">
+            <div class="row">
+              <div class="col-md-3 col-sm-6 col-xs-12" style="margin-top: 2px!important;">
+                <legend>Item Group</legend>
+              </div>
+              <div class="col-md-9 col-sm-12 col-xs-6" style="margin-top: -4px!important;">
+
+
+                <div class="item-group-ng">
+                  <ng-autocomplete [data]="IGroupSelect"
+                                   [searchKeyword]="keyword1"
+                                   
+                                   (selected)='selectItemGroup($event)'
+                                   [itemTemplate]="itemgrpTemplate"
+                                   [notFoundTemplate]="notgrpFoundTemplate"
+                                   formControlName="igroupid" (keydown.enter)="$event.preventDefault()" (keyup)="sendgrp($event)">
+                  </ng-autocomplete>
+
+                  <ng-template #itemgrpTemplate let-item>
+                    <a [innerHTML]="item.name" *ngIf="id!=-1"></a>
+                    <a [innerHTML]="item.name" *ngIf="id==-1" (click)="childComponent(1)"></a>
+                  </ng-template>
+
+                  <ng-template #notgrpFoundTemplate let-notFound>
+
+                    <div [innerHTML]=""><a (click)="childComponent(1)" class="AddnewInList">+ New</a></div>
+                  </ng-template>
+
+                </div>
+
+
+
+
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="form-group labour-upon unit">
+            <div class="row">
+              <div class="col-md-3 col-sm-3 col-xs-1">
+                <legend style="margin-top: 3px!important;">Unit</legend>
+              </div>
+              <div class="col-md-3 col-sm-3 col-xs-2" style="margin-top: -6px!important;">
+                <div class="item-group-ng">
+                  <ng-autocomplete [data]="unitSelect"
+                                   [searchKeyword]="keyword1"
+                                   
+                                   (selected)='selectUnit($event)'
+                                   [itemTemplate]="itemTemplate"
+                                   [notFoundTemplate]="UnitnotFoundTemplate"
+                                   formControlName="unitid" (keydown.enter)="$event.preventDefault()" (keyup)="sendunit($event)">
+                  </ng-autocomplete>
+
+                  <ng-template #itemTemplate let-item>
+                    <a [innerHTML]="item.name" *ngIf="id!=-1"></a>
+                    <a [innerHTML]="item.name" *ngIf="id==-1" (click)="childComponent(2)"></a>
+
+                  </ng-template>
+
+                  <ng-template #UnitnotFoundTemplate let-notFound>
+
+
+                    <div [innerHTML]=""><a (click)="childComponent(2)" class="AddnewInList">+ New</a></div>
+                  </ng-template>
+
+                </div>
+
+              </div>
+              <div class="col-md-3 col-sm-3 col-xs-2 legend">
+                <legend class="labour-upn">Labour Upon</legend>
+              </div>
+              <div class="col-md-3 col-sm-3 col-xs-1 labour-select" style="margin-top: -4px!important;">
+                <select formControlName="lcode" class="form-control" style="border-radius: 0%;">
+                  <option value="1">Wt</option>
+                  <option value="2">Rs</option>
+                  <option value="3">Pc%</option>
+                  <option value="4">M%</option>
+                  <option value="5">Tot%</option>
+
+                </select>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-group labour-upon unit">
+            <div class="row">
+              <div class="col-md-3 col-sm-3 col-xs-2">
+                <legend>Group Code</legend>
+              </div>
+              <div class="col-md-3 col-sm-3 col-xs-2" style="margin-top: -5px!important;">
+                <div class="item-group-ng group-code-input">
+                  <ng-autocomplete [data]="gcodeSelect"
+                                   [searchKeyword]="keyword1"
+                                   
+                                   (selected)='selectGCode($event)'
+                                   [itemTemplate]="itemgcTemplate"
+                                   [notFoundTemplate]="notgcodeFoundTemplate"
+                                   formControlName="gcodeid" (keydown.enter)="$event.preventDefault()" (keyup)="sendgcode($event)">
+                  </ng-autocomplete>
+
+                  <ng-template #itemgcTemplate let-item>
+                    <a [innerHTML]="item.name" *ngIf="id!=-1"></a>
+                    <a [innerHTML]="item.name" *ngIf="id==-1" (click)="childComponent(3)"></a>
+
+                  </ng-template>
+
+                  <ng-template #notgcodeFoundTemplate let-notFound>
+                    <div [innerHTML]=""><a (click)="childComponent(3)" class="AddnewInList">+ New</a></div>
+                  </ng-template>
+
+                </div>
+
+              </div>
+              <div class="col-md-3 col-sm-3 col-xs-1 legend">
+                <legend class="grade">Grade</legend>
+              </div>
+              <div class="col-md-3 col-sm-3 col-xs-1 " style="margin-top: -5px!important;">
+                <input type="text" name="input-type" maxlength="1" class="form-control grade-input" formControlName="grade" />
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="form-group item-type unit">
+            <div class="row">
+              <div class="col-md-3 col-sm-3 col-xs-12">
+                <legend style="margin-top: 1px!important;">Item Type</legend>
+              </div>
+              <div class="col-md-3 col-sm-3 col-xs-6" style="margin-top: -2px!important;">
+                <select class="form-control"  formControlName="badhel" style="border-radius: 0%;">
+               
+                  <option value="1">General</option>
+                  <option value="2">Badhel</option>
+                  <option value="3">Lakh Dana</option>
+
+                </select>
+              </div>
+              <div class="col-md-3 col-sm-3 col-xs-12 legend">
+                <legend class="linkPartyLegend" style="margin-top: 1px!important;">Link Party</legend>
+              </div>
+              <div class="col-md-3 col-sm-3 col-xs-6" style="margin-top: -3px!important;">
+                <input type="text" name="input-type" class="form-control link_party-input" formControlName="shortcnm" />
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-group category">
+            <div class="row">
+              <div class="col-md-3 col-sm-5 col-xs-12" style="margin-top: 3px!important;">
+                <legend>Category</legend>
+              </div>
+              <div class="col-md-9 col-sm-12 col-xs-6" style="margin-top: -4px!important;">
+                <div class="item-group-ng">
+                  <ng-autocomplete [data]="CatSelect"
+                                   [searchKeyword]="keyword1"
+                                   
+                                   (selected)='selectCat($event)'
+                                   [itemTemplate]="itemcatTemplate"
+                                   [notFoundTemplate]="notcatFoundTemplate"
+                                   formControlName="catid" (keydown.enter)="$event.preventDefault()" (keyup)="sendcat($event)">
+                  </ng-autocomplete>
+
+                  <ng-template #itemcatTemplate let-item>
+                    <a [innerHTML]="item.name" *ngIf="id!=-1"></a>
+                    <a [innerHTML]="item.name" *ngIf="id==-1" (click)="childComponent(4)"></a>
+                  </ng-template>
+
+                  <ng-template #notcatFoundTemplate let-notFound>
+                    <div [innerHTML]=""><a (click)="childComponent(4)" class="AddnewInList">+ New</a></div>
+
+                  </ng-template>
+
+                </div>
+
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="form-group AddStock unit">
+            <div class="row">
+              <div class="col-md-3 col-sm-3 col-xs-12" style="margin-top: 2px!important;">
+                <legend>Add Stock</legend>
+              </div>
+              <div class="col-md-2 col-sm-2 col-xs-6" style="margin-top: -4px!important;">
+                <select (change)="AddStock($event.target.value)" class="form-control">
+                  <option value="No">No</option>
+                  <option value="Yes">Yes</option>
+                </select>
+
+              </div>
+              <div class="col-md-4 col-sm-5 col-xs-12" style="margin-top: 2px!important;">
+                <legend>Set Required Restriction</legend>
+              </div>
+              <div class="col-md-3 col-sm-2 col-xs-6" style="margin-top: -4px!important;">
+                <select (change)="AddRestriction($event.target.value)" class="form-control">
+                  <option value="No">No</option>
+                  <option value="Yes">Yes</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+          <fieldset class="form-group AddStock unit">
+            <div class="row">
+              <div class="col-md-4 col-sm-5 col-xs-12" style="margin-top: 2px!important;">
+                <legend>Additional Setting</legend>
+              </div>
+              <div class="col-md-2 col-sm-3 col-xs-6" style="margin-top: -5px!important;">
+                <select (change)="AddSetting($event.target.value)" class="form-control additional_select">
+                  <option value="No">No</option>
+                  <option value="Yes">Yes</option>
+                </select>
+              </div>
+
+
+            </div>
+          </fieldset>
+
+          <fieldset class="form-group stocking unit">
+            <div class="row">
+              <div class="col-md-3 col-sm-5 col-xs-12">
+                <legend>Stocking By</legend>
+              </div>
+              <div class="col-md-9 col-sm-12 col-xs-6" style="margin-top: -6px!important;">
+                <select class="form-control stocking-selct" (change)="AddStockBy($event.target.value)" formControlName="sm">
+                  <option value="1">Loose</option>
+                  <option value="2">Tag</option>
+                  <option value="3">Both</option>
+                </select>
+              </div>
+
+
+            </div>
+          </fieldset>
+        </div>
+
+        <div class="col-md-6 col-sm-6 retBy">
+          <fieldset class="form-group rate_by">
+            <div class="row">
+              <div class="col-md-2 col-sm-12 col-xs-1">
+                <legend class="rate_byes">Rate By</legend>
+              </div>
+              <div class="col-md-4 col-sm-12 col-xs-2" style="margin-top: -5px!important;">
+                <select class="form-control" formControlName="ditemrate" style="border-radius: 0%;">
+                  <option value="1">Stamp</option>
+                  <option value="2">PC Wt</option>
+                  <option value="3">MM Size</option>
+                </select>
+              </div>
+
+
+
+              <div class="col-md-4 col-sm-6 col-xs-2 saleRase_unit">
+                <legend>Sale Rate Unit By</legend>
+              </div>
+              <div class="col-md-2 col-sm-1 col-xs-3">
+                <input class="form-check-input saleRase_input" type="checkbox" formControlName="srateunit">
+              </div>
+
+
+            </div>
+          </fieldset>
+
+
+          <fieldset class="form-group tag-prefix-form" *ngIf="StockBySelected" >
+            <h2 >
+              <div class="heading-stock" style="margin-top: -10px;">
+              <b style="margin-right: -30px;">Tagging</b>
+              <button mat-button><mat-icon (click)=close() style="height: 28px;">close</mat-icon></button>
+            </div>
+          </h2>
+            <div class="tag-prefix-main-form">
+            <div class="row">
+              <div class="col-md-3 col-sm-3">
+                <legend class="rate_byes">Tag Prefix</legend>
+              </div>
+              <div class="col-md-3 col-sm-3" style="margin-top: -6px!important;">
+                <input type="text" class="form-control" formControlName="tpre">
+              </div>
+              <div class="col-md-3 col-sm-3">
+                <legend class="rate_byes">Tag No.Digits</legend>
+              </div>
+              <div class="col-md-3 col-sm-3" style="margin-top: -6px!important;">
+                <input type="number" style="text-align: right;" class="form-control" formControlName="tgdigit">
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-md-3 col-sm-3">
+                <legend class="rate_byes">Tag PC</legend>
+              </div>
+              <div class="col-md-3 col-sm-3" style="margin-top: -6px!important;">
+                <input type="number" style="text-align: right;" formControlName="pc" class="form-control">
+              </div>
+
+              <div class="col-md-3 col-sm-3">
+                <legend class="rate_byes">Design Digits</legend>
+              </div>
+              <div class="col-md-3 col-sm-3" style="margin-top: -6px!important;">
+                <input type="number" style="text-align: right;" class="form-control" formControlName="desidigit">
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="col-md-3 col-sm-3">
+                <legend class="rate_byes">Tray Pcs</legend>
+              </div>
+              <div class="col-md-3 col-sm-3" style="margin-top: -6px!important;">
+                <input type="number" style="text-align: right;" class="form-control" formControlName="treypc">
+              </div>
+
+
+              <div class="col-md-3 col-sm-3">
+                <legend class="rate_byes">Link to Item</legend>
+              </div>
+              <div class="col-md-3 col-sm-3" style="margin-top: -6px!important;">
+                <input type="number" style="text-align: right;" class="form-control" formControlName="linkino">
+              </div>
+
+
+            </div>
+
+
+            <div class="row">
+              <div class="col-md-3 col-sm-3">
+                <legend class="rate_byes">Min.Tag No</legend>
+              </div>
+              <div class="col-md-3 col-sm-3" style="margin-top: -6px!important;">
+                <input type="number" style="text-align: right;" class="form-control" formControlName="starttgno">
+              </div>
+
+
+              <div class="col-md-3 col-sm-3">
+                <legend class="rate_byes">Max.Tag No</legend>
+              </div>
+              <div class="col-md-3 col-sm-3" style="margin-top: -6px!important;">
+                <input type="number" style="text-align: right;" class="form-control" formControlName="maxtgno">
+              </div>
+            </div>
+
+
+            <div class="row tagprintrow">
+              <div class="col-md-3 col-sm-3">
+                <legend class="rate_byes">Tag Print Cmd</legend>
+              </div>
+              <div class="col-md-8 col-sm-8" style="margin-top: -6px!important;">
+                <input type="text" class="form-control" formControlName="prncmd">
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-md-4 col-sm-5">
+                <legend class="rate_byes">Tag x 2 Detail</legend>
+              </div>
+              <div class="col-md-1 col-sm-1">
+                <input class="form-check-input detailtag" type="checkbox" formControlName="twodet">
+              </div>
+
+              <div class="col-md-4 col-sm-5">
+                <legend class="rate_byes">Link to other Tag</legend>
+              </div>
+              <div class="col-md-1 col-sm-1">
+                <input class="form-check-input otherTag" type="checkbox" formControlName="linktg">
+              </div>
+            </div>
+          </div>
+
+          </fieldset>
+
+          <fieldset *ngIf="stockSelected" id="StockDetails" class="form-group stock-details-form">
+            <h2>
+              <div class="heading-stock">
+              <b style="margin-right: -30px;">Stock Details</b>
+              <button mat-button><mat-icon (click)="AddStock('No')" style="height: 28px;">close</mat-icon></button>
+            </div>
+          </h2>
+            <div class="row poly-wt">
+              <div class="col-md-3 col-sm-3">
+                <legend class="rate_byes">Poly Wt</legend>
+              </div>
+              <div class="col-md-3 col-sm-3" style="margin-top: -6px!important;">
+                <style>
+                    
+                  input::-webkit-outer-spin-button,
+                  input::-webkit-inner-spin-button {
+                  -webkit-appearance: none;
+                  margin: 0;
+                  }
+                input[type="number"] {
+                -moz-appearance: textfield;
+                  }
+        
+                          </style>
+                <input type="number" class="form-control" formControlName="polywt" style="text-align: right;">
+              </div>
+              <div class="col-md-3 col-sm-3 box-wt">
+                <legend class="rate_byes">Box Wt</legend>
+              </div>
+              <div class="col-md-3 col-sm-3" style="margin-top: -6px!important;">
+                <input type="number" class="form-control" formControlName="boxwt" style="text-align: right;">
+              </div>
+
+            </div>
+
+
+
+            <div class="row">
+              <div class="col-md-3 col-sm-3">
+                <legend class="rate_byes">Wire Wt</legend>
+              </div>
+              <div class="col-md-3 col-sm-3" style="margin-top: -6px!important;">
+                <input type="number" class="form-control" formControlName="wirewt" style="text-align: right;">
+              </div>
+
+
+              <div class="col-md-3 col-sm-3">
+                <legend class="rate_byes">Box Mtr</legend>
+              </div>
+              <div class="col-md-3 col-sm-3" style="margin-top: -6px!important;">
+                <input type="number" class="form-control" formControlName="sqrmtr" style="text-align: right;">
+              </div>
+
+
+            </div>
+
+
+
+
+            <div class="row batch-option">
+
+              <div class="col-md-3">
+                <legend class="rate_byes">Batch</legend>
+              </div>
+              <div class="col-md-9" style="margin-top: -6px!important;">
+
+                <select class="form-control" formControlName="bpretype">
+                  <option value="1">A/c Shortname</option>
+                  <option value="2">Month + Year + Auto</option>
+                  <option value="3">Prefix + Auto</option>
+                  <option value="4">Rate</option>
+                  <option value="5"> Pc Wt</option>
+                  <option value="6">Costrate</option>
+                  <option value="7">Costrate+Lbr</option>
+                  <option value="8">Tunch+Wstg</option>
+
+                </select>
+
+              </div>
+
+
+            </div>
+
+            <div class="row stock-method-option">
+
+              <div class="col-md-3">
+                <legend class="rate_byes">Stock Method</legend>
+              </div>
+              <div class="col-md-9" style="margin-top: -6px!important;">
+                <select class="form-control" formControlName="stmethod">
+                  <option value="1">Default</option>
+                  <option value="2">Item Wise</option>
+                  <option value="3">Tunch Wise</option>
+                  <option value="4"> Stamp Wise</option>
+                  <option value="5">Batch Wise</option>
+                  <option value="6">EntryWise</option>
+                </select>
+              </div>
+            </div>
+
+
+
+
+
+            <div class="row">
+
+              <div class="col-md-3 col-sm-3">
+                <legend class="rate_byes">Wstg</legend>
+              </div>
+              <div class="col-md-3 col-sm-3" style="margin-top: -6px!important;">
+                <input type="number" class="form-control" formControlName="stvalwstg" style="text-align: right;">
+              </div>
+
+
+
+              <div class="col-md-3 col-sm-3">
+                <legend class="rate_byes">Labour</legend>
+              </div>
+              <div class="col-md-3 col-sm-3" style="margin-top: -6px!important;">
+                <input type="number" class="form-control" formControlName="stvallbr" style="text-align: right;">
+              </div>
+
+            </div>
+
+
+            <div class="row">
+
+              <div class="col-md-3 col-sm-3">
+                <legend class="rate_byes">Default Stamp</legend>
+              </div>
+              <div class="col-md-3 col-sm-3" style="margin-top: -6px!important;">
+                <div class="item-group-ng">
+                  <ng-autocomplete [data]="stampSelect"
+                                   [searchKeyword]="keyword1"
+                                   
+                                   (selected)='selectStamp($event)'
+                                   [itemTemplate]="itemstampTemplate"
+                                   [notFoundTemplate]="notstampFoundTemplate"
+                                   formControlName="stampid" (keydown.enter)="$event.preventDefault()" (keyup)="sendstamp($event)">
+                  </ng-autocomplete>
+
+                  <ng-template #itemstampTemplate let-item>
+                    <a [innerHTML]="item.name"></a>
+                  </ng-template>
+
+                  <ng-template #notstampFoundTemplate let-notFound>
+                    <div [innerHTML]=""><a (click)="childComponent(5)" class="AddnewInList">+ New</a></div>
+                  </ng-template>
+
+                </div>
+
+              </div>
+
+
+
+
+              <div class="col-md-3 col-sm-3">
+                <legend class="rate_byes">Default Tunch</legend>
+              </div>
+              <div class="col-md-3 col-sm-3" style="margin-top: -6px!important;">
+                <input type="number" class="form-control" formControlName="deftunch" style="text-align: right;">
+              </div>
+
+            </div>
+
+
+            <div class="row">
+
+              <div class="col-md-3 col-sm-3">
+                <legend class="rate_byes">Polish %</legend>
+              </div>
+              <div class="col-md-3 col-sm-3" style="margin-top: -6px!important;">
+                <input type="number" class="form-control" formControlName="polish" style="text-align: right;">
+              </div>
+
+
+
+              <div class="col-md-3 col-sm-3">
+                <legend class="rate_byes">Into Rate</legend>
+              </div>
+              <div class="col-md-3 col-sm-3" style="margin-top: -6px!important;">
+                <input type="number" class="form-control" formControlName="intorate" style="text-align: right;">
+              </div>
+
+            </div>
+
+            <div class="row stockvaluation-row">
+              <div class="col-md-3 col-sm-3">
+                <legend class="rate_byes">Tunch</legend>
+              </div>
+              <div class="col-md-3 col-sm-3" style="margin-top: -6px!important;">
+                <input type="number" class="form-control" formControlName="stvaltunch" style="text-align: right;">
+              </div>
+
+            </div>
+
+            <div class="row stockvaluation-row">
+
+              <div class="col-md-3 col-sm-3">
+                <legend class="rate_byes">Stock Valuation</legend>
+              </div>
+              <div class="col-md-5 col-sm-3" style="margin-top: -6px!important;">
+
+                <select class="form-control" formControlName="stval">
+                  <option value="1">Default</option>
+                  <option value="2">Manual By Item</option>
+                  <option value="3">Manual By Stamp</option>
+                  <option value="4">Avg Rate</option>
+                </select>
+              </div>
+
+              <!-- <div class="col-md-3 col-sm-5 col-xs-5">
+                <legend class="rate_byes">Less Detail</legend>
+              </div>
+              <div class="col-md-1 col-sm-1 col-xs-1">
+                <input class="form-check-input maintain-stock-radio value-stock-radio" formControlName="lessdet" type="checkbox">
+              </div> -->
+            </div>
+
+            
+
+
+
+
+
+
+            <div class="row">
+              <div class="maintaininput">
+                <div class="col-md-4 col-sm-5 col-xs-5">
+                  <legend class="rate_byes">Maintain PC Stock</legend>
+                </div>
+                <div class="col-md-1 col-sm-1 col-xs-1">
+                  <input class="form-check-input maintain-stock-radio" type="checkbox" formControlName="pcstock">
+                </div>
+              </div>
+
+
+
+              <div class="col-md-3 col-sm-5 col-xs-5">
+                <legend class="rate_byes">Value Stock</legend>
+              </div>
+              <div class="col-md-1 col-sm-1 col-xs-1">
+                <input class="form-check-input maintain-stock-radio value-stock-radio" formControlName="svstk" type="checkbox">
+              </div>
+              <div class="col-md-3 col-sm-5 col-xs-5" style="margin-left: -45px;">
+                <legend class="rate_byes">Less Detail</legend>
+              </div>
+              <div class="col-md-1 col-sm-1 col-xs-1"  >
+                <input class="form-check-input maintain-stock-radio value-stock-radio" formControlName="lessdet" type="checkbox">
+              </div>
+              
+            </div>
+
+
+          </fieldset>
+
+          <fieldset *ngIf="RestrictionSelected" class="form-group restrictions-form" id="restrictions-form">
+            <h2>
+              <div class="heading-stock">
+              <b style="margin-right: -30px;">Set Restrictions</b>
+              <button mat-button><mat-icon (click)="AddRestriction('No')" style="height: 28px;">close</mat-icon></button>
+            </div>
+          </h2>
+            <div class="row">
+              <div class="col-md-3 col-sm-5 col-xs-5">
+                <legend>Bullion List</legend>
+              </div>
+              <div class="col-md-1 col-sm-1 col-xs-1">
+                <input class="form-check-input set-restriction-checkBox bullioncheck" type="checkbox" formControlName="blist">
+              </div>
+              <div class="col-md-3 col-sm-4 col-xs-5">
+                <legend>Add in G.Wt</legend>
+              </div>
+              <div class="col-md-1 col-sm-1 col-xs-1">
+                <input class="form-check-input set-restriction-checkBox addgwt" type="checkbox" formControlName="cgwt">
+              </div>
+
+              <div class="col-md-3 col-sm-4 col-xs-5">
+                <legend class="breeds">Beeds/Less</legend>
+              </div>
+              <div class="col-md-1 col-sm-1 col-xs-1">
+                <input class="form-check-input set-restriction-checkBox breed-less" type="checkbox" formControlName="cbeeds">
+              </div>
+
+              <div class="col-md-3 col-sm-4 col-xs-5">
+                <legend class="pc">PC</legend>
+              </div>
+              <div class="col-md-1 col-sm-1 col-xs-1">
+                <input class="form-check-input set-restriction-checkBox pc-check" type="checkbox" formControlName="restpc">
+              </div>
+
+              <div class="col-md-3 col-sm-5 col-xs-5">
+                <legend>Gross Wt</legend>
+              </div>
+              <div class="col-md-1 col-sm-1 col-xs-1">
+                <input class="form-check-input set-restriction-checkBox grooswt-check" type="checkbox" formControlName="restgwt">
+              </div>
+
+              <div class="col-md-3 col-sm-5 col-xs-5">
+                <legend>Tunch</legend>
+              </div>
+              <div class="col-md-1 col-sm-1 col-xs-1">
+                <input class="form-check-input set-restriction-checkBox breeds-check" type="checkbox" formControlName="resttunch">
+              </div>
+
+              <div class="col-md-3 col-sm-5 col-xs-5">
+                <legend>Wstg</legend>
+              </div>
+              <div class="col-md-1 col-sm-1 col-xs-1">
+                <input class="form-check-input set-restriction-checkBox" type="checkbox" formControlName="restwstg">
+              </div>
+
+              <div class="col-md-3 col-sm-5 col-xs-5">
+                <legend>Rate/Tunch</legend>
+              </div>
+              <div class="col-md-1 col-sm-1 col-xs-1">
+                <input class="form-check-input set-restriction-checkBox" type="checkbox" formControlName="restrate">
+              </div>
+
+              <div class="col-md-3 col-sm-5 col-xs-5">
+                <legend>Wstg/Lbr</legend>
+              </div>
+              <div class="col-md-1 col-sm-1 col-xs-1">
+                <input class="form-check-input set-restriction-checkBox" type="checkbox" formControlName="restwl">
+              </div>
+
+              <div class="col-md-3 col-sm-5 col-xs-5">
+                <legend>Stamp</legend>
+              </div>
+              <div class="col-md-1 col-sm-1 col-xs-1">
+                <input class="form-check-input set-restriction-checkBox" type="checkbox" formControlName="reststamp">
+              </div>
+
+              <div class="col-md-3 col-sm-5 col-xs-5">
+                <legend>Batch</legend>
+              </div>
+              <div class="col-md-1 col-sm-1 col-xs-1">
+                <input class="form-check-input set-restriction-checkBox" type="checkbox" formControlName="restbatch">
+              </div>
+
+              <div class="col-md-3 col-sm-5 col-xs-5">
+                <legend>Other in Sale</legend>
+              </div>
+              <div class="col-md-1 col-sm-1 col-xs-1">
+                <input class="form-check-input set-restriction-checkBox" type="checkbox" formControlName="restoth">
+              </div>
+
+              <div class="col-md-3 col-sm-5 col-xs-5">
+                <legend>With Fine/Amt</legend>
+              </div>
+              <div class="col-md-2 col-sm-1 col-xs-1">
+                <input style="margin-right: -10px;" class="form-check-input set-restriction-checkBox withFine" type="checkbox" formControlName="restzero">
+              </div>
+
+              <div class="col-md-3 col-sm-5 col-xs-5">
+                <legend class="tagStockLess">Tag Stock Less</legend>
+              </div>
+              <div class="col-md-2 col-sm-1 col-xs-1">
+                <input class="form-check-input set-restriction-checkBox tagStockLess_check" type="checkbox" formControlName="tgstkless">
+              </div>
+
+
+            </div>
+
+          </fieldset>
+
+          <fieldset *ngIf="AddSettingSelected" class="form-group Additional-form">
+            <h2>
+              <div class="heading-stock">
+              <b style="margin-right: -30px;">Additional Settings</b>
+              <button mat-button><mat-icon (click)="AddSetting('No')" style="height: 28px;">close</mat-icon></button>
+            </div>
+          </h2>
+            <div class="row">
+              <div class="col-md-4 col-sm-4 col-xs-4">
+                <legend>Used in Studing</legend>
+              </div>
+              <div class="col-md-1 col-sm-1 col-xs-1">
+                <input class="form-check-input used-instuding-checkbox" type="checkbox" formControlName="istud">
+              </div>
+              <div class="col-md-3 col-sm-3 col-xs-3">
+                <legend class="addition-formAL">A/L %</legend>
+              </div>
+              <div class="col-md-4 col-sm-4 col-xs-3" style="margin-top: -6px!important;">
+                <input class="form-control" type="number" formControlName="pexwt" placeholder="0" style="text-align: right;">
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="col-md-3 col-xs-12" style="margin-top: 10px;">
+                <legend >Design Pre</legend>
+              </div>
+              <div class="col-md-9 col-xs-12" style="height: 30px;margin-top: 5px;margin-bottom: 5px;">
+                <input class="form-control" type="text" formControlName="desipre">
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 col-sm-8 col-xs-8">
+                <legend>Issue/Rec By Wt in Karigar A/c</legend>
+              </div>
+              <div class="col-md-2 col-sm-2 col-xs-2">
+                <input class="form-check-input addition-form-check" type="checkbox" formControlName="irgwt">
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 col-sm-8 col-xs-8">
+                <legend>Dia Stones Studed</legend>
+              </div>
+              <div class="col-md-2 col-sm-2 col-xs-2">
+                <input class="form-check-input addition-form-check" type="checkbox" formControlName="stones">
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 col-sm-8 col-xs-8">
+                <legend>Display Items In Purchase</legend>
+              </div>
+              <div class="col-md-2 col-sm-2 col-xs-2">
+                <input class="form-check-input addition-form-check" type="checkbox" formControlName="purchase">
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 col-sm-8 col-xs-8">
+                <legend>Display Items In Stock Reports</legend>
+              </div>
+              <div class="col-md-2 col-sm-2 col-xs-2">
+                <input class="form-check-input addition-form-check" type="checkbox" formControlName="stock">
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="col-md-6 col-sm-8 col-xs-8">
+                <legend>Use Stamp</legend>
+              </div>
+
+
+              <div class="col-md-2 col-sm-2 col-xs-2">
+                <input class="form-check-input addition-form-check" type="checkbox" formControlName="cstamp">
+              </div>
+
+            </div>
+
+
+            <div class="row">
+              <div class="col-md-6 col-sm-8 col-xs-8">
+                <legend>Display Item in Sale</legend>
+              </div>
+              <div class="col-md-2 col-sm-2 col-xs-2">
+                <input class="form-check-input addition-form-check" type="checkbox" formControlName="sale">
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-md-6 col-sm-8 col-xs-8">
+                <legend>Display Item in Karigar Entry</legend>
+              </div>
+              <div class="col-md-2 col-sm-2 col-xs-2">
+                <input class="form-check-input addition-form-check" type="checkbox" formControlName="karigar">
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-md-6 col-sm-8 col-xs-8">
+                <legend>Party Dia Stones</legend>
+              </div>
+              <div class="col-md-2 col-sm-2 col-xs-2">
+                <input class="form-check-input addition-form-check" type="checkbox" formControlName="partydst">
+              </div>
+
+            </div>
+
+          </fieldset>
+
+
+
+        </div>
+      </div>
+    </div>
+
+
+
+    <section class="footer-fix">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="footer-button">
+              <button mat-raised-button type="submit" class="save" value="Save" style="margin-left:25px;">Save</button>
+              <a mat-raised-button *ngIf="isDelete" (click)=Delete() class="save delete">Delete</a>
+              <a mat-raised-button (click)="cancel()" class="save cancle">Cancel</a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </form>
+
+
+  <!--</section>-->
+
+
+
+</div>

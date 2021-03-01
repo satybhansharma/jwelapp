@@ -1,0 +1,74 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <h2 style="text-align: center;"><u>Purchase Planner</u></h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                <div class="col-md-1">
+                    <input type="radio">
+                </div>
+                <label for="" class="control-label col-md-9">Quarterly</label>
+            </div>
+            <div class="col-md-2" style="margin-left: -60px!important;">
+                <div class="col-md-1">
+                    <input type="radio">
+                </div>
+                <label for="" class="control-label col-md-9">Monthly</label>
+            </div>
+            <div class="col-md-3">
+                <label for="" class="control-label col-md-2" style="padding-top: 2px!important;">Month</label>
+                <div class="col-md-9">
+                    <select name="" id="" class="form-control" style="height: 28px!important;">
+                        <option value=""></option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <label for="" class="control-label col-md-3" style="padding-top: 2px!important;">Summary</label>
+                <div class="col-md-9">
+                    <select name="" id="" class="form-control" style="height: 28px!important;">
+                        <option value=""></option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="row">
+                <div class="ag-grid">
+                    <ag-grid-angular style="height: 450px;width: 100%;margin-top: 10px!important;"
+                        class="ag-theme-balham" [gridOptions]="gridOptions" [rowHeight]="30" headerHeight="40"
+                        (gridReady)="onGridReady($event)" (firstDataRendered)="onFirstDataRendered($event)"
+                        (gridSizeChanged)="onGridSizeChanged($event)" [columnDefs]="columnDefs">
+                    </ag-grid-angular>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <label for="" class="control-label col-md-10" style="padding-top: 8px!important ;">Total</label>
+            <div class="col-md-2">
+                <input class="form-control" readonly style="background-color: white;height: 28px!important;margin-top: 5px!important;font-weight: 550;">
+            </div>
+        </div>
+        <section class="footer-lab">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="footer-select">
+                        <div class="col-md-8 text-right footer-btn"
+                            style="margin-top: -10px;font-weight: bold;float: left;">
+                            <button mat-raised-button class="col-md-2">Close</button>
+                            <button mat-raised-button class="col-md-2" style="margin-left: 10px;">Refresh</button>
+                            <button mat-raised-button class="col-md-2" style="margin-left: 10px;">Export</button>
+                            <button mat-raised-button class="col-md-2" style="margin-left: 10px;">Print</button>
+                        </div>
+                        <div class="col-md-4"></div>
+
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+</div>

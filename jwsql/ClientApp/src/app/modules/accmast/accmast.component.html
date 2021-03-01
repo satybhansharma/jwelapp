@@ -1,0 +1,1470 @@
+<div *ngIf='ischildshow' class="container text-center">
+  <!-- <app-category></app-category> -->
+  <!-- <app-test></app-test> -->
+  <div *ngIf="isgroupshow">
+    <app-account-group [sdivs]=true [sendgroup]="name" (listdata)="recievegroup($event)" (event)="recievegroup($event)">
+    </app-account-group>
+  </div>
+  <div *ngIf="islocshow">
+    <app-location [sdivs]=true [sendloc]="name" (listdata)="recieveloc($event)" (event)="recieveloc($event)">
+    </app-location>
+  </div>
+  <div *ngIf="iscityshow">
+    <app-city [sdivs]=true [sendcity]="name" (listdata)="recievecity($event)" (event)="recievecity($event)"></app-city>
+  </div>
+</div>
+<div *ngIf='!ischildshow'>
+  <div>
+    <div class="row">
+      <div class="col-md-6 text-left">
+        <div class="back-button col-md-2" style="margin-left: -20px!important;" *ngIf="isnew">
+          <button mat-raised-button routerLink="/accounting" class="save cancle"><i class="fa fa-arrow-left"
+              aria-hidden="true"></i>&nbsp;Back</button>
+        </div>
+        <div class="col-md-6 text-left">
+          <h1 class="heading">Account Master</h1>
+        </div>
+      </div>
+      <div *ngIf="isnew" class="col-md-6 text-right">
+        <div class="row">
+          <div class="col-md-6">
+            <input style="height: 30px!important;margin-left: 200px!important;" type="email" class="form-control"
+              id="search-text" aria-describedby="search-text" [(ngModel)]="searchText"
+              placeholder="Enter text to search" (ngModelChange)="Search()" autofocus>
+          </div>
+          <div class="new-button col-md-5" style="margin-left: 10px!important;float: right;">
+            <button mat-raised-button (click)=toggleDisplay() class="save cancle">New+</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--List code starts here-->
+    <div *ngIf="isdivShow" class="row">
+      <div>
+        <table class="table table-striped table-bordered table-sm row-border hover">
+          <thead>
+            <tr>
+              <th style="width: 3%!important;">Edit</th>
+              <!-- <th style="width: 40px;">Delete</th> -->
+              <th style="width: 10%!important;">S.No</th>
+              <th style="width: 21.75%!important;">Name</th>
+              <th style="width: 21.75%!important;">Print Name</th>
+              <th style="width: 21.75%!important;">Short Name</th>
+              <th style="width: 21.75%!important;">Group</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let record of retData; let j=index">
+              <td>
+                <mat-icon
+                  style="text-align: center;font-size: 19px!important; color: #5CC6D0 !important; cursor:pointer;"
+                  (click)="edit(record)">edit</mat-icon>
+              </td>
+              <td style="text-align: center;">{{j+count}}</td>
+              <td>{{record.CNAME}}</td>
+              <td>{{record.PNAME}}</td>
+              <td>{{record.SHORTNAME}}</td>
+              <td>{{record.gname}}</td>
+            </tr>
+          </tbody>
+        </table>
+        <section class="footer-next">
+          <pagination [itemsPerPage]="15" [totalItems]="filterrec.length" (pageChanged)="pageChanged($event)">
+          </pagination>
+        </section>
+      </div>
+    </div>
+  </div>
+  <!-- list form end -->
+
+  <div *ngIf="isShow" [formGroup]="acform">
+    <div class="container unit-form-box">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <div class="row">
+              <div class="a/c-name">
+                <label class="control-label col-md-3 col-sm-3" for="cname">A/C Name</label>
+              </div>
+              <div class="col-md-9 col-sm-8">
+                <input type="text" class="form-control group-name-label" formControlName="cname"
+                  placeholder="enter a/c name">
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="row">
+              <label class="control-label col-md-3 col-sm-3 group-type" for="pwd">Group</label>
+              <div class="col-md-9 col-sm-8 group-type">
+                <ng-autocomplete [data]="acgrplist" [searchKeyword]="keyword1" [initialValue]="tgroup"
+                  (selected)='selectEvent($event)' placeHolder="Enter the Group Name" [itemTemplate]="itemTemplate1"
+                  [notFoundTemplate]="notFoundTemplate1" style="background-color:cadetblue;"
+                  (keydown.enter)="$event.preventDefault()" (keyup)="sendgroup($event)">
+                </ng-autocomplete>
+                <ng-template #itemTemplate1 let-item>
+                  <div class="item">
+                    <span [innerHTML]="item.name"></span>
+                  </div>
+                </ng-template>
+                <ng-template #notFoundTemplate1 let-notFound>
+                  <div [innerHTML]=""><a (click)="childDisplay(1)" class="AddnewInList"> Add New Group</a></div>
+
+                </ng-template>
+
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="row">
+              <div class="op-bal">
+                <label class="control-label col-md-3">Op Bal</label>
+              </div>
+              <div class="col-md-2">
+                <input type="number" formControlName="opbal" class="form-control"
+                  style="width: 135px; text-align: right;">
+              </div>
+              <div class="col-md-2" style="margin-right: -40px; margin-left: 40px;">
+                <select id="sel-options" formControlName="opcrdr" class="form-control">
+
+                  <option value="0">CR</option>
+                  <option value="1">DR</option>
+
+
+                </select>
+
+              </div>
+              <div class="op-bal">
+                <label class="control-label col-md-3" style="margin-left: 45px;">Fine Op Bal</label>
+              </div>
+              <div class="col-md-1">
+                <select id="sel-options" formControlName="showopbal" (change)="selectFineop($event)"
+                  class="form-control" style="width: 73px; margin-left: -50px;" ng-model="myVar">
+                  <option value="Y">YES</option>
+                  <option value="N">NO</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <div class="row">
+                  <label class="control-label col-md-6 col-sm-3 group-type" for="pwd">Tax Details</label>
+                  <div class="col-md-4">
+                    <select id="sel-options" (change)="taxselection($event.target.value,'tax')"
+                      class="form-control group-option" placeholder="Select" style="width: 75px;">
+                      <option value="1">YES</option>
+                      <option value="0" selected>NO</option>
+
+
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <label class="control-label col-md-6 col-sm-3 group-type" for="pwd">Credit Limit</label>
+                  <div class="col-md-4 ">
+                    <select id="sel-options" class="form-control group-option"
+                      (change)="taxselection($event.target.value,'credit')" placeholder="Select" style="width: 75px;">
+
+                      <option value="1">YES</option>
+                      <option value="0" selected>NO</option>
+
+
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <label class="control-label col-md-8 col-sm-3 group-type" for="pwd">Additional Details</label>
+                  <div class="col-md-4 ">
+                    <select id="sel-options" class="form-control group-option" placeholder="Select"
+                      (change)="taxselection($event.target.value,'add')" style="width: 75px;margin-left: -50px;">
+
+                      <option value="1">YES</option>
+                      <option value="0" selected>NO</option>
+
+
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <div *ngIf="isopbal" class="col-md-6">
+              <div class="opening-balance-form">
+
+                <h3 style="text-align: center;"><b><u>Opening Balance</u></b></h3>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="op-bal">
+                      <label class="control-label col-md-4" style="font-size: 12px;margin-left: 17px;">Gold Fine</label>
+                    </div>
+                    <div class="col-md-4">
+                      <input type="number" formControlName="fine1" class="form-control" style="text-align: right;">
+                    </div>
+                    <div class="col-md-3" style="width: 98px;margin-left: -25px;">
+                      <select id="sel-options" formControlName="crdr1" class="form-control">
+
+                        <option value="0">CR</option>
+                        <option value="1">DR</option>
+
+
+                      </select>
+
+                    </div>
+                  </div>
+
+
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="op-bal">
+                      <label class="control-label col-md-4" style="font-size: 12px;margin-left: 17px;">Silver
+                        Fine</label>
+                    </div>
+                    <div class="col-md-4">
+                      <input type="number" formControlName="fine2" class="form-control" style="text-align: right;">
+                    </div>
+                    <div class="col-md-3" style="width: 98px;margin-left: -25px;">
+                      <select id="sel-options" formControlName="crdr2" class="form-control">
+
+                        <option value="0">CR</option>
+                        <option value="1">DR</option>
+
+
+                      </select>
+
+                    </div>
+                  </div>
+
+
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="op-bal">
+                      <label class="control-label col-md-4" style="font-size: 12px;margin-left: 17px;">Amount</label>
+                    </div>
+                    <div class="col-md-4">
+                      <input type="number" formControlName="amount" class="form-control" style="text-align: right;">
+                    </div>
+                    <div class="col-md-3" style="width: 98px;margin-left: -25px;">
+                      <select id="sel-options" formControlName="crdr3" class="form-control">
+                        <option value="0">CR</option>
+                        <option value="1">DR</option>
+                      </select>
+
+                    </div>
+                  </div>
+
+
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="op-bal">
+                      <label class="control-label col-md-4" style="font-size: 12px;margin-left: 17px;">Other
+                        Fine</label>
+                    </div>
+                    <div class="col-md-4">
+                      <input type="number" formControlName="othfine" class="form-control" style="text-align: right;">
+                    </div>
+                    <div class="col-md-3" style="width: 98px;margin-left: -25px;">
+                      <select id="sel-options" formControlName="crdr4" class="form-control">
+
+                        <option value="0">CR</option>
+                        <option value="1">DR</option>
+
+
+                      </select>
+
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div *ngIf="isaddress" class="col-md-6" style="margin-left: -25px;">
+          <ul class="nav nav-pills" style="width: 100%!important;font-weight: 400!important;">
+            <li class="active"><a data-toggle="tab" href="#add-detail"
+                style="color: black;background-color:  #E6E6FA;">Address Details</a></li>
+            <li><a data-toggle="tab" href="#p-detail" style="color: black;background-color:  #E6E6FA;">Personal
+                Details</a></li>
+            <li><a data-toggle="tab" href="#b-detail" style="color: black;background-color:  #E6E6FA;">Bank Details</a>
+            </li>
+          </ul>
+
+          <div class="tab-content">
+            <div id="add-detail" class="tab-pane fade in active" style="border: 1px solid #ced4da;">
+              <div class="form-group">
+                <div class="row">
+                  <div class="address">
+                    <label class="control-label col-md-2 col-sm-3" for="email"
+                      style="margin-left: 15px;">Address</label>
+                  </div>
+                  <div class="col-md-9 col-sm-8">
+                    <input type="text" formControlName="add1" class="form-control ">
+                    <input type="text" formControlName="add2" class="form-control " style="margin-top: 1px;">
+                    <input type="text" formControlName="add3" class="form-control " style="margin-top: 1px;">
+                  </div>
+                </div>
+              </div>
+              <div class="states">
+                <div class="form-group">
+                  <div class="row">
+                    <div class="location">
+                      <label class="control-label col-md-2 col-sm-3" for="email"
+                        style="margin-left: 15px;">Location</label>
+                    </div>
+                    <div class="col-md-3 col-sm-8 location-ng">
+                      <ng-autocomplete [data]="loclist" [initialValue]="tlocation" [searchKeyword]="keyword2"
+                        (selected)='selectEvent2($event)' [itemTemplate]="itemTemplate2"
+                        [notFoundTemplate]="notFoundTemplate2" style="background-color:cadetblue;"
+                        formControlName="location" (keydown.enter)="$event.preventDefault()" (keyup)="sendloc($event)">
+                      </ng-autocomplete>
+                      <ng-template #itemTemplate2 let-item>
+                        <div class="item">
+                          <span [innerHTML]="item.name"></span>
+                        </div>
+                      </ng-template>
+                      <ng-template #notFoundTemplate2 let-notFound>
+                        <div>
+                          <a (click)="childDisplay(2)" class="AddnewInList">+ Add New Location</a>
+                        </div>
+                      </ng-template>
+
+                    </div>
+                    <div class="Ocupation">
+                      <label class="control-label col-md-2 col-sm-3" for="email">Occupation</label>
+                    </div>
+                    <div class="col-md-3 col-sm-8">
+                      <input type="text" formControlName="occupation" class="form-control " style="width: 145px;">
+
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="location">
+                      <label class="control-label col-md-2 col-sm-3" for="email" style="margin-left: 15px;">City</label>
+                    </div>
+                    <div class="col-md-3 col-sm-8 location-ng">
+                      <ng-autocomplete [data]="citylist" [initialValue]="tcity" [searchKeyword]="keyword3"
+                        (selected)='selectEvent3($event)' [itemTemplate]="itemTemplate3"
+                        [notFoundTemplate]="notFoundTemplate3" style="background-color:cadetblue;"
+                        formControlName="city" (keydown.enter)="$event.preventDefault()" (keyup)="sendcity($event)">
+                      </ng-autocomplete>
+                      <ng-template #itemTemplate3 let-item>
+                        <div class="item">
+                          <span [innerHTML]="item.name"></span>
+                        </div>
+                      </ng-template>
+                      <ng-template #notFoundTemplate3 let-notFound>
+                        <div>
+                          <a (click)="childDisplay(3)" class="AddnewInList">+ Add New City</a>
+                        </div>
+                      </ng-template>
+
+                    </div>
+                    <div class="Ocupation">
+                      <label class="control-label col-md-2 col-sm-3" for="email">State</label>
+                    </div>
+                    <div class="col-md-3 col-sm-8">
+                      <input type="text" disabled=true formControlName="state" class="form-control "
+                        style="width: 145px;">
+
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="location">
+                      <label class="control-label col-md-2 col-sm-3" for="email" style="margin-left: 15px;">PIN</label>
+                    </div>
+                    <div class="col-md-3 col-sm-8">
+                      <input type="text" formControlName="pin" class="form-control ">
+
+                    </div>
+                    <div class="Ocupation">
+                      <label class="control-label col-md-2 col-sm-3" for="email">Country</label>
+                    </div>
+                    <div class="col-md-3 col-sm-8">
+                      <input type="text" disabled=true class="form-control " formControlName="country"
+                        style="width: 145px;">
+
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="location">
+                      <label class="control-label col-md-2 col-sm-3" for="email"
+                        style="margin-left: 15px;">Mobile</label>
+                    </div>
+                    <div class="col-md-3 col-sm-8">
+                      <input type="text" formControlName="mobile" class="form-control ">
+
+                    </div>
+                    <div class="Ocupation">
+                      <label class="control-label col-md-2 col-sm-3" for="email">Phone</label>
+                    </div>
+                    <div class="col-md-3 col-sm-8">
+                      <input type="text" class="form-control" formControlName="phone" style="width: 145px;">
+
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="address">
+                      <label class="control-label col-md-2 col-sm-3" for="email"
+                        style="margin-left: 15px;">Email</label>
+                    </div>
+                    <div class="col-md-9 col-sm-8">
+                      <input type="text" formControlName="email" class="form-control ">
+
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="address">
+                      <label class="control-label col-md-2 col-sm-3" for="remark"
+                        style="margin-left: 15px;">Remark</label>
+                    </div>
+                    <div class="col-md-9 col-sm-8">
+                      <input type="text" formControlName="refby" class="form-control ">
+
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="address">
+                      <label class="control-label col-md-2 col-sm-3" for="Website"
+                        style="margin-left: 15px;">Website</label>
+                    </div>
+                    <div class="col-md-5 col-sm-8">
+                      <input type="text" formControlName="website" class="form-control ">
+
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="address">
+                      <label class="control-label col-md-2 col-sm-3" for="dob" style="margin-left: 15px;">DOB</label>
+                    </div>
+                    <div class="col-md-3 col-sm-8">
+                      <input type="date" class="form-control " style="width: 160px;" formControlName="dob">
+
+                    </div>
+                    <div class="address">
+                      <label class="control-label col-md-2 col-sm-3" for="asary">Asary</label>
+                    </div>
+                    <div class="col-md-3 col-sm-8">
+                      <input type="date" formControlName="asary" class="form-control "
+                        style="width: 160px; margin-left: -10px;">
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div id="p-detail" class="tab-pane fade " style="border: 1px solid #ced4da;">
+              <div class="form-group">
+                <div class="row">
+                  <div class="married">
+                    <label class="control-label col-md-2 col-sm-3" for="email"
+                      style="margin-left: 15px;">Married</label>
+                  </div>
+                  <div class="col-md-3">
+                    <select id="sel-options" formControlName="married" class="form-control"
+                      style="width:60px;margin-top: 5px;" (change)="marriedselection($event.target.value)">
+
+                      <option value="1">Y</option>
+                      <option value="0" selected>N</option>
+
+
+                    </select>
+
+                  </div>
+                  <label class="control-label col-md-2">Gender</label>
+                  <div class="col-md-3">
+                    <select id="sel-options" formControlName="gender" class="form-control"
+                      style="margin-top: 5px; width: 150px; margin-left: -7px;">
+
+                      <option value="1">Male</option>
+                      <option value="2">Female</option>
+
+
+                    </select>
+
+                  </div>
+                </div>
+              </div>
+              <div class="personal-details">
+                <div class="form-group">
+                  <div class="row">
+                    <label for="spouse" class="control-label col-md-2">Spouse</label>
+                    <div class="col-md-9">
+                      <input type="text" formControlName="spouse" class="form-control">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <label for=number class="control-label col-md-2">Mobile</label>
+                    <div class="col-md-3">
+                      <input type="tel" formControlName="spmobile" class="form-control">
+                    </div>
+                    <label for=date class="control-label col-md-2">DOB</label>
+                    <div class="col-md-3">
+                      <input type="date" formControlName="spousedob" class="form-control"
+                        style="width: 150px; margin-left: -7px;">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <label for="email" class="control-label col-md-2">Email</label>
+                    <div class="col-md-9">
+                      <input type="email" formControlName="spemail" class="form-control">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <label for=number class="control-label col-md-2">Jew.Know</label>
+                    <div class="col-md-3">
+                      <input type="tel" formControlName="knowledge" class="form-control">
+                    </div>
+                    <label for=date class="control-label col-md-2">Potential</label>
+                    <div class="col-md-3">
+                      <input type="text" formControlName="potential" class="form-control"
+                        style="width: 150px;margin-left: -7px;">
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <label for="edu" class="control-label col-md-2">Education</label>
+                    <div class="col-md-4">
+                      <input type="text" formControlName="education" class="form-control">
+                    </div>
+                  </div>
+                </div>
+                <table style="border: 1px solid black;"
+                  class="table table-striped table-bordered table-sm row-border hover">
+                  <thead>
+                    <tr>
+
+                      <th>Name</th>
+                      <th>Relation</th>
+                      <th>Mobile</th>
+                      <th>Birthday</th>
+                      <th>Ansary</th>
+
+                    </tr>
+                  </thead>
+
+                </table>
+
+
+              </div>
+            </div>
+            <div id="b-detail" class="tab-pane fade">
+              <table style="border: 1px solid black;"
+                class="table table-striped table-bordered table-sm row-border hover">
+                <thead>
+                  <tr>
+
+                    <th>Name</th>
+                    <th>A/C No</th>
+                    <th>IFSC Code</th>
+
+
+
+                  </tr>
+                </thead>
+
+              </table>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="popup-form" *ngIf="ispopup">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <!-- bank form start -->
+            <div *ngIf="isbankshow" class="bank-form-container">
+              <div class="form-group">
+                <div class="row">
+                  <div class="bank-form-heading">
+                    <h2 style="text-align: center; background-color: black; color: white;padding-bottom: 10px;"><u
+                        style="margin-right: -70px!important;">Bank Details</u>
+                      <div class="mat-icon-close" style="float: right;">
+                        <button mat-button (click)="close()">
+                          <mat-icon>close</mat-icon>
+                        </button>
+                      </div>
+                    </h2>
+                    <div class="bank-form-main">
+
+                      <div class="row">
+                        <label class="control-label col-md-3">Nature</label>
+                        <div class="col-md-8">
+                          <select id="sel-options" formControlName="nature" class="form-control">
+                            <option value="current">Current</option>
+                            <option value="occ">OCC</option>
+                            <option value="saving">Saving</option>
+                            <option value="card">Card</option>
+                            <option value="gift">Gift</option>
+                          </select>
+                        </div>
+                      </div>
+
+
+                      <div class="row">
+                        <label for="" class="control-label col-md-3">Net Banking</label>
+                        <div class="col-md-2">
+                          <select name="" id="sel-options" formControlName="netbank" class="form-control">
+                            <option value="1">YES</option>
+                            <option value="0" selected>NO</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <label for="" class="control-label col-md-3">A/c No.</label>
+                        <div class="col-md-8">
+                          <input type="text" formControlName="bankacno" class="form-control">
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <label for="" class="control-label col-md-3">Instt. Rate</label>
+                        <div class="col-md-4">
+                          <input type="number" formControlName="dep" class="form-control" style="text-align: right;">
+                        </div>
+                        <div class="col-md-4">
+                          <input type="number" formControlName="dep2" class="form-control" style="text-align: right;">
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <label for="" class="control-label col-md-3">Customer Chg</label>
+                        <div class="col-md-4">
+                          <input type="number" formControlName="bankchg" class="form-control"
+                            style="text-align: right;">
+
+                        </div>
+                        <div class="col-md-4">
+                          <input type="number" formControlName="bankchg2" class="form-control"
+                            style="text-align: right;">
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <label for="" class="control-label col-md-3">O.D.Limit</label>
+                        <div class="col-md-4">
+                          <input type="number" formControlName="odlimit" class="form-control"
+                            style="text-align: right;">
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <label for="" class="control-label col-md-3">Bank Badla</label>
+                        <div class="col-md-4">
+                          <input type="text" formControlName="bankbadla" class="form-control"
+                            style="text-align: right;">
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <label for="" class="control-label col-md-3">Exch Commonsn</label>
+                        <div class="col-md-4">
+                          <input type="number" formControlName="bankex" class="form-control" style="text-align: right;">
+                        </div>
+                      </div>
+
+
+                      <div class="row series-ng">
+                        <label for="" class="control-label col-md-3">Series</label>
+                        <div class="col-md-8">
+                          <ng-autocomplete [data]="serieslist" [searchKeyword]="keyword4"
+                            (selected)='selectEvent4($event)' [itemTemplate]="itemgrTemplate1"
+                            [notFoundTemplate]="notgrFoundTemplate1" style="background-color:cadetblue;"
+                            formControlName="series" (keydown.enter)="$event.preventDefault()">
+                          </ng-autocomplete>
+                          <ng-template #itemgrTemplate1 let-item>
+                            <div class="item">
+                              <span [innerHTML]="item.name"></span>
+                            </div>
+                          </ng-template>
+                          <ng-template #notgrFoundTemplate1 let-notFound>
+                            <div [innerHTML]="">Not Found
+                              <!-- <a (click)="childDisplay(1)" class="AddnewInList">+ Add New Item</a> -->
+                            </div>
+                          </ng-template>
+
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <label for="" class="control-label col-md-3">A/c Name</label>
+                        <div class="col-md-8">
+                          <input type="text" formControlName="bankno" class="form-control">
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <label for="" class="control-label col-md-3">Swift Code</label>
+                        <div class="col-md-4">
+                          <input type="text" formControlName="swcode" class="form-control">
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <label for="" class="control-label col-md-3">SC Bony</label>
+                        <div class="col-md-4">
+                          <input type="text" formControlName="scbony" class="form-control">
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <label for="" class="control-label col-md-3">Nostro A/c</label>
+                        <div class="col-md-4">
+                          <input type="text" formControlName="nostro" class="form-control">
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- bank form end -->
+            <!-- TAX-DETAIL-FORM-START -->
+            <div *ngIf="istaxshow" class="tax-detail-container">
+              <div class="form-group">
+                <div class="row">
+                  <div class="tax-detail-heading">
+                    <h2 style="text-align: center; background-color: black; color: white;padding-bottom: 10px;"><u
+                        style="margin-right: -70px!important;">Tax Details</u>
+                      <div class="mat-icon-close" style="float: right;">
+                        <button mat-button (click)="close()">
+                          <mat-icon>close</mat-icon>
+                        </button>
+                      </div>
+                    </h2>
+                    <div class="tax-detail-main-form">
+                      <div class="form-group">
+                        <div class="row">
+                          <label for="" class="control-label col-md-4">Type</label>
+                          <div class="col-md-5">
+                            <select id="sel-options" class="form-control">
+                              <option value="1">Composition</option>
+                              <option value="2">Consumer</option>
+                              <option value="3">Register</option>
+                              <option value="4">Unregister</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <label for="" class="control-label col-md-4">GSTIN</label>
+                          <div class="col-md-7">
+                            <input type="text" formControlName="gstin" class="form-control">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <label for="" class="control-label col-md-4">PAN.</label>
+                          <div class="col-md-7">
+                            <input type="text" formControlName="pan" class="form-control">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <label for="" class="control-label col-md-4">Aadhar No.</label>
+                          <div class="col-md-7">
+                            <input type="text" formControlName="uidno" class="form-control">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <label for="" class="control-label col-md-4">EComm. Opt.</label>
+                          <div class="col-md-4">
+                            <select name="" id="sel-options" formControlName="ecom" class="form-control">
+                              <option value="1">YES</option>
+                              <option value="0" selected>NO</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <label for="" class="control-label col-md-4">GST%</label>
+                          <div class="col-md-4">
+                            <input type="number" formControlName="gst" class="form-control" style="text-align: right;">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <label for="" class="control-label col-md-4">TDS%</label>
+                          <div class="col-md-4">
+                            <input type="number" formControlName="dep" class="form-control" style="text-align: right;">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <label for="" class="control-label col-md-4">HSN Code</label>
+                          <div class="col-md-5">
+                            <input type="text" formControlName="hsncode" class="form-control">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- TAX-DETAIL-FORM-END -->
+            <!-- CREDIT LIMIT FORM START -->
+            <div *ngIf="iscreditshow" class="credit-limit-container">
+              <div class="form-group">
+                <div class="row">
+                  <div class="credit-limit-heading">
+                    <h2 style="text-align: center; background-color: black; color: white;padding-bottom: 10px;"><u
+                        style="margin-right: -70px!important;">Credit Limits</u>
+                      <div class="mat-icon-close" style="float: right;">
+                        <button mat-button (click)="close()">
+                          <mat-icon>close</mat-icon>
+                        </button>
+                      </div>
+                    </h2>
+                    <div class="credit-limit-main-form">
+                      <div class="form-group">
+                        <div class="row">
+                          <label for="" class="control-label col-md-3">Gold Fine</label>
+                          <div class="col-md-4">
+                            <input type="number" formControlName="crfine1" class="form-control"
+                              style="text-align: right;">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <label for="" class="control-label col-md-3">Silver Fine</label>
+                          <div class="col-md-4">
+                            <input type="number" formControlName="crfine2" class="form-control"
+                              style="text-align: right;">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <label for="" class="control-label col-md-3">Amount</label>
+                          <div class="col-md-4">
+                            <input type="number" formControlName="cramt" class="form-control"
+                              style="text-align: right;">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <label for="" class="control-label col-md-3">Days</label>
+                          <div class="col-md-4">
+                            <input type="number" formControlName="crdays" class="form-control"
+                              style="text-align: right;">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- CREDIT LIMIT FORM END  -->
+            <!-- ADDITIONAL SETTING FORM START -->
+            <div *ngIf="isaddshow" class="additional-setting-container">
+              <div class="form-group">
+                <div class="row">
+                  <div class="additional-setting-heading">
+                    <h2 style="text-align: center; background-color: black; color: white;padding-bottom: 10px;"><u
+                        style="margin-right: -70px!important;">Additional Setting</u>
+                      <div class="mat-icon-close" style="float: right;">
+                        <button mat-button (click)="close()">
+                          <mat-icon>close</mat-icon>
+                        </button>
+                      </div>
+                    </h2>
+                    <div class="additional-setting-main-form">
+                      <div class="form-group">
+                        <div class="row">
+                          <label for="" class="control-label col-md-2">Trading</label>
+                          <div class="col-md-4">
+                            <select name="" id="sel-options" formControlName="mcxcomex" class="form-control">
+                              <option value="0">NA</option>
+                              <option value="1" selected>Comex</option>
+                              <option value="2">Mcx</option>
+                            </select>
+                          </div>
+                          <label for="" class="control-label col-md-2">Type</label>
+                          <div class="col-md-4">
+                            <select name="" id="sel-options" formControlName="comps" class="form-control">
+                              <option value="0" selected>NA</option>
+                              <option value="1">Both</option>
+                              <option value="2">Financial</option>
+                              <option value="3">Journel</option>
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <label for="" class="control-label col-md-2">Mcurrency</label>
+                          <div class="col-md-4 m-currency">
+                            <ng-autocomplete [data]="mcurrlist" [searchKeyword]="keyword5"
+                              (selected)='selectEvent5($event)' [itemTemplate]="itemsrTemplate1"
+                              [notFoundTemplate]="notsrFoundTemplate1" style="background-color:cadetblue;"
+                              formControlName="mcurr" (keydown.enter)="$event.preventDefault()">
+                            </ng-autocomplete>
+                            <ng-template #itemsrTemplate1 let-item>
+                              <div class="item">
+                                <span [innerHTML]="item.name"></span>
+                              </div>
+                            </ng-template>
+                            <ng-template #notsrFoundTemplate1 let-notFound>
+                              <div [innerHTML]="">Not Found
+                                <!-- <a (click)="childDisplay(1)" class="AddnewInList">+ Add New Item</a> -->
+                              </div>
+                            </ng-template>
+                          </div>
+                          <label for="" class="control-label col-md-2">Com</label>
+                          <div class="col-md-4">
+                            <input type="number" formControlName="compno" class="form-control"
+                              style="text-align: right;">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <label for="" class="control-label col-md-2">A/c No.</label>
+                          <div class="col-md-4">
+                            <input type="text" class="form-control">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <label for="" class="control-label col-md-2">Exp.Type</label>
+                          <div class="col-md-4">
+                            <input type="text" formControlName="exptype" class="form-control">
+                          </div>
+                          <label for="" class="control-label col-md-2">Commision</label>
+                          <div class="col-md-4">
+                            <input type="number" formControlName="rscomm" class="form-control"
+                              style="text-align: right;">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <label for="" class="control-label col-md-2">Due Date</label>
+                          <div class="col-md-4">
+                            <input type="date" formControlName="ddate" class="form-control">
+                          </div>
+                          <label for="" class="control-label col-md-2">Bal Date</label>
+                          <div class="col-md-4">
+                            <input type="date" class="form-control">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <label for="" class="control-label col-md-2">Dis%</label>
+                          <div class="col-md-4">
+                            <input type="number" formControlName="percent" class="form-control"
+                              style="text-align: right;">
+                          </div>
+                          <label for="" class="control-label col-md-2">Branch ID</label>
+                          <div class="col-md-4">
+                            <input type="text" formControlName="branchid" class="form-control">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <label for="" class="control-label col-md-2">Comp Path</label>
+                          <div class="col-md-10">
+                            <input type="text" formControlName="compath" class="form-control" style="width: 100%;">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <div class="row">
+                          <label for="" class="control-label col-md-2">File Path</label>
+                          <div class="col-md-10">
+                            <input type="text" formControlName="brpath" class="form-control" style="width: 100%;">
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <!-- ADDITIONAL SETTING FORM END -->
+            <!-- JOB FORM START -->
+            <div *ngIf="isjobshow" class="job-form-container" style="display: none;">
+              <div class="form-group">
+                <div class="row">
+                  <div class="job-form-heading">
+                    <h2 style="text-align: center; background-color: black; color: white;padding-bottom: 10px;">
+                      <u>Job</u>
+                      <div class="mat-icon-close" style="float: right;">
+                        <button mat-button (click)="close()">
+                          <mat-icon>close</mat-icon>
+                        </button>
+                      </div>
+                    </h2>
+                    <div class="job-main-form">
+                      <div class="row">
+                        <label for="" class="control-label col-md-2">Job</label>
+                        <div class="col-md-4">
+                          <input type="text" formControlName="mcxcomex" class="form-control">
+                        </div>
+                        <label for="" class="control-label col-md-2">Stamp</label>
+                        <div class="col-md-4">
+                          <select name="" id="sel-options" class="form-control">
+                            <option value=""></option>
+                          </select>
+                        </div>
+                      </div>
+
+                      <div class="row">
+                        <label for="" class="control-label col-md-2">Labour On</label>
+                        <div class="col-md-4">
+                          <select name="" id="" class="form-control">
+                            <option value="">Nwt</option>
+                            <option value="">Gwt</option>
+                            <option value="">Gwt+Awt</option>
+                            <option value="">Nwt+Awt</option>
+                            <option value="">Nwt+Dia</option>
+                          </select>
+                        </div>
+                        <label for="" class="control-label col-md-2">After</label>
+                        <div class="col-md-4">
+                          <input type="text" class="form-control">
+                        </div>
+                      </div>
+
+
+                      <div class="row">
+                        <label for="" class="control-label col-md-2">Mgf. Type</label>
+                        <div class="col-md-4">
+                          <select name="" id="" class="form-control">
+                            <option value="">NA</option>
+                            <option value="">Lott Wise</option>
+                            <option value="">Voucher Wise</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+            <!-- JOB FORM END -->
+          </div>
+          <!-- DEPARTMENT FORM START -->
+          <div *ngIf="isdepartshow" class="col-md-9" style="display: none;">
+            <div class="department-form-container">
+              <div class="form-group">
+                <div class="row">
+                  <div class="department-form-heading">
+                    <h2 style="text-align: center; background-color: black; color: white;padding-bottom: 10px;">
+                      <u>Department</u>
+                      <div class="mat-icon-close" style="float: right;">
+                        <button mat-button (click)="close()">
+                          <mat-icon>close</mat-icon>
+                        </button>
+                      </div>
+                    </h2>
+                    <div class="department-main-form">
+                      <div class="row">
+                        <label for="" class="control-label col-md-2">Department</label>
+                        <div class="col-md-4">
+                          <input type="text" formControlName="dept" class="form-control">
+                        </div>
+                        <label for="" class="control-label col-md-2">Code</label>
+                        <div class="col-md-4">
+                          <input type="text" formControlName="scode" class="form-control">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <label for="" class="control-label col-md-2">Post</label>
+                        <div class="col-md-4">
+                          <input type="text" formControlName="nature" class="form-control">
+                        </div>
+                        <label for="" class="control-label col-md-2">Allowance</label>
+                        <div class="col-md-4">
+                          <input type="text" formControlName="ballow" class="form-control">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <label for="" class="control-label col-md-2">Salary Actual</label>
+                        <div class="col-md-4">
+                          <input type="number" class="form-control" formControlName="salary" style="text-align: right;"
+                            placeholder="0.00">
+                        </div>
+                        <label for="" class="control-label col-md-2">Salary Books</label>
+                        <div class="col-md-4">
+                          <input type="text" class="form-control" formControlName="salaryb">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <label for="" class="control-label col-md-2">Joining Date</label>
+                        <div class="col-md-4">
+                          <input type="date" class="form-control" formControlDate="Joindate">
+                        </div>
+                        <label for="" class="control-label col-md-2">Leave Date</label>
+                        <div class="col-md-4">
+                          <input type="date" class="form-control" formControlName="leave">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <label for="" class="control-label col-md-2">PF.A/c.No.</label>
+                        <div class="col-md-1" style="width: 90px;">
+                          <select name="" id="" class="form-control">
+                            <option value="">N</option>
+                            <option value="">Y</option>
+                          </select>
+                        </div>
+                        <div class="col-md-3" style="margin-left: -13px;">
+                          <input type="text" formControlName="pfacno" class="form-control">
+                        </div>
+                        <label for="" class="control-label col-md-2">PF Salary</label>
+                        <div class="col-md-4">
+                          <input type="number" formControlName="pfsalary" class="form-control"
+                            style="text-align: right;" placeholder="0.00">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <label for="" class="control-label col-md-2">ESI.A/c.No.</label>
+                        <div class="col-md-1" style="width: 90px;">
+                          <select name="" id="" class="form-control">
+                            <option value="">N</option>
+                            <option value="">Y</option>
+                          </select>
+                        </div>
+                        <div class="col-md-3" style="margin-left: -13px;">
+                          <input type="text" formControlName="esiacno" class="form-control">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <label for="" class="control-label col-md-2">Holidays</label>
+                        <div class="col-md-4">
+                          <select formControlName="holidays" class="form-control">
+                            <option value="1">Sunday</option>
+                            <option value="2">Monday</option>
+                            <option value="3">Tuesday</option>
+                            <option value="4">Wednesday</option>
+                            <option value="5">Thursday</option>
+                            <option value="6">Friday</option>
+                            <option value="7">Satday</option>
+                          </select>
+                        </div>
+                        <label for="" class="control-label col-md-2">Wrk Hrs</label>
+                        <div class="col-md-4">
+                          <input type="number" formControlName="wrkhrs" class="form-control">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <label for="" class="control-label col-md-2">Sale</label>
+                        <div class="col-md-2">
+                          <select formControlName="sale" class="form-control">
+                            <option value="0" selected>N</option>
+                            <option value="1">Y</option>
+                          </select>
+                        </div>
+                        <label for="" class="control-label col-md-2">Purchase</label>
+                        <div class="col-md-2">
+                          <select formControlName="purchase" class="form-control">
+                            <option value="0" selected>N</option>
+                            <option value="1">Y</option>
+                          </select>
+                        </div>
+                        <label for="" class="control-label col-md-2">Item Issue</label>
+                        <div class="col-md-2">
+                          <select formControlName="issue" class="form-control">
+                            <option value="0" selected>N</option>
+                            <option value="1">Y</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <label for="" class="control-label col-md-2">Item Receive</label>
+                        <div class="col-md-2">
+                          <select formControlName="receive" class="form-control">
+                            <option value="0" selected>N</option>
+                            <option value="1">Y</option>
+                          </select>
+                        </div>
+                        <label for="" class="control-label col-md-2">Order</label>
+                        <div class="col-md-2">
+                          <select formControlName="ord" class="form-control">
+                            <option value="0" selected>N</option>
+                            <option value="1">Y</option>
+                          </select>
+                        </div>
+                        <label for="" class="control-label col-md-2">Repair</label>
+                        <div class="col-md-2">
+                          <select formControlName="repair" class="form-control">
+                            <option value="0" selected>N</option>
+                            <option value="1">Y</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <label for="" class="control-label col-md-2">Kitty</label>
+                        <div class="col-md-2">
+                          <select formControlName="kitty" class="form-control">
+                            <option value="0" selected>N</option>
+                            <option value="1">Y</option>
+                          </select>
+                        </div>
+                        <label for="" class="control-label col-md-2">Advance</label>
+                        <div class="col-md-2">
+                          <select formControlName="advance" class="form-control">
+                            <option value="0" selected>N</option>
+                            <option value="1">Y</option>
+                          </select>
+                        </div>
+                        <label for="" class="control-label col-md-2">Taging</label>
+                        <div class="col-md-2">
+                          <select formControlName="taging" class="form-control">
+                            <option value="0" selected>N</option>
+                            <option value="1">Y</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+          <!-- DEPARTMENT FORM END -->
+          <!-- KITTY FORM START -->
+          <div *ngIf="iskittyshow" class="col-md-9" style="display: none;">
+            <div class="kitty-form-container">
+              <div class="form-group">
+                <div class="row">
+                  <div class="kitty-form-heading">
+                    <h2 style="text-align: center; background-color: black; color: white;padding-bottom: 10px;">
+                      <u>Kitty</u>
+                      <div class="mat-icon-close" style="float: right;">
+                        <button mat-button (click)="close()">
+                          <mat-icon>close</mat-icon>
+                        </button>
+                      </div>
+                    </h2>
+                    <div class="kitty-main-form">
+                      <div class="row">
+                        <label for="" class="control-label col-md-2">Mem ID</label>
+                        <div class="col-md-4">
+                          <input type="text" formControlName="kmno" class="form-control">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <label for="" class="control-label col-md-2">Ref By</label>
+                        <div class="col-md-6">
+                          <input type="text" formControlName="kmno" class="form-control">
+                        </div>
+                        <div class="col-md-4">
+                          <input type="text" formControlName="kmrefmno" class="form-control">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <label for="" class="control-label col-md-2">Booked By</label>
+                        <div class="col-md-6">
+                          <input type="text" formControlName="ksman" class="form-control">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <label for="" class="control-label col-md-2">Remarks</label>
+                        <div class="col-md-10">
+                          <input type="text" formControlName="kremarks" class="form-control">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <label for="" class="control-label col-md-2">Op. Isn. Recd.</label>
+                        <div class="col-md-4">
+                          <input type="number" formControlName="kinsrec" class="form-control" style="text-align:right"
+                            placeholder="0">
+                        </div>
+                        <label for="" class="control-label col-md-2">Months</label>
+                        <div class="col-md-4">
+                          <input type="number" formControlName="kmonths" class="form-control" style="text-align:right"
+                            placeholder="0">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <label for="" class="control-label col-md-2">Panelty Month</label>
+                        <div class="col-md-4">
+                          <input type="number" formControlName="kpmonth" class="form-control" style="text-align:right"
+                            placeholder="0">
+                        </div>
+                        <label for="" class="control-label col-md-2">Ins.Amount</label>
+                        <div class="col-md-4">
+                          <input type="number" formControlName="kinsamt" class="form-control" style="text-align:right"
+                            placeholder="0">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <label for="" class="control-label col-md-2">Start Date</label>
+                        <div class="col-md-4">
+                          <input type="date" formControlName="ksdate" class="form-control">
+                        </div>
+                        <label for="" class="control-label col-md-2">Stop Date</label>
+                        <div class="col-md-4">
+                          <input type="date" formControlName="kedate" class="form-control">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <label for="" class="control-label col-md-2">Bhav Day</label>
+                        <div class="col-md-4">
+                          <input type="text" formControlName="rbookday" class="form-control">
+                        </div>
+                        <label for="" class="control-label col-md-2">Instt.Wt.</label>
+                        <div class="col-md-4">
+                          <input type="number" formControlName="kinswt" class="form-control" style="text-align:right"
+                            placeholder="0.00">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <label for="" class="control-label col-md-2">Collection Form</label>
+                        <div class="col-md-4">
+                          <select name="" id="" formControlName="khome" class="form-control">
+                            <option value="0" selected>NA</option>
+                            <option value="1">Collect From Home</option>
+                            <option value="2">Bank Transfer</option>
+                          </select>
+                        </div>
+                        <label for="" class="control-label col-md-2">Bhav Stamp</label>
+                        <div class="col-md-4">
+                          <input type="text" class="form-control">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- KITTY FORM END -->
+          <!-- GIRVI FORM START -->
+          <div *ngIf="isgirvishow" class="col-md-8" style="display: none;">
+            <div class="girvi-form-container">
+              <div class="form-group">
+                <div class="row">
+                  <div class="girvi-form-heading">
+                    <h2 style="text-align: center; background-color: black; color: white;padding-bottom: 10px;">
+                      <u>Girvi</u>
+                      <div class="mat-icon-close" style="float: right;">
+                        <button mat-button (click)="close()">
+                          <mat-icon>close</mat-icon>
+                        </button>
+                      </div>
+                    </h2>
+                    <div class="girvi-main-form">
+                      <div class="row">
+                        <label for="" class="control-label col-md-2">Int. Rate</label>
+                        <div class="col-md-5">
+                          <input type="number" formControlName="intr" class="form-control" style="text-align: right;"
+                            placeholder="0.00">
+                        </div>
+                        <label for="" class="control-label col-md-2">Transfer Girvi</label>
+                        <div class="col-md-2">
+                          <select formControlName="grtran" class="form-control">
+                            <option value="0" selected>N</option>
+                            <option value="1">Y</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <label for="" class="control-label col-md-2">Comp. Month</label>
+                        <label for="" class="control-label col-md-3">Default</label>
+                        <div class="col-md-2">
+                          <select fromControlName="comintdef" class="form-control">
+                            <option value="0" selected>N</option>
+                            <option value="1">Y</option>
+                          </select>
+                        </div>
+                        <div class="col-md-2">
+                          <input type="number" formControlName="comint" class="form-control" style="text-align: right;"
+                            placeholder="0.00">
+                        </div>
+                      </div>
+                      <div class="row">
+                        <label for="" class="control-label col-md-2">Min. Intt.</label>
+                        <div class="col-md-5">
+                          <select formControlName="mint" class="form-control">
+                            <option value="0" selected>Default</option>
+                            <option value="1">N/A</option>
+                            <option value="2">1 Month</option>
+                            <option value="3">7 Days</option>
+                            <option value="4">15 Days</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- GIRVI FORM END -->
+        </div>
+      </div>
+    </section>
+    <section class="footer-fix">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-12 text-left">
+            <div class="footer-button">
+              <button mat-raised-button type="submit" (click)="onsubmit()" class="save" value="Save"
+                style="margin-left:25px;">Save</button>
+              <a mat-raised-button *ngIf='isdel' class="delete" (click)="Delete()">Delete</a>
+              <a mat-raised-button class="cancle" (click)="toggleDisplay()">Cancel</a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

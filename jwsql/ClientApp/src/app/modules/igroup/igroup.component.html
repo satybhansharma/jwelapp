@@ -1,0 +1,1101 @@
+<div *ngIf="ischildshow" class="container text-center">
+  <!-- <app-category></app-category> -->
+  <!-- <app-test></app-test> -->
+  <div *ngIf="isunitshow">
+    <app-unitmaster [sdivs]=true [sendunit]="name" (listdata)="recieveunit($event)" (event)="recieveunit($event)">
+    </app-unitmaster>
+  </div>
+  <div *ngIf="isstampshow">
+    <app-stamp [sdivs]=true (listdata)="recievestamp($event)" [sendstmp]="name" (event)="recievestamp($event)">
+    </app-stamp>
+  </div>
+
+</div>
+<div *ngIf="!ischildshow">
+
+
+  <div class="row">
+    <div class="col-md-6 text-left">
+      <div class="back-button col-md-2" style="margin-left: -20px!important;" *ngIf="isnew">
+        <button mat-raised-button routerLink="/inventory" class="save cancle"><i class="fa fa-arrow-left"
+            aria-hidden="true"></i>&nbsp;Back</button>
+      </div>
+      <div class="col-md-10 text-left">
+        <h1 class="heading">Item Group Master</h1>
+      </div>
+    </div>
+
+    <div *ngIf="isnew" class="col-md-6 text-right">
+      <div class="row">
+        <div class="col-md-6">
+
+          <input style="height: 30px!important;margin-left: 200px!important;" type="email" class="form-control"
+            id="search-text" aria-describedby="search-text" [(ngModel)]="searchText" placeholder="Enter text to search"
+            (ngModelChange)="Search()" autofocus>
+        </div>
+        <div class="new-button col-md-5" style="margin-left: 10px!important;float: right;">
+          <button mat-raised-button (click)=toggleDisplay() class="save cancle">New+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--List code starts here-->
+  <div class="row">
+    <div *ngIf="isdivShow">
+      <table class="table table-striped table-bordered table-sm row-border hover">
+        <thead>
+          <tr>
+            <th style="width: 3%!important;">Edit</th>
+            <!-- <th style="width: 40px;">Delete</th> -->
+            <th style="width: 10%!important;">S.No</th>
+            <th style="width: 29%!important;">Item Group</th>
+            <th style="width: 29%!important;">Print Name</th>
+            <th style="width: 29%!important;">Unit</th>
+
+
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let record of retData let j=index">
+            <td>
+              <mat-icon style="text-align: center;font-size: 19px!important; color: #5CC6D0 !important; cursor:pointer;"
+                (click)="edit(record,1)">edit</mat-icon>
+            </td>
+            <!-- <td><mat-icon style="color: #5CC6D0 !important; cursor:pointer;" (click)="edit(record,2)">delete</mat-icon> </td> -->
+
+            <td>{{j+count}}</td>
+            <td>{{record.igroup1}}</td>
+            <td>{{record.pname}}</td>
+            <td>{{record.unit}}</td>
+
+
+          </tr>
+        </tbody>
+      </table>
+      <section class="footer-next">
+        <pagination [itemsPerPage]="15" [totalItems]="filterrec.length" (pageChanged)="pageChanged($event)">
+        </pagination>
+      </section>
+    </div>
+
+    <alert></alert>
+    <form *ngIf="isShow" (ngSubmit)="onsubmit(f)" #f="ngForm" [formGroup]="igForm">
+      <div class="container unit-form-box">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="display-label-left">
+              <div class="details-bottom">
+                <div class="form-group">
+                  <div class="group-name">
+                    <label class="control-label col-md-3 col-sm-3" for="email">Group Name</label>
+                  </div>
+                  <div class="col-md-8 col-sm-8">
+
+                    <input type="text" #input1 class="form-control group-name-label" formControlName="igroup1"
+                      autocomplete="off" (keydown.enter)="$event.preventDefault()" />
+                  </div>
+                  <div *ngIf="isFieldValid('igroup1')">
+                    <div style="font-size: 12px; color: red;margin-left: 230px;">
+                      Please Enter Itemgroup
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group ">
+                  <div class="print-name">
+                    <label class="control-label col-md-3 col-sm-3" for="pwd">Print Name</label>
+                  </div>
+                  <div class="col-md-8 col-sm-8">
+                    <input type="text" class="form-control print-name-label" formControlName="pname" autocomplete="off"
+                      (keydown.enter)="$event.preventDefault()" />
+
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label class="control-label col-md-3 col-sm-3 types" for="pwd"
+                    style="padding-top: 0px !important;">Type</label>
+                  <div class="types-primary">
+                    <div class="col-md-4 col-sm-3" *ngFor="let type of type let j=index"
+                      style="padding-top: 9px!important;">
+
+                      <ul>
+                        <input type="radio" [checked]="j===ttype" name="type" value={{j}} (click)="isundershow(j)">
+                        <b style="margin-left:5px">{{type}}</b>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div style="clear: both;"></div>
+
+                <!-- *ngIf="isunder" -->
+                <div *ngIf="isunder" class=" under-label">
+                  <label class="control-label col-md-3 col-sm-3 under-text" for="pwd"
+                    style="margin-top: 11px!important;">Under</label>
+                  <div class="col-md-8 col-sm-8">
+                    <ng-autocomplete [data]="under" [initialValue]='tunder' [searchKeyword]="keyword1"
+                      (selected)='selectEvent($event)' [itemTemplate]="itemTemplate2"
+                      [notFoundTemplate]="notFoundTemplate2" style="background-color:cadetblue;"
+                      (keydown.enter)="$event.preventDefault()">
+                    </ng-autocomplete>
+                    <ng-template #itemTemplate2 let-item>
+                      <a [innerHTML]="item.name"></a>
+                    </ng-template>
+                    <ng-template #notFoundTemplate2 let-notFound>
+                      <div>Not Found</div>
+                    </ng-template>
+
+
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="row">
+                    <label class="control-label col-md-3 col-sm-3 group-type" for="pwd" style="margin-left: 30px;">Group
+                      Type</label>
+                    <div class="col-md-8 col-sm-8 group-type-select">
+                      <select id="sel-options" class="form-control group-type-option" formControlName="itname"
+                        (keydown.enter)="$event.preventDefault()">
+                        <option value="">Select </option>
+                        <option value="Gold Jewellery">Gold Jewellery </option>
+                        <option value="Gold Metal">Gold Metal </option>
+                        <option value="Silver Jewellery">Silver Jewellery </option>
+                        <option value="Silver Metal">Silver Metal </option>
+                        <option value="Diamond Jewellery">Diamond Jewellery </option>
+                        <option value="Kundan Jewellery">Kundan Jewellery </option>
+                        <option value="Diamond">Diamond </option>
+                        <option value="Gems/Stone">Gems/Stone </option>
+                        <option value="Pc Rate Jewellery ">Pc Rate Jewellery </option>
+                        <option value="Branded Jewellery">Branded Jewellery </option>
+                        <option value="Platinum Metal">Platinum Metal </option>
+                        <option value="Platinum Jewellery">Platinum Jewellery </option>
+                        <option value="Others">Others </option>
+                        <option value="Tiles">Tiles </option>
+                        <option value="Tools/Accessories">Tools/Accessories </option>
+
+                      </select>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group default-unit-list">
+                  <label class=" default-unit control-label col-sm-3 col-md-3" for="pwd"
+                    style="margin-top: 5px!important;">Default Unit</label>
+                  <div class="col-md-3">
+                    <ng-autocomplete [data]="unitlist" [initialValue]="tunit" [searchKeyword]="keyword2"
+                      (selected)='selectEvent2($event)' [itemTemplate]="itemTemplate3"
+                      [notFoundTemplate]="notFoundTemplate3" style="background-color:cadetblue;"
+                      (keydown.enter)="$event.preventDefault()" (keyup)="sendunit($event)">
+                    </ng-autocomplete>
+                    <ng-template #itemTemplate3 let-item>
+                      <a [innerHTML]="item.name"></a>
+                    </ng-template>
+                    <ng-template #notFoundTemplate3 let-notFound>
+                      <div [innerHTML]=""><a (click)="childDisplay(1)" class="AddnewInList">+ Add New Unit</a></div>
+                    </ng-template>
+
+
+                  </div>
+                </div>
+                <div class="form-group default-stamp-list">
+                  <label class="control-label col-sm-3 col-md-3 default-stamp" for="pwd"
+                    style="margin-left: -20px;margin-top: 5px!important;">Default Stamp</label>
+                  <div class=" col-md-3">
+                    <ng-autocomplete [data]="stamplist" [initialValue]="tstamp" [searchKeyword]="keyword3"
+                      (selected)='selectEvent3($event)' [itemTemplate]="itemTemplate4"
+                      [notFoundTemplate]="notFoundTemplate4" style="background-color:cadetblue;"
+                      (keydown.enter)="$event.preventDefault()" (keyup)="sendstamp($event)">
+                    </ng-autocomplete>
+                    <ng-template #itemTemplate4 let-item>
+                      <a [innerHTML]="item.name"></a>
+                    </ng-template>
+                    <ng-template #notFoundTemplate4 let-notFound>
+                      <div [innerHTML]=""><a (click)="childDisplay(2)" class="AddnewInList">+ Add New Stamp</a></div>
+                    </ng-template>
+
+
+                  </div>
+                </div>
+                <div class="form-group details">
+                  <label class="control-label col-sm-3" for="pwd">Gst Details</label>
+                  <div class="col-sm-2">
+
+
+
+                    <select (click)="isViewgstView($event)" id="gst" class="form-control" style="width: 75px;"
+                      (keydown.enter)="$event.preventDefault()">
+                      <option value="0">No </option>
+                      <option value="1">Yes </option>
+                    </select>
+                  </div>
+                  <div class="stock-details">
+                    <label class="control-label col-md-3 col-sm-3 " for="pwd" style="margin-left: 27px;">Stock
+                      Details</label>
+                    <div class="col-md-2">
+                      <select (click)="isViewstockView($event)" id="stock" class="form-control stock-details-option "
+                        style="width: 75px; margin-left: -17px!important;" (keydown.enter)="$event.preventDefault()">
+                        <option value="0">No </option>
+                        <option value="1">Yes </option>
+                      </select>
+                    </div>
+                  </div>
+
+
+
+
+
+
+
+                </div>
+                <div class="form-group details">
+                  <label class="control-label col-sm-3" for="pwd">A/c Details</label>
+                  <div class="col-sm-2">
+
+                    <select (click)="isViewacView($event)" id="account" class="form-control" style="width: 75px;"
+                      (keydown.enter)="$event.preventDefault()">
+                      <option value="0">No </option>
+                      <option value="1">Yes </option>
+                    </select>
+                  </div>
+
+                  <div class="stock-details">
+                    <label class="control-label col-sm-3 " for="pwd" style="margin-left: 27px;">Add.Settings</label>
+                    <div class="col-md-2">
+                      <select (click)="isViewadditionalView($event)" id="settings" class="form-control"
+                        style="width: 75px;margin-left: -17px!important;" (keydown.enter)="$event.preventDefault()">
+                        <option value="0">No </option>
+                        <option value="1">Yes </option>
+                      </select>
+                    </div>
+                  </div>
+
+
+
+                </div>
+
+
+              </div>
+
+
+
+
+            </div>
+          </div>
+          <div class="col-md-6">
+            <!--cntgst-->
+            <div class="table-height">
+              <div [hidden]="isgst" class="container" name="gst" style="width: 97%;border: 1px solid black;">
+
+                <div class="row" style="background-color:#d1edaf;color: black;height: 40px;">
+                  <div class="gst-details-table">
+                    <label class="col-md-8"
+                      style="margin-top: 8px;text-align: center;margin-left: 99px; font-size: 18px;"><u>GST
+                        Details</u></label>
+                  </div>
+                </div>
+                <div class="row" style="height: 10px;padding-top:10px !important;margin-bottom:10px !important;">
+                  <div class="hsn-code-details">
+                    <label class="control-label col-sm-2 col-md-3" for="email"
+                      style="margin-left: 0px;margin-top: 3px; padding-bottom:10px">HSN Code</label>
+                  </div>
+                  <div class="col-sm-2">
+                    <div class="hsn-label">
+                      <input type="text" class="form-control"
+                        style="margin-left: -10px;width: 100px !important;padding-bottom:10px !important;text-align: right;"
+                        formControlName="hsncode" (keydown.enter)="$event.preventDefault()" />
+                    </div>
+                  </div>
+                </div>
+                <div class="row" style="height: 200px !important;width: 105%;overflow-x: scroll;">
+
+                  <table class="scroll table-striped" style="display: none;">
+                    <thead>
+                      <tr
+                        style="border-style: solid; border-color: black;border-width: 1px; background-color: gray; color: white;">
+                        <th style="border-right: black solid; border-width: 1px;text-align: center;width:40px;">Sr.</th>
+
+                        <th style="border-right: black solid; border-width: 1px;text-align: center;width: 100px;">Date
+                          W.e.f</th>
+                        <th style="border-right: black solid; border-width: 1px;text-align: center;width: 200px;">Tax
+                          Type</th>
+                        <th style="border-right: black solid; border-width: 1px;text-align: center;width: 70px;">Igst%
+                        </th>
+                        <th style="text-align: center;width: 70px;">Cess%</th>
+                      </tr>
+                    </thead>
+                    <tbody style="overflow-x:scroll !important;">
+                      <tr class="blank_row table-bordered">
+                      </tr>
+
+                      <tr class="blank_row table-bordered">
+                        <td class="headingAlign">1.</td>
+                        <td>
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                        <td>
+
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                        <td>
+
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                        <td>
+
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                      </tr>
+                      <tr class="blank_row table-bordered">
+                        <td class="headingAlign">2.</td>
+                        <td>
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                        <td>
+
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                        <td>
+
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                        <td>
+
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                      </tr>
+                      <tr class="blank_row table-bordered">
+                        <td class="headingAlign">3.</td>
+                        <td>
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                        <td>
+
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                        <td>
+
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                        <td>
+
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                      </tr>
+
+                      <tr class="blank_row table-bordered">
+                        <td class="headingAlign">4.</td>
+                        <td>
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                        <td>
+
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                        <td>
+
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                        <td>
+
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                      </tr>
+
+                      <tr class="blank_row table-bordered">
+                        <td class="headingAlign">5.</td>
+                        <td>
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                        <td>
+
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                        <td>
+
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                        <td>
+
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                      </tr>
+
+                      <tr class="blank_row table-bordered">
+                        <td class="headingAlign">6.</td>
+                        <td>
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                        <td>
+
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                        <td>
+
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                        <td>
+
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                      </tr>
+
+                      <tr class="blank_row table-bordered">
+                        <td class="headingAlign">7.</td>
+                        <td>
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                        <td>
+
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                        <td>
+
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                        <td>
+
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                      </tr>
+
+                      <tr class="blank_row table-bordered">
+                        <td class="headingAlign">8.</td>
+                        <td>
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                        <td>
+
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                        <td>
+
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                        <td>
+
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                      </tr>
+
+
+
+                  </table>
+
+
+                </div>
+
+
+              </div>
+            </div>
+            <!--cntgst ends here-->
+            <!--cntstock starts here-->
+            <div class="table-height">
+              <div [hidden]="isstock" class="container" style="width: 97%;border: 1px solid black;">
+                <div class="row" style="background-color:#d1edaf;color: black;height: 40px;">
+                  <div class="stock-detail-heading">
+                    <label class="col-md-8"
+                      style="margin-left:92px;margin-top: 8px;text-align: center !important;font-size: 18px;"><u>Stock
+                        Details</u></label>
+                  </div>
+                </div>
+                <div class="row" style="height: 10px;">
+                  <div class="stock-reports-on">
+                    <label class="control-label col-md-2 col-sm-5" for="email"
+                      style="margin-left: 5px;margin-top: 9px;">As On</label>
+                    <div class="col-md-6 col-sm-6 calander">
+                      <input type="date" class="form-control "
+                        style="margin-left: -10px; margin-top: 5px; margin-bottom: 5px;" name=""
+                        (keydown.enter)="$event.preventDefault()" />
+                    </div>
+                  </div>
+                </div>
+                <div style="height: 200px !important;width: 100%;overflow-x: scroll;">
+                  <table class="table-striped" style="width: 100%;display: none;">
+                    <tbody>
+                      <tr
+                        style="border-style: solid; border-color: black;border-width: 1px; background-color: gray; color: white;">
+                        <th style="border-right: black solid; border-width: 1px;text-align: center;width:50px;">Sr.</th>
+                        <th style="border-right: black solid; border-width: 1px;text-align: center;width: 150px;">As On
+                        </th>
+                        <th style="border-right: black solid; border-width: 1px;text-align: center;width: 220px;">Stock
+                          Value</th>
+                        <th style="border-right: black solid; border-width: 1px;text-align: center;width: 200px;">Op.Bal
+                        </th>
+
+                      </tr>
+                      <tr class="blank_row table-bordered">
+                        <td class="headingAlign">1.</td>
+                        <td>
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                        <td>
+
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                        <td>
+
+                          <input type="text" class="form-control borderless" />
+                        </td>
+
+                      </tr>
+
+                      <tr class="blank_row table-bordered">
+                        <td class="headingAlign">2.</td>
+                        <td>
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                        <td>
+
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                        <td>
+
+                          <input type="text" class="form-control borderless" />
+                        </td>
+
+                      </tr>
+
+                      <tr class="blank_row table-bordered">
+                        <td class="headingAlign">3.</td>
+                        <td>
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                        <td>
+
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                        <td>
+
+                          <input type="text" class="form-control borderless" />
+                        </td>
+
+                      </tr>
+
+                      <tr class="blank_row table-bordered">
+                        <td class="headingAlign">4.</td>
+                        <td>
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                        <td>
+
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                        <td>
+
+                          <input type="text" class="form-control borderless" />
+                        </td>
+
+                      </tr>
+
+                      <tr class="blank_row table-bordered">
+                        <td class="headingAlign">5.</td>
+                        <td>
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                        <td>
+
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                        <td>
+
+                          <input type="text" class="form-control borderless" />
+                        </td>
+
+                      </tr>
+
+                      <tr class="blank_row table-bordered">
+                        <td class="headingAlign">6.</td>
+                        <td>
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                        <td>
+
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                        <td>
+
+                          <input type="text" class="form-control borderless" />
+                        </td>
+
+                      </tr>
+                      <tr class="blank_row table-bordered">
+                        <td class="headingAlign">7.</td>
+                        <td>
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                        <td>
+
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                        <td>
+
+                          <input type="text" class="form-control borderless" />
+                        </td>
+
+                      </tr>
+
+                      <tr class="blank_row table-bordered">
+                        <td class="headingAlign">8.</td>
+                        <td>
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                        <td>
+
+                          <input type="text" class="form-control borderless" />
+                        </td>
+                        <td>
+
+                          <input type="text" class="form-control borderless" />
+                        </td>
+
+                      </tr>
+
+
+
+
+
+
+                    </tbody>
+
+                  </table>
+
+                </div>
+
+
+              </div>
+            </div>
+            <!--cntstock ends here-->
+            <!--cnta/c starts here-->
+            <div class="table-height">
+              <div class="cnt-ac">
+                <div [hidden]="isaccount" class="container"
+                  style="width: 83%; border: 1px solid black;  padding-bottom: 10px;">
+
+                  <div class="row ac-heading" style="background-color:#d1edaf;color: black;height: 40px;">
+                    <label class="col-md-8"
+                      style="margin-left:100px;margin-top: 8px;text-align: center !important;font-size: 18px;"><u>A/c
+                        Details</u></label>
+                  </div>
+                  <div>
+                    <div class="row">
+                      <div class="sale-ac">
+                        <label class="control-label col-md-4 col-sm-6" for="email"
+                          style="margin-left: 5px;margin-top: 3px;">Sale A/c</label>
+                      </div>
+                      <div class="col-md-6 col-sm-6 sale-ac-select">
+                        <div>
+                          <ng-autocomplete [data]="scname" [initialValue]="tscname" [searchKeyword]="keyword4"
+                            (selected)='selectEvent4($event)' [itemTemplate]="itemTemplate4"
+                            [notFoundTemplate]="notFoundTemplate4" style="background-color:cadetblue;"
+                            (keydown.enter)="$event.preventDefault()">
+                          </ng-autocomplete>
+                          <ng-template #itemTemplate4 let-item>
+                            <a [innerHTML]="item.name"></a>
+                          </ng-template>
+                          <ng-template #notFoundTemplate4 let-notFound>
+                            <div [innerHTML]=""><a (click)="childDisplay()" class="AddnewInList">+ Add New A/c</a></div>
+                          </ng-template>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="pur-ac">
+                        <label class="control-label col-md-4 col-sm-6" for="email"
+                          style="margin-left: 5px;margin-top: 3px;">Pur. A/c</label>
+                      </div>
+                      <div class="col-md-6 col-sm-6">
+                        <div class="pur-ac-select">
+                          <ng-autocomplete [data]="pcname" [initialValue]="tpcname" [searchKeyword]="keyword5"
+                            (selected)='selectEvent5($event)' [itemTemplate]="itemTemplate5"
+                            [notFoundTemplate]="notFoundTemplate5" style="background-color:cadetblue;"
+                            (keydown.enter)="$event.preventDefault()">
+                          </ng-autocomplete>
+                          <ng-template #itemTemplate5 let-item>
+                            <a [innerHTML]="item.name"></a>
+                          </ng-template>
+                          <ng-template #notFoundTemplate5 let-notFound>
+                            <div [innerHTML]=""><a (click)="childDisplay()" class="AddnewInList">+ Add New A/c</a></div>
+                          </ng-template>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="lbr-ac">
+                        <label class="control-label col-md-4 col-sm-6" for="email"
+                          style="margin-left: 5px;margin-top: 3px;">Lbr A/c Issue</label>
+                      </div>
+                      <div class="col-md-6 col-sm-6">
+                        <div class="lbr-ac-select">
+                          <ng-autocomplete [data]="icname" [initialValue]="ticname" [searchKeyword]="keyword6"
+                            (selected)='selectEvent6($event)' [itemTemplate]="itemTemplate6"
+                            [notFoundTemplate]="notFoundTemplate6" style="background-color:cadetblue;"
+                            (keydown.enter)="$event.preventDefault()">
+                          </ng-autocomplete>
+                          <ng-template #itemTemplate6 let-item>
+                            <a [innerHTML]="item.name"></a>
+                          </ng-template>
+                          <ng-template #notFoundTemplate6 let-notFound>
+                            <div [innerHTML]=""><a (click)="childDisplay()" class="AddnewInList">+ Add New A/c</a></div>
+                          </ng-template>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="lbr-ac-rcpt">
+                        <label class="control-label col-md-4 col-sm-6" for="email"
+                          style="margin-left: 5px;margin-top: 3px;">Lbr A/c Rcpt</label>
+                      </div>
+                      <div class="col-md-6 col-sm-6">
+                        <div class="lbr-ac-rcpt-select">
+                          <ng-autocomplete [data]="rcname" [initialValue]="trcname" [searchKeyword]="keyword7"
+                            (selected)='selectEvent7($event)' [itemTemplate]="itemTemplate7"
+                            [notFoundTemplate]="notFoundTemplate7" style="background-color:cadetblue;"
+                            formControlName="rcname" (keydown.enter)="$event.preventDefault()">
+                          </ng-autocomplete>
+                          <ng-template #itemTemplate7 let-item>
+                            <a [innerHTML]="item.name"></a>
+                          </ng-template>
+                          <ng-template #notFoundTemplate7 let-notFound>
+                            <div [innerHTML]=""><a (click)="childDisplay()" class="AddnewInList">+ Add New A/c</a></div>
+                          </ng-template>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="rent-ac">
+                        <label class="control-label col-md-4 col-sm-6" for="email"
+                          style="margin-left: 5px;margin-top: 5px;">Rent A/c</label>
+                      </div>
+                      <div class="col-md-6 col-sm-6">
+                        <div class="rent-ac-select">
+                          <ng-autocomplete [data]="rentcname" [initialValue]="trentcname" [searchKeyword]="keyword10"
+                            (selected)='selectEvent10($event)' [itemTemplate]="itemTemplate10"
+                            [notFoundTemplate]="notFoundTemplate10" style="background-color:cadetblue;"
+                            (keydown.enter)="$event.preventDefault()">
+                          </ng-autocomplete>
+                          <ng-template #itemTemplate10 let-item>
+                            <a [innerHTML]="item.name"></a>
+                          </ng-template>
+                          <ng-template #notFoundTemplate10 let-notFound>
+                            <div [innerHTML]=""><a (click)="childDisplay()" class="AddnewInList">+ Add New A/c</a></div>
+                          </ng-template>
+
+
+
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="studed-sale-ac">
+                        <label class="control-label col-md-4 col-sm-6" for="email"
+                          style="margin-left: 5px;margin-top: 3px;">Studed Sale A/c</label>
+
+                      </div>
+                      <div class="col-md-6 col-sm-6">
+                        <div class="studed-sale-ac-select">
+                          <ng-autocomplete [data]="scname" [initialValue]="tstscname" [searchKeyword]="keyword8"
+                            (selected)='selectEvent8($event)' [itemTemplate]="itemTemplate8"
+                            [notFoundTemplate]="notFoundTemplate8" style="background-color:cadetblue;"
+                            (keydown.enter)="$event.preventDefault()">
+                          </ng-autocomplete>
+                          <ng-template #itemTemplate8 let-item>
+                            <a [innerHTML]="item.name"></a>
+                          </ng-template>
+                          <ng-template #notFoundTemplate8 let-notFound>
+                            <div [innerHTML]=""><a (click)="childDisplay()" class="AddnewInList">+ Add New A/c</a></div>
+                          </ng-template>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="studed-pure-ac">
+                        <label class="control-label col-md-4 col-sm-6" for="email"
+                          style="margin-left: 5px;margin-top: 3px;">Studed Pur.A/c</label>
+                      </div>
+                      <div class="col-md-6 col-sm-6">
+                        <div class="studed-pure-ac-select">
+                          <ng-autocomplete [data]="pcname" [initialValue]="tstpcname" [searchKeyword]="keyword9"
+                            (selected)='selectEvent9($event)' [itemTemplate]="itemTemplate9"
+                            [notFoundTemplate]="notFoundTemplate9" style="background-color:cadetblue;"
+                            (keydown.enter)="$event.preventDefault()">
+                          </ng-autocomplete>
+                          <ng-template #itemTemplate9 let-item>
+                            <a [innerHTML]="item.name"></a>
+                          </ng-template>
+                          <ng-template #notFoundTemplate9 let-notFound>
+                            <div [innerHTML]=""><a (click)="childDisplay()" class="AddnewInList">+ Add New A/c</a></div>
+                          </ng-template>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+
+
+                </div>
+              </div>
+            </div>
+            <!--cnta/c ends here-->
+            <!--cntadditional starts here-->
+            <div class="table-height table-width cnt">
+              <div [hidden]="isadditional" class="container" style="width: 97%; border: 1px solid black;">
+                <div class="row" style="background-color:#d1edaf;color: black;height: 40px;">
+                  <label class="col-md-8"
+                    style="margin-left:100px;margin-top: 8px;text-align: center !important;font-size: 18px;"><u>Additional
+                      Settings</u></label>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <label class="col-md-5 col-sm-5 col-xs-8" for="resless" style="margin-left: px;"> Restrict Less In
+                      Studed Wt</label>
+                    <div class="col-md-1 col-sm-1 col-xs-2">
+                      <label class="form-check-label">
+                        <input type="checkbox" [checked]="resless" id="resless" name="resless" formControlName="resless"
+                          (keydown.enter)="$event.preventDefault()">
+                      </label>
+                    </div>
+                    <div class="allow-tag">
+                      <label class="col-md-5 col-sm-4 col-xs-8" for="alttag"> Allow Tag No Alteration</label>
+                    </div>
+                    <div class="col-md-1 col-sm-1 col-xs-1">
+                      <label class="form-check-label allow-tag-input">
+                        <input type="checkbox" [checked]="alttag" id="alttag" name="alttag" formControlName="alttag"
+                          (keydown.enter)="$event.preventDefault()">
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="row">
+                    <label class="col-md-5 col-sm-5 col-xs-8 pick-rate" for="itrate"> Pick Rate From Rate List</label>
+                    <div class="col-md-1 col-sm-1 col-xs-2 pick-rate-input">
+                      <label class="form-check-label">
+                        <input type="checkbox" [checked]="itrate" id="itrate" name="itrate" formControlName="itrate"
+                          (keydown.enter)="$event.preventDefault()">
+                      </label>
+                    </div>
+                    <div class="restrict-sale">
+                      <label class="col-md-5 col-sm-5 col-xs-8 " for="alttag">Restrict Sale Below MRP</label>
+                    </div>
+                    <div class="col-md-1 col-sm-1 col-xs-2 restrict-sale-input">
+                      <label class="form-check-label">
+                        <input type="checkbox" [checked]="resmrp" id="resmrp" name="resmrp" formControlName="resmrp"
+                          (keydown.enter)="$event.preventDefault()">
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="dont-allow">
+                      <label class="col-md-5 col-sm-5 col-xs-8" for="igaladd"> Don't Allow Add/less Wt</label>
+                    </div>
+                    <div class="col-md-1 col-sm-1 col-xs-2 dont-allow-input">
+                      <label class="form-check-label" style="margin-left: 0px;">
+                        <input type="checkbox" [checked]="igaladd" id="igaladd" name="igaladd" formControlName="igaladd"
+                          (keydown.enter)="$event.preventDefault()">
+                      </label>
+                    </div>
+                    <div class="consume-label">
+                      <label class="col-md-5 col-sm-5 col-xs-8" for="consume"> Consume</label>
+                      <div class="col-md-1 col-sm-1 col-xs-2 consume-input">
+                        <label class="form-check-label" style="margin-left: 0px!important;">
+                          <input type="checkbox" [checked]="consume" id="consume" name="consume"
+                            formControlName="consume" (keydown.enter)="$event.preventDefault()">
+                        </label>
+                      </div>
+
+
+                    </div>
+
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <label class="col-md-5 col-sm-3 col-xs-6 used-in-taging" for="">Used in Taging</label>
+                    <div class="col-md-1 col-sm-1 col-xs-1 used-in-taging-input">
+                      <label class="form-check-label">
+                        <input type="checkbox" id="" name="tag" value="tag" formControlName="tag">
+                        <div class="col-md-3 col-sm-2 used-in-taging-input-new"
+                          style="width: 250px; margin-left: 50px; margin-top: -25px;">
+                          <select id="sel-options" class="form-control " formControlName="rtag" placeholder="select"
+                            (keydown.enter)="$event.preventDefault()">
+                            <option value="0">--Select--</option>
+                            <option value="1">Allow Tag No Alteration</option>
+                            <option value="2">Re-taging</option>
+                            <option value="3">Tag Numbering</option>
+                          </select>
+                        </div>
+                      </label>
+                    </div>
+
+                  </div>
+                </div>
+
+
+
+                <div class="form-group">
+                  <div class="row">
+                    <div class="daily-bhav">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-5 use-daily-bhav" for="email">Use Daily
+                        Bhav</label>
+                      <div class="col-md-4 col-sm-2 col-xs-3">
+                        <div class="daily-bhav-option">
+                          <select id="sel-options" class="form-control use-daily-bhav-option"
+                            style="margin-top: -6px!important;" formControlName="dbhav"
+                            (keydown.enter)="$event.preventDefault()">
+                            <option value="N">N</option>
+                            <option value="Y">Y</option>
+
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="sauda-into">
+                      <label class="control-label col-md-3 col-sm-3 col-xs-8" for="email">Sauda Into</label>
+                    </div>
+                    <div class="col-md-2 col-sm-2 col-xs-2">
+                      <div class="sauda-into-input">
+                        <style>
+                          input::-webkit-outer-spin-button,
+                          input::-webkit-inner-spin-button {
+                            -webkit-appearance: none;
+                            margin: 0;
+                          }
+
+                          input[type="number"] {
+                            -moz-appearance: textfield;
+                          }
+                        </style>
+                        <input type="number" class="form-control"
+                          style="width: 110px; margin-left: -45px;text-align: right;margin-top: -6px!important;"
+                          name="mcxinto" formControlName="mcxinto" (keydown.enter)="$event.preventDefault()" />
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <div class="trending-into">
+
+                      <label class="control-label col-md-3 col-sm-2 col-xs-8" for="email">Trading</label>
+                    </div>
+                    <div class="col-md-4 col-sm-3 col-xs-2">
+                      <div class=" trading-option">
+                        <select id="sel-options" class="form-control" style="margin-top: -6px!important;"
+                          formControlName="mcxcomex" (keydown.enter)="$event.preventDefault()">
+                          <option value="1">N/A </option>
+                          <option value="2">MCX </option>
+                          <option value="3">Comex </option>
+                        </select>
+                      </div>
+
+                    </div>
+                    <div class="usedin">
+                      <label class="control-label col-md-2 col-sm-2 col-xs-8" for="email">Used In</label>
+
+                      <div class="col-md-2 col-sm-4 col-xs-4">
+                        <div class="trading-jobwrok">
+                          <select id="sel-options" class="form-control" style="width: 110px;margin-top: -6px!important;"
+                            formControlName="ttype" (keydown.enter)="$event.preventDefault()">
+                            <option value="1">Trading </option>
+                            <option value="2">Job Work </option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-6 discount-by" for="email">Discount By</label>
+
+                    <div class="col-md-5 col-sm-4 col-xs-2 ">
+                      <div class="discount-by-select">
+                        <select id="sel-options" class="form-control" style="margin-top: -6px!important;"
+                          formControlName="lbrdis" (keydown.enter)="$event.preventDefault()">
+                          <option value="1">Lbr </option>
+                          <option value="2">Per </option>
+                          <option value="3">Rate </option>
+                          <option value="4">Dia. </option>
+                          <option value="5">Stn </option>
+                          <option value="6">Metal </option>
+                          <option value="7">RAPA </option>
+                          <option value="8">Nwt Value </option>
+                          <option value="9">AW Value </option>
+                          <option value="10">Divide </option>
+                          <option value="11">S.Value RO </option>
+                          <option value="12">Lbr+Std Val+Others </option>
+                          <option value="13">Lbr+Std Value </option>
+                          <option value="14">AW+Lbr </option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="percent-sign">
+                      <label class="control-label col-md-2 col-sm-2" for="email">%</label>
+                      <div class="col-md-2 col-sm-2 ">
+                        <div class="name-new">
+                          <style>
+                            input::-webkit-outer-spin-button,
+                            input::-webkit-inner-spin-button {
+                              -webkit-appearance: none;
+                              margin: 0;
+                            }
+
+                            input[type="number"] {
+                              -moz-appearance: textfield;
+                            }
+                          </style>
+                          <input type="number" class="form-control"
+                            style="width: 110px; margin-left: -45px; text-align: right;margin-top: -6px!important;"
+                            name="dis" formControlName="dis" (keydown.enter)="$event.preventDefault()" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+
+
+
+
+              </div>
+
+            </div>
+
+            <!--cntaddtional ends here-->
+
+
+          </div>
+        </div>
+      </div>
+      <section class="footer-fix">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-12 text-left">
+              <div class="footer-button">
+                <button mat-raised-button type="submit" class="save" click="onsubmit()" value="Save"
+                  style="margin-left:25px;">Save</button>
+                <a mat-raised-button *ngIf="isdel" (click)=Delete() class="delete">Delete</a>
+                <a mat-raised-button (click)=toggleDisplay() class="cancle">Cancel</a>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </form>
+  </div>
+  <div style="clear: both;"></div>
+
+  <div class="borderStyle" style="margin-bottom: 20px;"></div>
+</div>

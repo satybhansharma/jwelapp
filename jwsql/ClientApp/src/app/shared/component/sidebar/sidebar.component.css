@@ -1,0 +1,50 @@
+ 
+.fontStyle{
+    font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif!important;
+}
+
+mat-nav-list a{
+    font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif!important;
+    font-weight: 400!important;
+    font-size: 13px!important;
+}
+mat-nav-list a i{
+  font-weight: 400!important;
+  font-size: 13px!important;
+  margin-top: -4px!important
+}
+mat-nav-list a:hover{
+    background-color: #397db9!important;
+    color: white!important;
+}
+mat-nav-list a:focus{
+    color: #2fa3e6!important;
+    background-color: #1f282d!important;
+}
+
+mat-subheader{
+  font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif!important;
+}
+
+  .menu-Style{
+    font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif!important;
+    font-size: 13px!important;
+    letter-spacing: 10px;
+  }
+  
+   ::ng-deep .mat-expansion-indicator::after{
+       color: white;
+   }
+   .footer-fix {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 9999999999;
+    background-color:#1f282d!important ;
+    padding: 5px 0;
+    -webkit-box-shadow: 0px -2px 12px 0px rgba(48, 50, 50, 0.44);
+    -moz-box-shadow: 0px -2px 12px 0px rgba(48, 50, 50, 0.44);
+    box-shadow: 0px -2px 12px 0px rgba(48, 50, 50, 0.44);
+  }

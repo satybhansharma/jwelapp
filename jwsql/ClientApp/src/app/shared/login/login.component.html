@@ -1,0 +1,66 @@
+<!--<div class="container">
+  <form [formGroup]="form" (ngSubmit)="formSubmit()">
+    <div class="row">
+   
+      <section class="pop">
+        
+        <div class="col-md-4 login">
+          <h2 style="color:white;letter-spacing:4px;text-transform:uppercase;font-weight:bold;text-align:center !important;text-transform:uppercase;" class="text-center;">Login</h2>
+          <label for="" class="control-label col-md-12" style="text-align: left;color:white !important;text-transform:uppercase !important;letter-spacing:2px;">User Name</label>
+          <div class="col-md-12">
+            <input formControlName="userName" type="text" class="form-control">
+          </div>
+          <label for="" class="control-label col-md-12" style="text-align: left;
+            padding-top: 30px !important;
+            color: white !important;
+            text-transform: uppercase !important;
+            letter-spacing: 2px;">Password</label>
+          <div class="col-md-12 mb-4" >
+            <input formControlName="pwd" type="password" class="form-control">
+          </div>
+          <div>
+            <input style="margin-top:20px !important;margin-left:20px !important;margin-bottom:20px !important;text-transform:uppercase !important;font-weight:bolder;" type="submit" class="btn btn-sm btn-info" />
+            <input style="margin-top:20px !important;margin-bottom:20px !important;margin-left:20px !important;text-transform:uppercase;font-weight:bolder!important;" type="reset"  class="btn btn-sm btn-danger" value="Cancel" />
+
+          </div>-->
+           <!--<button mar-raised-button style="margin-top:40px!important;margin-bottom:20px!important;margin-left: 170px!important;">Login</button>-->
+        <!--</div>
+      </section>
+    </div>
+  </form>
+  
+</div>-->
+
+<div class="container-fluid" style="background-color: #f1f1f1;height: 100vh;">
+  <div class="row" style="background-color: #f1f1f1;">
+  
+
+    <div class="login">
+      <form [formGroup]="form" (ngSubmit)="formSubmit()" id="login">
+        <h2><b><u>Login</u></b></h2>
+        <label>
+          <b>
+            User Name
+          </b>
+        </label>
+        <input formControlName="userName" type="text" name="Uname" id="Uname" placeholder="Username">
+        <br><br>
+        <label>
+          <b>
+            Password
+          </b>
+        </label>
+        <input formControlName="pwd" type="Password" name="Pass" id="Pass" placeholder="Password">
+
+        <br><br>
+        <br><br>
+
+        <input type="submit" name="log" id="log" value="Log In Here">
+
+      </form>
+      
+    </div>
+    <alert></alert>
+  </div>
+</div>
+

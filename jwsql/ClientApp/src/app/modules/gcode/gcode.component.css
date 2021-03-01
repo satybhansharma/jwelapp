@@ -1,0 +1,29 @@
+.unit-form-box {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-left: 5px;
+    padding-right: 20px;
+    width: 100%;
+  }
+  .form-group label{
+    text-align: left;
+    margin-top: 28px!important;
+    font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif!important;
+    font-size: 13px!important;
+    font-weight: 400!important;
+  }
+  form input.form-control {
+    border-radius: 0%;
+    border: 1px solid #ced4da!important;
+    width: 250px;
+    font-size: 14px !important;
+    margin-top: 20px;
+    text-transform: capitalize;
+  }
+  form label {
+  text-align: left;
+  }

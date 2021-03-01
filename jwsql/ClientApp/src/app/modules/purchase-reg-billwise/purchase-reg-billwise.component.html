@@ -1,0 +1,125 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <h2 style="text-align: center;"><u>{{title}}</u></h2>
+            </div>
+            <div class="table-container"></div>
+            <div class="row from">
+                <div class="col-md-3"></div>
+                <label for="" class="control-label col-md-1">From</label>
+                <div class="col-md-2" style="margin-left: -30px!important;">
+                    <input   type="date" value="{{fdate}}" (change)="onchange1($event.target.value)"  class="form-control">
+                </div>
+                <label for="" class="control-label col-md-1">To</label>
+                <div class="col-md-2" style="margin-left: -40px!important;">
+                    <input type="date" formControlName="tdate"  value="{{tdate}}" (change)="onchange($event.target.value)" value="tdate" class="form-control">
+                </div>
+                <div class="col-md-3">
+                    <select name="" id="" class="form-control">
+                        <option value=""></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+            <div class="row">
+                <!-- <div class="scrollmenu" style="overflow-x: auto;height: 400px;">
+                    <table class="table table-striped table-bordered table-sm row-border hover">
+                        <thead>
+                            <tr>
+                                <th style="width: 100px!important;">Date</th>
+                                <th style="width: 100px!important;">Vou No.</th>
+                                <th style="width: 200px!important;">Narration</th>
+                                <th style="width: 200px!important;">Party Name</th>
+                                <th style="width: 100px!important;">City</th>
+                                <th style="width:100px!important">Series</th>
+                                <th style="width:100px!important">Pur. Amt</th>
+                                <th style="width:100px!important">Discount</th>
+                                <th style="width:100px!important">Tax</th>
+                                <th style="width:100px!important">Bill Amt</th>
+                                <th style="width:100px!important">G.Fine</th>
+                                <th style="width:100px!important">S.Fine</th>
+                                <th style="width:100px!important">Adjust</th>
+                                <th style="width:70px!important">SGST</th>
+                                <th style="width:70px!important">CGST</th>
+                                <th style="width:70px!important">IGST</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div> -->
+                <div class="ag-grid"> 
+                    <ag-grid-angular
+                style="height: 440px;width: 100%;margin-top: 5px!important;"
+                class="ag-theme-balham"
+                [gridOptions]="gridOptions"
+                [rowHeight]="30"
+                headerHeight="40"
+                [rowData]="records"
+                [columnDefs]="columnDefs"
+                ></ag-grid-angular>
+                </div>
+            </div>
+        </div>
+            <!-- <div class="row">
+                   <label for="" class="control-label col-md-1" style="padding-top: 5px;">Records</label>
+                   <div class="col-md-1">
+                       <input class="form-control" readonly style="cursor: pointer;height: 30px!important;background-color: white;font-weight: 550;">
+                   </div>
+                </div> -->
+                <div class="row">
+                <label for="" class="control-label col-md-2" style="padding-top: 4px!important;">Grand Total</label>
+                <div class="total-label col-md-10">
+                        <input class="form-control" readonly class="form-control" value="{{p_samt}}"   name="samount">
+                        <input class="form-control" readonly class="form-control" value="{{p_dis}}"   name="discount">
+                        <input class="form-control" readonly class="form-control" value="{{p_tax}}"   name="tax">
+                        <input class="form-control" readonly class="form-control" value="{{p_amt}}"   name="amount" >
+                        <input class="form-control" readonly class="form-control" value="{{p_fine1}}"   name="fine1">
+                        <input class="form-control" readonly class="form-control" value="{{p_fine2}}"   name="fine2">
+                        <input class="form-control" readonly class="form-control" value="{{p_adjust}}"   name="adjust">
+                        <input class="form-control" readonly class="form-control" value="{{p_sgst}}"   name="sgst">
+                        <input class="form-control" readonly class="form-control" value="{{p_cgst}}"   name="cgst">
+                        <input class="form-control" readonly class="form-control" value="{{p_igst}}"   name="igst">
+                        
+                        
+                        
+                        
+                </div>
+            </div>
+        </div>
+        <section class="footer-lab">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="footer-select">
+                        <div class="col-md-8 text-right footer-btn"
+                            style="margin-top: -20px;margin-bottom: 10px!important; font-weight: bold;float: left;">
+                            <button mat-raised-button class="col-md-2" style="margin-left: 10px;">Export</button>
+                            <button mat-raised-button class="col-md-2" style="margin-left: 10px;">Print</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      
+        </section>
+    </div>
+    </div>

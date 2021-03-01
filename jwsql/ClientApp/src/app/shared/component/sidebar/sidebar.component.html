@@ -1,0 +1,33 @@
+<mat-nav-list class="fontStyle" style="width: 180px!important; background-color: #3a3d46;height: 100%!important;border-color: white!important;">
+  <a style="color:white; letter-spacing: 1px;margin-bottom: 10px;height: 30px!important;" mat-list-item routerLinkActive="list-item-active" routerLink="/" color="red"><i class="fa fa-tachometer" aria-hidden="true"></i>&nbsp; Dashboard</a>
+  <a (click)="isviewside('')" id="left" style="color:white; letter-spacing: 1px; height: 30px!important;" mat-list-item routerLinkActive="list-item-active" routerLink="/inventory" color="red"><i class="fa fa-cubes" aria-hidden="true"></i>&nbsp; Inventory </a>
+  <a (click)="isviewside('')" id="left" style="color:white; letter-spacing: 1px;margin-bottom: 0px;height: 30px!important;" mat-list-item routerLinkActive="list-item-active" routerLink="/accounting" color="red"><i class="fa fa-calculator" aria-hidden="true"></i>&nbsp; Accounts</a>
+
+  <button style="color:white; letter-spacing: 1px;margin-bottom: 10px !important;height: 30px!important;" id="left" mat-button [matMenuTriggerFor]="menu"> <i class="fas fa-file-invoice"></i>&nbsp;<span style="color:white;">&nbsp; Invoice</span> </button>
+  <mat-menu #menu="matMenu">
+    <button (click)="onClick('Sale')" mat-menu-item routerLink="/sale-form/sale"> <i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp; SALE</button>
+    <button (click)="onClick('Sale-Ret')" mat-menu-item routerLink="/sale-form/sale_Ret"> <i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp; SALE RET.</button>
+    <button (click)="onClick('Purchase')" mat-menu-item routerLink="/sale-form/purchase"> <i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp; PURCHASE</button>
+    <button (click)="onClick('Purchase-Ret.')" mat-menu-item routerLink="/sale-form/purchase_Ret"> <i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp; PURCHASE RET.</button>
+    <button (click)="onClick('Issue')" mat-menu-item routerLink="/sale-form/issue"> <i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp; ISSUE</button>
+    <button (click)="onClick('Receive')" mat-menu-item routerLink="/sale-form/receive"> <i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp; RECEIVE</button>
+    <button (click)="onClick('Order')" mat-menu-item routerLink="/sale-form/order"> <i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp; ORDER</button>
+
+
+  </mat-menu>
+  <!--<a (click)="isviewside('Sale')" id="left" style="color:white; letter-spacing: 1px;height: 30px!important;margin-bottom: 15px;" mat-list-item routerLinkActive="list-item-active" routerLink="/sale-form/Sale" color="red">
+    <i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp; Sale
+  </a>
+  <a (click)="isviewside('Purchase')" id="left" style="color:white; letter-spacing: 1px;height: 30px!important;margin-bottom: 15px;" mat-list-item routerLinkActive="list-item-active" routerLink="/sale-form/Purchase" color="red">
+    <i class="fa fa-shopping-cart" aria-hidden="true"></i>&nbsp; Purchase
+  </a>-->
+  <a (click)="isviewside('')" id="left" style="color:white; letter-spacing: 1px;height: 30px!important;margin-bottom: 15px;" mat-list-item routerLinkActive="list-item-active" routerLink="/voucher" color="red"><i class="fa fa-bookmark" aria-hidden="true"></i>&nbsp; Vouchers</a>
+  <a (click)="isviewside('')" id="left" style="color:white; letter-spacing: 1px;height: 30px!important;" mat-list-item routerLinkActive="list-item-active" routerLink="/ledger-button" color="red"><i class="fa fa-list-ul" aria-hidden="true"></i>&nbsp; Reports</a>
+  <a (click)="isviewside('')" id="left" style="color:white; letter-spacing: 1px;height: 30px!important;margin-top:10px;" mat-list-item routerLinkActive="list-item-active" routerLink="/login" color="red"><i class="fa fa-lock" aria-hidden="true"></i>&nbsp; Logout</a>
+
+  <section class="footer-fix" (click)="isviewside('')" style="cursor: pointer;">
+    <button mat-icon-button style="margin-left: 60px!important;">
+      <mat-icon id="left" style="font-weight: 400;font-size: 30px;color: white!important;">keyboard_arrow_left</mat-icon>
+    </button>
+  </section>
+</mat-nav-list>

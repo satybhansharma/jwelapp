@@ -1,0 +1,13 @@
+ul li{
+    list-style:none ;
+}
+.logoStyle{
+font-family: 'Montserrat',Helvetica,Arial,Lucida,sans-serif;
+font-size:4rem;
+letter-spacing: 2px;
+font-weight: bold;
+margin-left: 10px;
+}
+::ng-deep mat-toolbar{
+    height: 30px!important;
+}

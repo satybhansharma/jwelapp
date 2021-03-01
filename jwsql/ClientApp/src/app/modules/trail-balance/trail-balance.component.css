@@ -1,0 +1,9 @@
+.butttons button{
+    width: 150px!important;
+    height: 25px!important;
+    text-align: left;
+}
+table-container { width: 600px; overflow: hidden;}
+.table-container tr {display: block; }
+.table-container th, td { width: 300px; }
+.table-container tbody { display: block; height: 380px; overflow: auto;}

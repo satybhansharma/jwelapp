@@ -1,0 +1,420 @@
+input {
+    text-transform: capitalize;
+   
+  }
+.unit-form-box .form-group label{
+    margin-top: 7px!important;
+    font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif;
+    font-weight: 400!important;
+    font-size: 13px!important;
+} 
+.unit-form-box .form-group input{
+    border-radius: 2px!important;
+    border: 1px solid #ced4da!important;
+    height: 32px!important;
+}
+.unit-form-box .form-group select{
+    border-radius: 2px!important;
+    border: 1px solid #ced4da!important;
+    height: 32px!important;
+}
+  ::ng-deep .series-ng  .autocomplete-container .input-container input{
+    background-color: white;
+    border: 1px solid #ced4da!important;
+    box-shadow: none !important;
+    border-radius: 2px!important;
+    height: 32px!important;
+  }
+  ::ng-deep .series-ng .autocomplete-container{
+    height: 32px!important;
+    margin-bottom: 3px!important;    
+  }
+  ::ng-deep .group-type  .autocomplete-container .input-container input{
+    background-color: white;
+    border: 1px solid #ced4da!important;
+    box-shadow: none !important;
+    border-radius: 2px!important;
+    height: 32px!important;
+  }
+  ::ng-deep .group-type .autocomplete-container{
+    height: 32px!important;    
+  }
+  .unit-form-box .group-type .item:hover{
+      background-color: #5cc6d0;
+      color: white;
+  }
+.opening-balance-form{
+    border: 1px solid #ced4da;
+    width: 100%!important;
+    background-color: cornsilk;
+}
+.opening-balance-form label{
+    margin-top: 8px!important;
+    font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif;
+    font-weight: 400!important;
+    font-size: 12px!important;
+}
+.opening-balance-form input{
+    border-radius: 2px!important;
+    border: 1px solid #ced4da!important;
+    height: 32px!important;
+}
+.opening-balance-form select{
+    border-radius: 2px!important;
+    border: 1px solid #ced4da!important;
+    height: 32px!important;
+}
+.tab-content .form-group label{
+    margin-top: 10px!important;
+    margin-left: 20px!important;
+    text-align: left!important;
+    font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif;
+    font-weight: 400!important;
+    font-size: 12px!important;
+}
+.tab-content .form-group input{
+    margin-top: 10px;
+    border-radius: 2px!important;
+    border: 1px solid #ced4da;
+    height: 32px!important;
+}
+.tab-content .states label{
+    margin-top: -6px!important;
+    text-align: left;
+}
+.states input{
+    margin-top: -12px!important;
+
+}
+.tab-content .personal-details label{
+margin-top: -6px !important;
+}
+.personal-details input{
+    margin-top: -12px !important;
+    
+}
+.tab-content .fade select{
+    border-radius: 2px!important;
+    border: 1px solid #ced4da;
+    height: 32px!important;
+}
+ .popup-form{
+    background-color: rgba(0, 0, 0,0.3);
+    height: 100vh;
+    width: 100%;
+   position: absolute;
+    padding: 0;
+    margin: 0;
+    top:0;
+    left: 0;
+}    
+.bank-form-heading{
+    border: 1px solid black;
+    width: 100%;
+    background-color: cornsilk;
+}
+.bank-form-container{
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 250px;
+    
+    width: 100%!important;
+}
+
+.bank-form-main input{
+    margin-bottom:2px!important ;
+    border-radius: 2px!important;
+    border: 1px solid #ced4da;
+}
+.bank-form-main select{
+    margin-bottom: 2px!important;
+    border-radius: 2px!important;
+    border: 1px solid #ced4da;
+}
+.bank-form-main label{
+    margin-top: 4px!important ;
+    margin-left: 20px!important;
+    font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif;
+    font-weight: 400!important;
+    font-size: 12px!important;
+}
+.tax-detail-container{
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 350px;
+    top: 50px;
+    width: 100%!important;
+}
+.tax-detail-heading{
+    border: 1px solid black;
+    width: 70%;
+    background-color: cornsilk;
+}
+.tax-detail-main-form label{
+    margin-top:-5px!important ;
+    margin-left: 20px!important;
+    font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif;
+    font-weight: 400!important;
+    font-size: 12px!important;
+}
+.tax-detail-main-form input{
+    margin-top:-12px!important ;
+    border-radius: 2px!important;
+    border: 1px solid #ced4da;
+}
+.tax-detail-main-form select{
+    margin-top: -12px!important;
+    border-radius: 2px!important;
+    border: 1px solid #ced4da;
+}
+.credit-limit-container{
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 350px;
+    top: 150px;
+    width: 100%!important;
+}
+.credit-limit-heading{
+    border: 1px solid black;
+    width: 70%;
+    background-color: cornsilk;
+}
+.credit-limit-main-form label{
+    margin-top:-5px!important ;
+    margin-left: 20px!important;
+    font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif;
+    font-weight: 400!important;
+    font-size: 12px!important;
+}
+.credit-limit-main-form input{
+    margin-top:-12px!important ;
+    border-radius: 2px!important;
+    border: 1px solid #ced4da;
+}
+.credit-limit-main-form select{
+    margin-top: -12px!important;
+    border-radius: 2px!important;
+    border: 1px solid #ced4da;
+}
+.additional-setting-heading{
+    border: 1px solid black;
+    width: 100%;
+    background-color: cornsilk;
+    padding-left: 5px!important;
+    padding-right: 5px!important;
+}
+.additional-setting-container{
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 250px;
+    top: 70px;
+    width: 100%!important;
+
+}
+
+.additional-setting-main-form label{
+    margin-top:-5px!important ;
+    font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif;
+    font-size: 12px!important;
+    font-weight: 400!important;
+    /* margin-left: 20px!important; */
+    /* padding-left: 5px!important; */
+}
+.additional-setting-main-form input{
+    margin-top:-12px!important ;
+    border-radius: 2px!important;
+    border: 1px solid #ced4da;
+}
+.additional-setting-main-form select{
+    margin-top: -12px!important;
+    border-radius: 2px!important;
+    border: 1px solid #ced4da;
+}
+.job-form-container{
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 250px;
+    top: 50px;
+    width: 100%!important;
+}
+.job-form-heading{
+    border: 1px solid black;
+    width: 100%;
+    background-color: cornsilk;
+}
+.job-main-form input{
+    margin-bottom:2px!important ;
+    margin-left: -10px!important;
+    border-radius: 0px!important;
+    border: 1px solid black;
+}
+.job-main-form select{
+    margin-bottom: 2px!important;
+    margin-left: -10px!important;
+    border-radius: 0px!important;
+    border: 1px solid black;
+}
+.job-main-form label{
+    margin-top: 4px!important ;
+}
+.job-main-form{
+    padding-bottom: 10px!important;
+    padding-left: 5px!important;
+}
+.department-form-container{
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 100px;
+    top: 20px;
+    width: 100%!important;
+}
+.department-form-heading{
+    border: 1px solid black;
+    width: 100%;
+    background-color: cornsilk;
+}
+.department-main-form input{
+    margin-bottom:2px!important ;
+    margin-left: -10px!important;
+    border-radius: 0px!important;
+    border: 1px solid black;
+}
+.department-main-form select{
+    margin-bottom: 2px!important;
+    margin-left: -10px!important;
+    border-radius: 0px!important;
+    border: 1px solid black;
+}
+.department-main-form label{
+    margin-top: 4px!important ;
+}
+.department-main-form{
+    padding-bottom: 10px!important;
+    padding-left: 5px!important;
+}
+.kitty-form-container{
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 100px;
+    top: 20px;
+    width: 100%!important;
+}
+.kitty-form-heading{
+    border: 1px solid black;
+    width: 100%;
+    background-color: cornsilk;
+}
+.kitty-main-form input{
+    margin-bottom:2px!important ;
+    margin-left: -10px!important;
+    border-radius: 0px!important;
+    border: 1px solid black;
+}
+.kitty-main-form select{
+    margin-bottom: 2px!important;
+    margin-left: -10px!important;
+    border-radius: 0px!important;
+    border: 1px solid black;
+}
+.kitty-main-form label{
+    margin-top: 4px!important ;
+}
+.kitty-main-form{
+    padding-bottom: 10px!important;
+    padding-left: 5px!important;
+}
+.girvi-form-container{
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 100px;
+    top: 100px;
+    width: 100%!important;
+}
+.girvi-form-heading{
+    border: 1px solid black;
+    width: 100%;
+    background-color: cornsilk;
+}
+.girvi-main-form input{
+    margin-bottom:2px!important ;
+    margin-left: -10px!important;
+    border-radius: 2px!important;
+    border: 1px solid #ced4da;
+}
+.girvi-main-form select{
+    margin-bottom: 2px!important;
+    margin-left: -10px!important;
+    border-radius: 2px!important;
+    border: 1px solid #ced4da;
+}
+.girvi-main-form label{
+    margin-top: 4px!important ;
+    font-weight: 400!important;
+    font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif; 
+}
+.girvi-main-form{
+    padding-bottom: 10px!important;
+    padding-left: 5px!important;
+}
+::ng-deep .location-ng  .autocomplete-container .input-container input{
+    background-color: white;
+    border: 1px solid #ced4da!important;
+    width: 100% !important;
+    box-shadow: none !important;
+    border-radius: 2px!important;
+    height: 32px!important;
+  }
+  ::ng-deep .location-ng .autocomplete-container{
+    height: 32px!important;
+    margin-top: -12px!important;
+    width: 100%!important;
+    
+  }
+  .location-ng .item:hover{
+      color: white;
+      background-color: #5cc6d0;
+  }
+  .m-currency .item:hover{
+    color: white;
+    background-color: #5cc6d0;
+}
+  ::ng-deep .m-currency  .autocomplete-container .input-container input{
+    background-color: white;
+    border: 1px solid #ced4da!important;
+    width: 100% !important;
+    box-shadow: none !important;
+    border-radius: 2px!important;
+    height: 32px!important;
+  }
+  ::ng-deep .m-currency .autocomplete-container{
+    height: 32px!important;
+    margin-top: -12px!important;
+    width: 100%!important;
+    
+  }
+
+
+
+  .nav>li>a {
+
+    padding: 4px 8px;
+}
+/* .nav>li>a:hover{
+    background-color: #5cc6d0!important;
+    color: white!important;
+    cursor: pointer!important;
+} */
+.nav-pills>li.active>a{
+    color: white!important;
+    background-color: #5cc6d0!important;
+    border-radius: none;
+    cursor: pointer!important;
+}

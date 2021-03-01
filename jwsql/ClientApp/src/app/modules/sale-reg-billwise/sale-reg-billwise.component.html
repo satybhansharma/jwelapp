@@ -1,0 +1,72 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                <h2 style="text-align: center;"><u>Sale Register</u></h2>
+            </div>
+            <div class="table-container"></div>
+            <div class="row from">
+                <div class="col-md-3"></div>
+                <label for="" class="control-label col-md-1">From</label>
+                <div class="col-md-2" style="margin-left: -30px!important;">
+                    <input type="date" class="form-control">
+                </div>
+                <label for="" class="control-label col-md-1">To</label>
+                <div class="col-md-2" style="margin-left: -40px!important;">
+                    <input type="date" class="form-control">
+                </div>
+                <div class="col-md-3">
+                    <select name="" id="" class="form-control">
+                        <option value=""></option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+            <div class="row">
+                <div class="ag-grid"> 
+                    <ag-grid-angular
+                style="height: 400px;width: 100%;margin-top: 10px!important;"
+                class="ag-theme-balham"
+                [gridOptions]="gridOptions"
+                [rowHeight]="30"
+                headerHeight="40"
+                [columnDefs]="columnDefs"
+                ></ag-grid-angular>
+                </div>
+            </div>
+        </div>
+            <div class="row">
+                   <label for="" class="control-label col-md-1" style="padding-top: 5px;">Records</label>
+                   <div class="col-md-1">
+                       <input class="form-control" readonly style="cursor: pointer;height: 30px!important;background-color: white;font-weight: 550;">
+                   </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-2"></div>
+                <label for="" class="control-label col-md-2" style="padding-top: 4px!important;">Grand Total</label>
+                <div class="total-label col-md-8">
+                        <input class="form-control" readonly>
+                        <input class="form-control" readonly>
+                        <input class="form-control" readonly>
+                        <input class="form-control" readonly>
+                        <input class="form-control" readonly>
+                        <input class="form-control" readonly>
+                </div>
+            </div>
+        </div>
+        <section class="footer-lab">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="footer-select">
+                        <div class="col-md-8 text-right footer-btn"
+                            style="margin-top: -20px;margin-bottom: 10px!important; font-weight: bold;float: left;">
+                            <button mat-raised-button class="col-md-2" style="margin-left: 10px;">Export</button>
+                            <button mat-raised-button class="col-md-2" style="margin-left: 10px;">Print</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+      
+        </section>
+    </div>
+    </div>

@@ -1,0 +1,698 @@
+::ng-deep .autocomplete-container .input-container input {
+  /* background-color: #f6f6f6 !important; */
+  border:1px solid #ced4da !important;
+  height: 32px !important;
+  box-shadow: none!important;
+  border-radius: 2px!important;
+}
+
+::ng-deep .autocomplete-container {
+  height: 32px !important;
+  box-shadow: none!important;
+  border-radius: 2px!important;
+}
+
+.unit-conversion h1 {
+  text-align: left !important;
+  margin-left: 10px;
+  font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+}
+.heading-stock button .mat-icon{
+  font-size: 20px;
+   width: 20px; 
+   height: 18px; 
+   line-height: 22px;
+   margin-top: -14px!important;
+   margin-right: -20px!important;
+}
+.unit-conversion {
+  width: 100%;
+  height: 100vh;
+}
+.heading-stock button{
+  height: 22px;
+  float: right;
+  border: none;
+  margin-right: -12px!important;
+  margin-top: 2px!important;
+}
+.labour-select select{
+  border: 1px solid #ced4da;
+  border-radius: 2px!important;
+}
+.item-master-header {
+  position: fixed;
+  top: 70px;
+  left: 0px;
+  right: 0;
+  width: 100%;
+  z-index: 99999999999999;
+  /* background-color: white; */
+  border-bottom: 1px solid gray;
+  padding: 10px 0;
+}
+
+  .item-master-header h1 {
+    margin-left: 250px;
+  }
+
+.edit-buuton {
+  margin-left: 250px;
+}
+
+.unit-conversion button {
+  padding: 2px 9px;
+  font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  color: white;
+  /* background-color: #5CC6D0; */
+  border: none;
+  outline: none !important;
+}
+
+.borderStyle {
+  width: 100%;
+  height: 1px;
+  background: lightgray;
+  margin-top: 20px;
+}
+
+.unit-conversion .close-button button {
+  background: none !important;
+  color: black;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.edit-buuton button {
+  /* background-color: #e9e9e9; */
+  color: black;
+  border: 1px solid #6c6d70 !important;
+  outline: none !important;
+  border-radius: inherit;
+}
+
+  .edit-buuton button mat-icon.toolbar {
+    font-size: 18px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+
+
+  .edit-buuton button:focus {
+    outline: none !important;
+    background-color: none;
+  }
+
+
+
+/* .footer-fix {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 9999999999;
+  background-color: white;
+  padding: 30px 0;
+  -webkit-box-shadow: 0px -2px 12px 0px rgba(48, 50, 50, 0.44);
+  -moz-box-shadow: 0px -2px 12px 0px rgba(48, 50, 50, 0.44);
+  box-shadow: 0px -2px 12px 0px rgba(48, 50, 50, 0.44);
+}
+
+.footer-button {
+  position: absolute;
+  left: 235px;
+  bottom: -16px;
+} */
+
+ form legend{
+   margin-top: -2px!important;
+ } 
+form input{
+  margin-top: -2px!important;
+}
+form select{
+  margin-top: -2px!important;
+}  
+
+  
+
+.select_method input.form-control {
+  width: 500px !important;
+}
+
+form.decimal-place {
+  width: 950px;
+  margin-left: -5px;
+  margin-top: 5px;
+}
+
+  form.decimal-place .form-control {
+    padding: 2px 4px !important;
+  }
+
+.decimal-place .row {
+  padding: 0;
+  margin: 0;
+}
+
+.decimal-place .form-group {
+  margin-bottom: 0px !important;
+}
+
+form.decimal-place input.form-control {
+  border-radius: 2px!important;
+  border: 1px solid #ced4da;
+  width: 100%;
+  font-size: 15px !important;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  height: 32px!important;
+  /* background-color: #f6f6f6; */
+  padding: .375rem 0.5rem !important;
+  text-transform: capitalize;
+ 
+}
+
+.poly-wt input.form-control {
+  width: 300px;
+}
+
+.category select.form-control {
+  border-radius: 2px!important;
+  border: 1px solid #ced4da;
+  width: 100%;
+  font-size: 15px !important;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  height: 32px!important;
+  /* background-color: #f6f6f6 !important; */
+  text-transform: capitalize;
+}
+
+.stocking select.form-control {
+  border-radius: 2px!important;
+  border:1px solid #ced4da;
+  width: 100%;
+  font-size: 15px !important;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  height: 32px!important;
+  /* background-color: #f6f6f6 !important; */
+  font-weight: 520;
+  text-transform: capitalize;
+}
+
+.Ite_master_form legend {
+  border-bottom: none;
+  color: black;
+  font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif;
+  font-size: 12px;
+  font-weight: 520;
+}
+
+.short-name input.short-name-input {
+  width: 100%;
+}
+
+.short-name input.short-name-input2 {
+  width: 100%;
+}
+
+.item-group input.form-control {
+  width: 100%;
+}
+
+.labour-upon .legend legend {
+  margin-left: 35px;
+}
+
+.decimal-place legend {
+  text-align: left;
+  border-bottom: none;
+  color: black;
+  font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  margin-top: 5px;
+}
+
+.labour-upon input.unit {
+  width: 100px !important;
+}
+
+.labour-upon input.labour-upon-input {
+  width: 100% !important;
+}
+
+.labour-upon input.grade-input {
+  width: 100% !important;
+}
+
+.item-type input.item-type-input {
+  width: 100% !important;
+}
+
+.item-type input.link_party-input {
+  width: 100% !important;
+}
+
+.item-type select {
+  /* background-color: #f6f6f6 !important; */
+  border: 1px solid #ced4da;
+  height:32px!important;
+}
+
+.AddStock input.form-check-input {
+  margin-top: 7px;
+}
+
+.AddStock .additional_select {
+  margin-left: -48px;
+}
+
+.AddStock select.form-control {
+  border-radius: 2px!important;
+  border: 1px solid #ced4da;
+  width: 100%;
+  font-size: 15px !important;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  height: 32px!important;
+  /* background-color: #f6f6f6 !important; */
+  font-weight: 520;
+  padding: .375rem 0.5rem !important;
+}
+
+.AddStock select option {
+  padding: 0px 20px;
+}
+
+.rate_by {
+  margin-left: 5px;
+}
+
+  .rate_by select.form-control {
+    font-size: 15px !important;
+    font-weight: 520;
+    width: 100% !important;
+    height: 32px!important;
+    /* background-color: #f6f6f6 !important; */
+    border: 1px solid #ced4da;
+    font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif;
+    text-align: right;
+  }
+
+.stock-details-form h2 {
+ background-color: black;
+  color: white;
+  text-align: center;
+  font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  height: 30px;
+}
+.tag-prefix-form{
+  margin-left: -20px!important;
+}
+
+.tag-prefix-form h2 {
+  /* background-color: #6c6d70; */
+  color: white;
+  background-color: black;
+  text-align: center;
+  font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+}
+.tag-prefix-main-form{
+  background-color: cornsilk;
+}
+/* .stock-details-form input {
+  background-color: white !important;
+} */
+
+/* .tag-prefix-form input {
+  background-color: white !important;
+} */
+
+.restrictions-form h2 {
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+}
+
+.restrictions-form {
+  background-color: cornsilk;
+  width: 100%;
+  margin-left: 10px;
+  padding: 0px 5px;
+  -webkit-box-shadow: 0px 1px 15px 1px rgba(0,0,0,0.49);
+  box-shadow: 0px 1px 15px 1px rgba(0,0,0,0.49);
+  width: 500px;
+}
+
+.saleRase_unit legend {
+  margin-left: 50px;
+}
+
+.saleRase_input {
+  margin-top: 7px;
+}
+
+.rate_byes {
+  margin-left: 5px;
+}
+
+.tag-prefix-form {
+  /* background-color: #f6f6f6 !important; */
+  width: 100%;
+  margin-top: 10px;
+  margin-left: 20px;
+  padding: 10px 5px;
+  -webkit-box-shadow: 0px 1px 15px 1px rgba(0,0,0,0.29);
+  box-shadow: 0px 1px 15px 1px rgba(0,0,0,0.29);
+}
+
+.detailtag {
+  margin-top: 7px;
+  margin-left: -45px;
+}
+
+.otherTag {
+  margin-top: 7px;
+  margin-left: -22px;
+}
+
+.requered-restric {
+  margin-left: -42px;
+}
+
+.restrictions-form input.set-restriction-checkBox {
+  margin-top: 8px;
+  margin-left: -20px;
+}
+
+.restrictions-form input.withFine {
+  margin-left: -20px;
+}
+
+.tagStockLess {
+  margin-left: -42px;
+}
+
+.restrictions-form input.tagStockLess_check {
+  margin-left: -60px;
+}
+
+.stock-details-form {
+  background-color: cornsilk;
+  width: 100%;
+  margin-left: 10px;
+  padding: 0px 5px;
+  -webkit-box-shadow: 0px 1px 15px 1px rgba(0,0,0,0.49);
+  box-shadow: 0px 1px 15px 1px rgba(0,0,0,0.49);
+  width: 500px;
+  height: 411px;
+}
+
+  .stock-details-form legend {
+    text-align: left;
+  }
+
+.stock-valution-input {
+  margin-left: 1px;
+}
+
+
+input.value-stock-radio {
+  margin-left: -37px;
+}
+
+.maintain-stock-radio {
+  margin-top: 7px;
+  margin-left: -5px;
+}
+
+.restrictions-form .row {
+  margin-left: 5px;
+}
+
+.Additional-form .row {
+  margin-left: 1px;
+  margin-bottom: 0px;
+
+}
+
+.Additional-form legend {
+  margin-bottom: 10px;
+}
+
+.Additional-form h2 {
+  background-color: black;
+  color: white;
+  text-align: center;
+  font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  height: 30px!important;
+}
+
+/* .Additional-form input {
+  background-color: white;
+} */
+
+.stock-method-option select.form-control {
+  border-radius: 2px!important;
+  border: 1px solid #ced4da !important;
+}
+
+.batch-option select.form-control {
+  border-radius: 2px!important;
+  border: 1px solid #ced4da !important;
+}
+
+.stockvaluation-row select.form-control {
+  border-radius: 2px!important;
+  border:1px solid #ced4da !important;
+}
+
+.Additional-form {
+ background-color: cornsilk;
+  width: 100%;
+  margin-left: 10px;
+  padding: 0px 5px;
+  -webkit-box-shadow: 0px 1px 15px 1px rgba(0,0,0,0.49);
+  box-shadow: 0px 1px 15px 1px rgba(0,0,0,0.49);
+  width: 500px;
+}
+
+.used-instuding-checkbox {
+  margin-top: 8px;
+  margin-left: -36px;
+}
+
+.addition-form-check {
+  margin-top: 8px;
+}
+
+.addition-formAL {
+  margin-left: 40px;
+}
+
+legend.linkPartyLegend {
+  margin-left: 35px;
+}
+
+.unit {
+  margin-top: 2px;
+}
+
+@media screen and (max-width: 768px) {
+  form.decimal-place {
+    width: 773px;
+    margin-top: 10px;
+    margin-bottom: 80px;
+  }
+
+  .decimal-place legend {
+    margin-bottom: 2px;
+  }
+
+  legend.linkPartyLegend {
+    margin-left: 15px;
+  }
+
+  .unit {
+    margin-top: 8px;
+  }
+
+  .stocking-selct {
+    margin-left: -5px;
+  }
+
+  .saleRase_unit legend {
+    margin-left: 10px;
+  }
+
+  legend.labour-upn {
+    margin-left: 17px !important;
+  }
+
+  .stock-details-form {
+    width: 330px;
+    margin-top: 10px;
+  }
+
+    .stock-details-form .row {
+      margin-top: 5px;
+    }
+
+  .restrictions-form {
+    width: 330px;
+    margin-top: 10px;
+  }
+
+    .restrictions-form input.withFine {
+      margin-left: -20px;
+    }
+
+    .restrictions-form input.tagStockLess_check {
+      margin-left: -20px;
+    }
+
+  .tagStockLess {
+    margin-left: -10px;
+  }
+
+  .Additional-form {
+    width: 330px;
+    margin-top: 10px;
+  }
+
+  .used-instuding-checkbox {
+    margin-left: -10px;
+  }
+
+  .tag-prefix-form {
+    width: 330px;
+    margin-top: 10px;
+  }
+
+  .row.tagprintrow {
+    margin-top: 5px !important;
+  }
+
+  form.decimal-place input.form-control {
+    height: 28px;
+  }
+
+  .category select.form-control {
+    height: 28px;
+  }
+
+  .stocking select.form-control {
+    height: 28px;
+  }
+
+  .item-type select {
+    height: 28px;
+  }
+
+  .AddStock select.form-control {
+    height: 28px;
+    padding: .375rem 0.2rem !important;
+  }
+
+  .rate_by select.form-control {
+    height: 28px;
+  }
+
+  .footer-button {
+    position: absolute;
+    left: 2px;
+    bottom: -16px;
+  }
+
+  input.breeds-check {
+    margin-left: -21px !important;
+    margin-top: 7px;
+  }
+
+  input.breed-less {
+    margin-left: 5px !important;
+  }
+
+  input.addgwt {
+    margin-left: 5px !important;
+    margin-top: 7px;
+  }
+
+  legend.pc {
+    margin-left: 25px;
+  }
+
+  input.pc-check {
+    margin-left: 30px !important;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .group-code-input {
+    margin-left: -53px;
+  }
+
+  legend.grade {
+    margin-left: 21px !important;
+  }
+
+  legend.labour-upn {
+    margin-left: 44px !important;
+  }
+
+  .AddStock .additional_select {
+    margin-left: 0px;
+  }
+
+  .stocking-selct {
+    margin-left: 0px;
+  }
+
+  .rate_byes {
+    margin-left: 4px;
+  }
+
+  .retBy {
+    margin-top: 10px;
+  }
+
+  input.bullioncheck {
+    margin-left: -14px !important;
+  }
+
+  input.addgwt {
+    margin-left: -34px !important;
+    margin-top: 7px;
+  }
+
+  .restrictions-form input.set-restriction-checkBox {
+    margin-left: -13px !important;
+  }
+
+  legend.breeds {
+    margin-left: -1px;
+  }
+
+  input.breeds-check {
+    margin-left: 1px !important;
+    margin-top: 7px;
+  }
+
+  input.grooswt-check {
+    margin-left: 1px !important;
+    margin-top: 7px;
+  }
+
+  legend.pc {
+    margin-left: 0px;
+  }
+}

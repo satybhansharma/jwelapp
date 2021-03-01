@@ -1,0 +1,455 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "ag-grid-community/dist/styles/ag-grid.css";
+@import "ag-grid-community/dist/styles/ag-theme-balham.css";
+@import "ag-grid-community/dist/styles/ag-theme-balham-dark.css";
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.mat-button.mat-success,
+.mat-stroked-button.mat-success {
+  color: #155724;
+}
+  .mat-button.mat-success:hover,
+  .mat-stroked-button.mat-success:hover {
+    background-color: #f0fff3;
+  }
+
+.mat-raised-button.mat-success,
+.mat-flat-button.mat-success,
+.mat-fab.mat-success,
+.mat-mini-fab.mat-success {
+  color: #f0fff3;
+  background-color: #155724;
+}
+
+.mat-icon-button.mat-success {
+  color: #155724;
+}
+.mat-success {
+color:red;
+}
+
+.autocomplete-container .input-container input{
+  background-color: white;
+  border: 1px solid rgba(27, 27, 27, 0.603) !important;
+}
+/* HIDE ARROW */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+input[type="number"] {
+-moz-appearance: textfield;
+}
+/* HIDE ARROW END */
+.s-no{
+  width: 80px!important;
+  text-align: center;
+}
+.mat-drawer-inner-container{
+  overflow: hidden!important;
+}
+.mat-drawer-content{
+  overflow: hidden!important;
+}
+::ng-deep .mat-dialog-container{
+  overflow: hidden!important;
+}
+::ng-deep .mat-drawer-content{
+  overflow: hidden!important;
+}
+html,body {
+  height: 100%!important;
+}
+.heading{
+  margin-left: -5px !important;
+
+}
+
+.search-txt{
+  margin-top: 10px;
+  margin-bottom: 5px;
+  width: 300px;
+  float: right;
+  margin-right: 0px;
+
+}
+.table{
+  width: 98%;
+  margin-left: 10px!important;
+  border: 2px solid #5b5b5b;  
+}
+.table thead{
+  background-color: #5b5b5b;
+  color: white;
+}
+.table tbody tr td{
+  font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif!important;
+  font-size: 12px!important;
+  font-weight: 400!important;
+  padding: 2px!important;
+  vertical-align: middle;
+ }
+.table thead tr th{
+  text-align: center;
+  font-family: Inter,"Source Sans Pro",Helvetica,Arial,sans-serif!important;
+  font-weight: 400!important;
+  font-size: 13px!important;
+}
+
+pagination{
+  margin-top: -20px;
+  margin-bottom: -30px!important;
+  float: right;
+  margin-right: 15px;
+}
+.footer-next {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 9999999999;
+  background-color: white;
+  padding: 5px 0;
+  -webkit-box-shadow: 0px -2px 12px 0px rgba(48, 50, 50, 0.44);
+  -moz-box-shadow: 0px -2px 12px 0px rgba(48, 50, 50, 0.44);
+   box-shadow: 0px -2px 12px 0px rgba(48, 50, 50, 0.44);
+}
+/* new button */
+
+.new-button button{
+  float: right;
+  margin-right: 5px;
+  background-color: #5cc6d0 !important;
+  color: white !important;
+}
+.new-button button:hover{
+  background-color: #5cc6d0 !important;
+  color: white !important;
+}
+.edit-table{
+  width: 40px;
+}
+.back-button button{
+  float: left;
+padding-bottom: 5px!important;
+  background-color: #5cc6d0 !important;
+  color: white !important;
+  
+}
+.back-button button:hover{
+  background-color: #5cc6d0 !important;
+  color: white !important;
+}
+/* crud button start */
+
+.mat-raised-button {
+  line-height: 11px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8px 10px !important;
+  border: none;
+  outline: none !important;
+  border-radius: 2px !important;
+  float: left;
+  background-color: #5CC6D0;
+}
+.mat-raised-button.newFormbttn {
+  line-height: 11px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 8px 10px !important;
+  border: none;
+  outline: none !important;
+  border-radius: 2px !important;
+  float: right;
+  color: white;
+}
+
+
+.footer-fix {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 9999999999;
+  background-color: white;
+  padding: 30px 0;
+  -webkit-box-shadow: 0px -2px 12px 0px rgba(48, 50, 50, 0.44);
+  -moz-box-shadow: 0px -2px 12px 0px rgba(48, 50, 50, 0.44);
+  box-shadow: 0px -2px 12px 0px rgba(48, 50, 50, 0.44);
+}
+
+.footer-button {
+  position: absolute;
+  
+  bottom: -16px;
+}
+
+  .footer-button button.save {
+    
+    padding: 3px 9px;
+    text-align: left;
+    background-color: #5CC6D0;
+    border: 1px solid #5CC6D0;
+    color: white;
+    font-family: Proxima Nova,Source Sans Pro,Helvetica,Arial,sans-serif;
+    font-weight: 530;
+    font-size: 16px !important;
+    outline: none !important;
+  }
+
+  .footer-button a.cancle {
+      padding: 5px 9px;
+      margin-left: 20px;
+      background-color: #f2a657;
+      border: 1px solid #f2a657;
+      color: white;
+      font-weight: 530;
+      font-size: 16px!important;
+      font-family: Proxima Nova,Source Sans Pro,Helvetica,Arial,sans-serif;
+      text-decoration: none;
+      cursor: pointer !important;
+      outline: none !important;
+  }
+.footer-button a.delete{
+  padding: 3px 9px;
+  text-align: left;
+  margin-left: 20px!important;
+  color: white;
+  background-color: #f76c6d;
+  border: 1px solid #f76c6d;
+  font-family: Proxima Nova,Source Sans Pro,Helvetica,Arial,sans-serif;
+  font-weight: 530;
+  font-size: 16px !important;
+  outline: none !important;
+}
+
+/* crud button end */
+
+
+@media screen and (max-width: 768px){
+  ::ng-deep .mat-dialog-container{
+    overflow-y: auto!important;
+  }
+  .mat-drawer-content{
+    overflow-y:hidden !important;
+  }
+  .search-txt{
+    margin-right: 0px;
+  }
+  .table{
+    width: 100%;
+    padding-right: 40px;  
+  }
+  .new-button{
+    float: right;
+    margin-right: 0px;
+    margin-top: -50px;
+  }
+  table{
+    width: 97%!important;
+  }
+  pagination{
+    margin-top: -30px;
+    float: right;
+    margin-right: 15px;
+  }  
+}
+@media screen and (max-width: 600px) {
+
+  ::ng-deep .mat-dialog-container{
+    overflow-y: auto!important;
+  }
+  .mat-drawer-content{
+    overflow-y:hidden !important;
+  }
+
+  .search-txt{
+    margin-right: 0px;
+  }
+  .table{
+    width: 100%;
+    padding-right: 40px;  
+  }
+  .new-button{
+    float: right;
+    margin-right: 0px;
+  }
+  pagination{
+    margin-top: -30px;
+    float: right;
+    margin-right: 0px;
+  }
+  }
+  @media screen and (max-width: 425px){
+    ::ng-deep .mat-dialog-container{
+      overflow-y: auto!important;
+    }
+    .mat-drawer-content{
+      overflow-y:hidden !important;
+    }
+    .table{
+      width: 96%!important;
+      margin-left: 0px;
+    }
+    .search-txt{
+      width: 98%;
+      margin-left: 10px!important;
+    }
+    /* .new-button button{
+      margin-left: 20px;
+    } */
+    pagination{
+      margin-right: 10px!important;
+    }
+    html, body {
+      height: 100vh;
+      width: fit-content;
+      background: white;
+  }
+  }
+ 
+
+  /* responsive */
+
+@media only screen and (max-width: 768px) {
+
+  .footer-button {
+    position: absolute;
+    left: 5px !important;
+    bottom: -16px;
+  }
+}
+@media only screen and (max-width: 600px) {
+
+  .footer-button {
+    position: absolute;
+    left: 5px !important;
+    bottom: -16px;
+  }
+}
+@media only screen and (max-width: 425px) {
+
+  .footer-button {
+    position: absolute;
+    left: 5px!important;
+    bottom: -16px;
+  }
+}
+
+@media only screen and (max-width: 375px) {
+
+  .footer-button {
+    position: absolute;
+    left: 5px !important;
+    bottom: -16px;
+  }
+}
+
+
+
+.table tbody tr:nth-child(odd) {
+  background:#dcdcdc;
+}
+
+.table tbody tr:nth-child(even) {
+  background:white;
+}
+.table tbody tr:hover {
+  background:#CAE9F5;
+  cursor: pointer;
+}
+.ag-theme-balham{
+  --ag-odd-row-background-color:#dcdcdc;
+}
+@media screen and (min-width: 1400px){
+  .table tbody tr td{
+    padding: 5px!important;
+  }
+}
+
+
+.ag-theme-balham{
+  --ag-header-background-color: #5b5b5b;
+  --ag-header-foreground-color:white;  
+  
+}
+.ag-row-hover {
+  /* putting in !important so it overrides the theme's styling as it hovers the row also */
+  background-color: #dfdfff !important;
+}
+
+.ag-theme-balham {
+  /* use theme parameters where possible */
+  --ag-foreground-color: black;
+  --ag-background-color: white;  
+}
+.ag-theme-balham .ag-header {
+  
+  font-family: Arial, Helvetica, sans-serif;
+}
+.dropdown-check-list {
+  display: inline-block;
+}
+
+.dropdown-check-list .anchor {
+  position: relative;
+  cursor: pointer;
+  width: 200px!important;
+  display: inline-block;
+  padding: 5px 108px 5px 10px;
+  border: 1px solid #ccc;
+  overflow: hidden;
+  height: 30px;
+}
+
+.dropdown-check-list .anchor:after {
+  position: absolute;
+  content: "";
+  border-left: 2px solid black;
+  border-top: 2px solid black;
+  padding: 5px;
+  right: 10px;
+  top: 20%;
+  -moz-transform: rotate(-135deg);
+  -ms-transform: rotate(-135deg);
+  -o-transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  transform: rotate(-135deg);
+}
+
+.dropdown-check-list .anchor:active:after {
+  right: 8px;
+  top: 21%;
+}
+
+.dropdown-check-list ul.items {
+  padding: 2px;
+  display: none;
+  margin: 0;
+  border: 1px solid #ccc;
+  border-top: none;
+  position: absolute;
+  z-index: 99999999;
+  background-color: rgb(255, 255, 255);
+}
+
+.dropdown-check-list ul.items li {
+  list-style: none;
+}
+
+.dropdown-check-list.visible .anchor {
+  color: #0094ff;
+}
+
+.dropdown-check-list.visible .items {
+  display: block;
+}

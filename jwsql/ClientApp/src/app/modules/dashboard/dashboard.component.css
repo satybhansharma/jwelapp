@@ -1,0 +1,40 @@
+mat-grid-tile{
+background-color: seagreen;
+}
+
+.content { 
+    padding: 16px; 
+  }
+  
+  .content > mat-card { 
+    width: 200px; 
+  }
+  .stats-cards{
+    margin: 20px;
+    cursor: pointer;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    
+  }
+  mat-card{
+    text-align: center;
+  }
+ 
+  .card-text{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: aqua;
+    text-align: center;
+    text-transform: uppercase;
+    color: white;
+    letter-spacing: 2px;
+  }
+  .card-Design{
+    background-color:skyblue;
+  }
+
+  .icon-color{
+    color: cornflowerblue;
+   
+  }
+  .stats-cards mat-card{
+     padding: 5px 10px!important;
+  }

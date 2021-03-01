@@ -1,0 +1,240 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="row" *ngIf="!istableshow"  >
+        <div class="col-md-4 filter">
+            <label for="" class="control-label col-md-2">Filter</label>
+            <div class="col-md-8">
+                <select name="" id="" class="form-control"(change)="selectOption($event.target.value)">
+                    <option value="0">None</option>
+                    <option value="1">Group Wise</option>
+                    <option value="2">Category Wise</option>
+                    <option value="3">Item Wise</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-md-3" >
+          <div id="list1" class="dropdown-check-list" tabindex="100">
+            <span class="anchor" (click)="hello()">{{selectval}}</span>
+            <ul class="items">
+              <div  *ngFor="let hero of heroes">
+                <input  type="checkbox" (change)="onCheckboxChange(hero,$event)" value="{{hero.id}}"/> {{hero.name}}
+              </div>
+              <div class="form-group">
+                  <button (click)="btnok_click()">ok</button>&nbsp;&nbsp;
+                  <input type="radio" (click)="Change($event.target.value)" class="form-group1" name="a" Value="IN" id="incl"><label for="">Include</label>&nbsp;&nbsp;
+                  <input type="radio" (click)="Change($event.target.value)" class="form-group" name="a" Value="NOT IN" id="excl"><label for="">Exclude</label>
+              </div>
+        
+            </ul>
+          </div>
+        </div>
+        <div class="col-md-4 tags">
+            <label for="" class="control-label col-md-5">Purchase Tags ></label>
+            <div class="col-md-3">
+                <input type="number" name="ptag"  class="form-control" style="text-align: right;">
+            </div>
+        </div>
+    </div>
+    <!-- *ngIf="!istableshow" -->
+    <div  *ngIf="!istableshow">
+        <!-- <div class="col-md-12 ">
+            <div class="ea_table" style="overflow-x: hidden;height: 460px;overflow-y: auto; margin-top: 10px!important;">
+                <table class="table table-striped table-bordered table-sm row-border hover">
+                    <thead>
+                      <tr>
+                        <th>Supplier Name</th>
+                        <th>Purchase Tags</th>
+                        <th>Purchase Tags Wt.</th>
+                        <th>Sold Tags</th>
+                        <th>Sold Tags Wt.</th>
+                        <th>Sale %</th>
+                        <th>Avg. Days (Sold)</th>                
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let record of records">
+                             <td (click)="LoaddetRecords(record)">{{record.cname}}</td>
+                            <td style="text-align: right!important;">{{record.pcount}}</td>
+                            <td style="text-align: right!important;">{{record.pwt}}</td>
+                            <td style="text-align: right!important;">{{record.scount}}</td>
+                            <td style="text-align: right!important;">{{record.swt}}</td>
+                            <td style="text-align: right!important;">{{record.age}}</td>
+                            <td style="text-align: right!important;">{{record.avgdays}}</td>  
+                        </tr>
+                        
+    
+    
+                    </tbody>
+                    
+                  </table>
+            </div>
+            
+        </div> -->
+        <div class="ag-grid"> 
+          
+          <ag-grid-angular
+      style="height: 460px;width: 100%;margin-top: 10px!important;"
+      class="ag-theme-balham"
+      headerHeight="40"
+      [gridOptions]="gridOptions"
+      (gridReady)="onGridReady($event)"
+      (firstDataRendered)="onFirstDataRendered($event)"
+      (gridSizeChanged)="onGridSizeChanged($event)"
+      [rowData]="records"
+      [rowHeight]="30"
+      [groupIncludeFooter]="true"
+      [groupIncludeTotalFooter]="true"      
+      [columnDefs]="columnDefs"
+      rowSelection='single'
+      (rowSelected)="onRowSelect($event)"
+      (cellClicked)='CellDoubleClicked($event)'
+      ></ag-grid-angular>
+      </div>
+        <div class="row total" >
+          <!-- <button (click)="getSelectedRowData()">Hey</button> -->
+            <label for="" class="control-label col-md-3" style="text-align: center;">Total</label>
+            <div class="col-md-9">
+                <input type="number" readonly  class="form-control" value="{{pur_Tag}}"   name="pcount" placeholder="0" style="text-align: right;cursor: pointer;margin-left: -10px!important;font-weight: bold;background-color: white;">
+                <input value="{{pur_TagWt}}" readonly type="number" class="form-control" name="pwt" placeholder="0.000" style="text-align: right;cursor: pointer;font-weight: bold;background-color: white;">
+                <input type="number" readonly value="{{sold_Tag}}" class="form-control" name="scount" placeholder="0" style="text-align: right;cursor: pointer;font-weight: bold;background-color: white;">
+                <input type="number" readonly value="{{sold_TagWt}}" class="form-control" name="swt" placeholder="0.000" style="text-align: right;cursor: pointer;font-weight: bold;background-color: white;">
+                <input type="number" readonly value="{{sale_Per}}" class="form-control" name="age" placeholder="0.00" style="text-align: right;cursor: pointer;font-weight: bold;background-color: white;">
+                <input type="number" readonly value="{{avg_sold}}" class="form-control" name="avgdays" placeholder="0" style="text-align: right;cursor: pointer;font-weight: bold;background-color: white;">
+              </div>
+           
+        </div>
+
+    </div>
+    <div *ngIf="istableshow">
+      <div class="row">
+          <div class="back-button col-md-2" style="margin-left: -5px!important;">
+            <button mat-raised-button routerLink="/inventory" class="save cancle"><i class="fa fa-arrow-left"
+                aria-hidden="true"></i>&nbsp;Back</button>
+          </div>
+
+          <div class="col-md-2" >
+            <select name="" id="" style="height: 30px!important;" class="form-control">
+              <option value=""></option>
+            </select>
+          </div>
+<div class="col-md-4" style="text-align: center;">
+  <input readonly style="height: 30px!important;" class="form-control">
+</div>
+      </div>
+       
+        <div class="ag-grid"> 
+          
+          <ag-grid-angular
+      style="height: 460px;width: 100%;margin-top: 10px!important;"
+      class="ag-theme-balham"
+      [gridOptions]="gridOptions"
+      (gridReady)="onGridReady($event)"
+      (firstDataRendered)="onFirstDataRendered($event)"
+      (gridSizeChanged)="onGridSizeChanged($event)"
+      [rowData]="detrecords"
+      [columnDefs]="columnDetail"
+      ></ag-grid-angular>
+      </div>
+        <div class="row total-another">
+            <label for="" class="control-label col-md-7" style="text-align: center;">Total</label>
+            <div class="col-md-2" style="margin-left: 10px!important;">
+                <input type="number" readonly style="text-align: right;font-weight: bold;" value="{{grwt}}" placeholder="0.000" name="grwt" class="form-control">
+            </div>
+            <div class="col-md-2" style="margin-left: -115px!important;">
+                <input type="number" readonly style="text-align: right;font-weight: bold;" value="{{dwt}}" name="diawt" placeholder="0.000" class="form-control">
+            </div>
+        </div>
+    </div>
+
+   
+    <section class="footer-lab">
+      <div class="container-fluid">
+          <div class="row">
+              <div class="footer-select">
+                  <div class="col-md-8 text-right footer-btn"
+                      style="margin-top: -20px;margin-bottom: 10px!important; font-weight: bold;float: left;">
+                      <button mat-raised-button class="col-md-2" style="margin-left: 10px;" (click)="export()">Export</button>
+                      <button mat-raised-button class="col-md-2" style="margin-left: 10px;">Print</button>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+  </section>
+</div>
+</div>
+
+
+
+
+    <!-- <table class="ea_table">
+        <thead>
+          <tr>
+            <th>Something Long</th>
+            <th>Something </th>
+            <th>Something Very Long</th>
+            <th>Something Long</th>
+            <th>Some</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td> Lorem Ipsum Dolar Sit Amet</td>
+            <td> Lorem </td>
+            <td> Lorem Ipsum </td>
+            <td> Lorem </td>
+            <td> Lorem Ipsum Dolar </td>
+          </tr>
+          <tr>
+            <td> Lorem </td>
+            <td> Lorem Ipsum Dolar Sit Amet</td>
+            <td> Lorem </td>
+            <td> Lorem Ipsum </td>
+            <td> Lorem Ipsum Dolar </td>
+          </tr>
+          <tr>
+            <td> Lorem Ipsum Dolar Sit Amet</td>
+            <td> Lorem </td>
+            <td> Lorem Ipsum </td>
+            <td> Lorem </td>
+            <td> Lorem Ipsum Dolar </td>
+          </tr>
+          <tr>
+            <td> Lorem Ipsum Dolar Sit Amet</td>
+            <td> Lorem </td>
+            <td> Lorem Ipsum </td>
+            <td> Lorem </td>
+            <td> Lorem Ipsum Dolar </td>
+          </tr>
+          <tr>
+            <td> Lorem Ipsum Dolar Sit Amet</td>
+            <td> Lorem </td>
+            <td> Lorem Ipsum </td>
+            <td> Lorem </td>
+            <td> Lorem Ipsum Dolar </td>
+          </tr>
+          <tr>
+            <td> Lorem Ipsum Dolar Sit Amet</td>
+            <td> Lorem </td>
+            <td> Lorem Ipsum </td>
+            <td> Lorem </td>
+            <td> Lorem Ipsum Dolar </td>
+          </tr>
+          <tr>
+            <td> Lorem Ipsum Dolar Sit Amet</td>
+            <td> Lorem </td>
+            <td> Lorem Ipsum </td>
+            <td> Lorem </td>
+            <td> Lorem Ipsum Dolar </td>
+          </tr>
+          <tr>
+            <td> Lorem Ipsum Dolar Sit Amet</td>
+            <td> Lorem </td>
+            <td> Lorem Ipsum </td>
+            <td> Lorem </td>
+            <td> Lorem Ipsum Dolar </td>
+          </tr>
+    
+        </tbody>
+    
+      </table> -->
