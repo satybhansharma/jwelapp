@@ -2,7 +2,6 @@ import { Component, OnInit,Input,Output,EventEmitter, HostListener } from '@angu
 import {FormGroup,FormBuilder,Validators,FormArray} from '@angular/forms';
 import {PageChangedEvent} from 'ngx-bootstrap/pagination';
 import {AccmastService} from './accmast.service';``
-import { json } from 'ngx-custom-validators/../../json/validator';
 import { startWith } from 'rxjs/operators';
 import { map, numberFormat, color, Color } from 'highcharts';
 import { BooleanLiteral, forEachChild } from 'typescript';
